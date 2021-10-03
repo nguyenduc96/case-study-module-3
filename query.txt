@@ -1,0 +1,95 @@
+create database project_case_study_module_3;
+
+use project_case_study_module_3;
+
+create table product (
+    id int auto_increment primary key,
+    name nvarchar(255),
+    code nvarchar(255),
+    image nvarchar(500),
+    quantity int,
+    price double,
+    discount double,
+    discount_pct double,
+    isActive bool default true,
+    category_id int,
+    brand_id int,
+    description longtext,
+    created_at datetime,
+    created_user_id int,
+    updated_at datetime,
+    updated_user_id int,
+    deleted_at datetime,
+    delete_user_id int,
+    note nvarchar(2000)
+);
+
+create table product_detail (
+    id int auto_increment primary key,
+    product_id int,
+    image nvarchar(500),
+    screen_tech nvarchar(255),
+    screen_resolution varchar(255),
+    front_camera_tech varchar(255),
+    rear_camera_teach nvarchar(255),
+    operator_system nvarchar(255),
+    cpu nvarchar(255),
+    ram nvarchar(255),
+    memory nvarchar(255),
+    connect nvarchar(255),
+    pin nvarchar(255),
+    charge nvarchar(255),
+    note nvarchar(2000)
+);
+
+create table category (
+    id int auto_increment primary key,
+    name nvarchar(255),
+    image nvarchar(500),
+    note nvarchar(2000)
+);
+
+create table brand (
+    id int auto_increment primary key,
+    name nvarchar(255),
+    image nvarchar(500),
+    note nvarchar(2000)
+);
+
+create table user (
+    id int auto_increment primary key,
+    username nvarchar(50),
+    password nvarchar(50),
+    first_name nvarchar(255),
+    last_name nvarchar(255),
+    number_phone nvarchar(20),
+    email nvarchar(50),
+    address nvarchar(255),
+    sex nvarchar(50),
+    date_of_birth date,
+    created_at datetime,
+    note nvarchar(2000)
+);
+
+create table orders (
+    id int auto_increment primary key,
+    first_name nvarchar(255),
+    last_name nvarchar(255),
+    number_phone nvarchar(20),
+    email nvarchar(50),
+    address nvarchar(255),
+    date_of_birth date,
+    sex nvarchar(50),
+    note nvarchar(2000)
+);
+
+create table order_detail (
+    id int auto_increment primary key,
+    product_id int,
+    orders_id int,
+    quantity int,
+    created_at datetime
+);
+
+
+
