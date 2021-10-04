@@ -15,4 +15,6 @@ public interface IGeneralService<T> {
     boolean edit(T t);
 
     List<T> getByOffset(int offset, int limit);
+
+    int sizeOfList();
 }

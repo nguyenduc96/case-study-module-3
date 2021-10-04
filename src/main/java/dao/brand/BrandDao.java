@@ -21,6 +21,8 @@ public class BrandDao implements IBrandDao {
     public static final String NAME = "name";
     public static final String IMAGE = "image";
     public static final String IS_ACTIVE = "isActive";
+    public static final String COUNT_ID = "select count(id) as quantity from brand";
+    public static final String QUANTITY = "quantity";
     private Connection connection = DBConnection.getConnection();
 
     @Override
@@ -132,5 +134,21 @@ public class BrandDao implements IBrandDao {
             e.printStackTrace();
         }
         return brands;
+    }
+
+    @Override
+    public int sizeOfList() {
+        int count = 0;
+        try {
+            PreparedStatement statement = connection.prepareStatement(COUNT_ID);
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                count = resultSet.getInt(QUANTITY);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return count;
     }
 }

@@ -133,4 +133,9 @@ public class CategoryDao implements ICategoryDao {
         }
         return categories;
     }
+
+    @Override
+    public int sizeOfList() {
+        return 0;
+    }
 }

@@ -38,4 +38,9 @@ public class CategoryService implements ICategoryService {
     public List<Category> getByOffset(int offset, int limit) {
         return categoryDao.getByOffset(offset, limit);
     }
+
+    @Override
+    public int sizeOfList() {
+        return 0;
+    }
 }
