@@ -1,8 +1,10 @@
 package controller;
 
 import model.Product;
+import model.ProductDetail;
 import service.product.IProductService;
 import service.product.ProductService;
+import service.productdetail.ProductDetailService;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -36,10 +38,31 @@ public class ProductServlet extends HttpServlet {
                 deleteProduct(request,response);
                 break;
             }
+            case "detail": {
+                showDetail(request,response);
+                break;
+            }
             default: {
                 showProduct(request,response);
                 break;
             }
+        }
+    }
+
+    private void showDetail(HttpServletRequest request, HttpServletResponse response) {
+        ProductDetailService productDetailService = new ProductDetailService();
+        int id = Integer.parseInt(request.getParameter("id"));
+        Product product = productService.select(id);
+        ProductDetail productDetail = productDetailService.select(id);
+        request.setAttribute("product",product);
+        request.setAttribute("productDetail",productDetail);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("product/detailProduct.jsp");
+        try {
+            dispatcher.forward(request,response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

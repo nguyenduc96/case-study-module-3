@@ -1,19 +1,23 @@
 <%--
   Created by IntelliJ IDEA.
   User: dat01
-  Date: 10/4/2021
-  Time: 3:19 PM
+  Date: 10/5/2021
+  Time: 2:54 AM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>Edit Product</title>
+    <title>
+        <c:out value="${product.name}">
+        </c:out>
+    </title>
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
 
     <link rel="stylesheet" href="table/plugins/fontawesome-free/css/all.min.css">
+
 
     <link rel="stylesheet" href="table/dist/css/adminlte.min.css">
 </head>
@@ -158,8 +162,8 @@
 
 
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item "><a href="/product">Product List</a></li>
-                            <li class="breadcrumb-item active">Edit Product</li>
+                            <li class="breadcrumb-item"><a href="/product">Product List</a></li>
+                            <li class="breadcrumb-item active">Product Detail</li>
 
 
 
@@ -174,82 +178,6 @@
         <!-- Main content -->
         <section class="content">
             <div class="container-fluid">
-
-                <div class="card">
-                    <div class="card-header">
-                        <div class="text-center row">
-                            <h2>Edit Product</h2>
-                        </div>
-                        <div class="row">
-                            <c:if test="${message!=null}">
-                                <c:out value="${message}"></c:out>
-                            </c:if>
-                        </div>
-                    </div>
-                    <!-- /.card-header -->
-                    <div class="card-body">
-                        <form action="product?action=edit&id=${id}" method="post">
-                            <div class="mb-3">
-                                <label for="product_name" class="form-label">Product Name</label>
-                                <input type="text" class="form-control" id="product_name" name="name" value="${product.name}">
-                            </div>
-                            <div class="mb-3">
-                                <label for="product_code" class="form-label">Product Code</label>
-                                <input type="text" class="form-control" id="product_code" name="code" value="${product.code}">
-                            </div>
-                            <div class="mb-3">
-                                <label for="product_image" class="form-label">Product Image</label>
-                                <input type="text" class="form-control" id="product_image" name="image" value="${product.image}">
-                            </div>
-                            <div class="mb-3">
-                                <label for="product_quantity" class="form-label">Product Quantity</label>
-                                <input type="number" class="form-control" id="product_quantity" name="quantity" value="${product.quantity}">
-                            </div>
-                            <div class="mb-3">
-                                <label for="product_price" class="form-label">Product Price</label>
-                                <input class="form-control" id="product_price" type="number" name="price" step=".01" value="${product.price}" >
-                            </div>
-                            <div class="mb-3">
-                                <label for="product_discount" class="form-label">Product Discount</label>
-                                <input class="form-control" id="product_discount" type="number" name="discount"step=".01" value="${product.discount}" >
-                            </div>
-                            <div class="mb-3">
-                                <label for="product_discount_pct" class="form-label">Product Discount Percent</label>
-                                <input class="form-control" id="product_discount_pct" type="number" name="discount_pct" min="0" max="100" value="${product.discount_pct}" >
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <select name="category_id" >
-                                        <option value="1">Dien thoai</option>
-                                        <option value="2">Laptop</option>
-                                        <option value="3">May tinh bang</option>
-                                    </select>
-                                </div>
-                                <div class="col">
-                                    <select name="brand_id">
-                                        <option value="1">SamSung</option>
-                                        <option value="2">Iphone</option>
-                                        <option value="3">Xiaomi</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="mb-3">
-                                <label for="product_description" class="form-label">Product Description</label>
-                                <input class="form-control" id="product_description" rows="5" name="description" value="${product.description}">
-
-                            </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </form>
-                    </div>
-                    <!-- /.card-body -->
-                    <div class="card-footer clearfix">
-                    </div>
-                </div>
-
-
-
-
-
 
 
             </div><!-- /.container-fluid -->
@@ -269,11 +197,9 @@
 </div>
 
 
-
 <script src="table/plugins/jquery/jquery.min.js"></script>
 <script src="table/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="table/dist/js/adminlte.min.js"></script>
 <script src="table/dist/js/demo.js"></script>
-
 </body>
 </html>

@@ -190,15 +190,10 @@
                             <tr>
                                 <th scope="col">Product ID</th>
                                 <th scope="col">Product Name</th>
-                                <th scope="col">Product Code</th>
                                 <th scope="col">Product Image</th>
                                 <th scope="col">Product Quantity</th>
-                                <th scope="col">Product Discount</th>
-                                <th scope="col">Product Discount Percent</th>
                                 <th scope="col">Product Category</th>
                                 <th scope="col">Product Brand</th>
-                                <th scope="col">Product Description</th>
-                                <th scope="col">Product Create Date</th>
                                 <th scope="col">Product Is Active</th>
                                 <th></th>
                                 <th></th>
@@ -210,15 +205,10 @@
                                 <tr>
                                     <td>${product.id}</td>
                                     <td>${product.name}</td>
-                                    <td>${product.code}</td>
                                     <td><img src="${product.image}" alt="" width="100px" height="100px"></td>
                                     <td>${product.quantity}</td>
-                                    <td>${product.discount}</td>
-                                    <td>${product.discount_pct}</td>
                                     <td>${product.getCategory().getName()}</td>
                                     <td>${product.getBrand().getName()}</td>
-                                    <td>${product.description}</td>
-                                    <td>${product.created_at}</td>
                                     <c:choose>
                                         <c:when test="${product.isActive()}">
                                             <td>Hiện</td>
