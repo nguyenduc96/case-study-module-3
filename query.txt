@@ -108,4 +108,3 @@ create table role
     isActive bool default true,
     note     nvarchar(2000)
 );
-
