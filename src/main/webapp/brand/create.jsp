@@ -17,6 +17,20 @@
     <link rel="stylesheet" href="../table/plugins/fontawesome-free/css/all.min.css">
 
     <link rel="stylesheet" href="../table/dist/css/adminlte.min.css">
+
+    <style>
+        label {
+            min-width: 150px;
+        }
+
+        input {
+            min-width: 300px;
+        }
+
+        .btn-outline-primary {
+            min-width: 130px;
+        }
+    </style>
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -142,7 +156,7 @@
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
                             <li class="breadcrumb-item active">
-                                <a href="/brands?action=create">Create new brand</a>
+                                <a href="/brands">Back to list</a>
                             </li>
                         </ol>
                     </div>
@@ -154,66 +168,20 @@
             <div class="card card-solid">
                 <div class="card-body">
                     <div class="row">
-                        <table class="table">
-                            <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Brand name</th>
-                                <th>Brand image</th>
-                                <th></th>
-                            </tr>
-                            </thead>
-
-                            <tbody>
-                            <c:forEach items="${brands}" var="brand">
-                                <tr>
-                                    <td>${brand.id}</td>
-                                    <td>${brand.name}</td>
-                                    <td><img width="40" src="${brand.image}" alt="image logo"></td>
-                                    <td>
-                                        <button><a href="brands?action=edit&id=${brand.id}">Edit</a></button>
-                                        <button><a href="brands?action=delete&id=${brand.id}">Delete</a></button>
-                                    </td>
-                                </tr>
-                            </c:forEach>
-                            <nav aria-label="Page navigation example">
-                                <ul class="pagination">
-                                    <li class="page-item ${previous}">
-                                        <a class="page-link" href="brands?action=page&page=${1}">First</a>
-                                    </li>
-                                    <li class="page-item ${previous}">
-                                        <a class="page-link" href="brands?action=page&page=${page - 1}">Previous</a>
-                                    </li>
-                                    <c:forEach begin="1" end="${totalPage}" step="1" var="i">
-                                        <c:choose>
-                                            <c:when test="${page == 1}">
-                                                <li class="page-item ${active}">
-                                                    <a class="page-link"
-                                                       href="brands?action=page&page=${i}">${i}</a>
-                                                </li>
-                                            </c:when>
-                                            <c:otherwise>
-                                                <li class="page-item">
-                                                    <a class="page-link"
-                                                       href="brands?action=page&page=${i}">${i}</a>
-                                                </li>
-                                            </c:otherwise>
-                                        </c:choose>
-                                    </c:forEach>
-                                    <li class="page-item ${next}">
-                                        <a class="page-link" href="brands?action=page&page=${page + 1}">Next</a>
-                                    </li>
-                                    <li class="page-item ${next}">
-                                        <a class="page-link" href="brands?action=page&page=${totalPage}">Last</a>
-                                    </li>
-                                </ul>
-                            </nav>
-                            </tbody>
-                        </table>
-                        <div class="col-12 col-sm-6">
-
-
-                        </div>
+                        <form method="post">
+                            <p>
+                                <label>Brand name : </label>
+                                <input type="text" placeholder="Enter brand name" name="name">
+                            </p>
+                            <p>
+                                <label>Image link : </label>
+                                <input type="url" placeholder="Enter url image" name="image">
+                            </p>
+                            <button class="btn btn-outline-primary">Create</button>
+                            <c:if test="${message != null}">
+                                <p><b>${message}</b></p>
+                            </c:if>
+                        </form>
                     </div>
                 </div>
             </div>
