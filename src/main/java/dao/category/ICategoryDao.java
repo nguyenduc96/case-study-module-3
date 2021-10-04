@@ -1,4 +1,7 @@
 package dao.category;
 
-public interface ICategoryDao {
+import dao.IGeneralDAO;
+import model.Category;
+
+public interface ICategoryDao extends IGeneralDAO<Category> {
 }
