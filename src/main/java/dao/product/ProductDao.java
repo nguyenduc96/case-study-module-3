@@ -117,10 +117,11 @@ public class ProductDao implements IProductDao {
             statement.setDate(11, (Date) product.getCreated_at());
             statement.setDate(12, Date.valueOf(java.time.LocalDate.now()));
             statement.setInt(13,product.getId());
+            isUpdate = statement.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return false;
+        return isUpdate;
     }
 
     @Override

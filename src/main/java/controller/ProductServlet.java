@@ -145,20 +145,35 @@ public class ProductServlet extends HttpServlet {
     }
 
     private void editProduct(HttpServletRequest request, HttpServletResponse response) {
+        int id = Integer.parseInt(request.getParameter("id"));
         Product product = getProductInfor(request);
         product.setUpdated_at(new Date());
+        product.setId(id);
         boolean isUpdate = productService.edit(product);
         String message = "";
-        if(isUpdate) message = "Đã lưu thay đổi";
-        else message = "Có gì đó không đúng";
+        if(isUpdate) {
+            message = "Changed Information!";
+        }
+        else {
+            message = "Something Wrong?";
+        }
         request.setAttribute("message",message);
+        request.setAttribute("product",product);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("product/editForm.jsp");
+        try {
+            dispatcher.forward(request,response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void createNewProduct(HttpServletRequest request, HttpServletResponse response) {
         Product product = getProductInfor(request);
         String message = "";
         if(product == null) {
-            message = "Dữ liệu không hợp lệ!";
+            message = "Something Wrong?";
             request.setAttribute("message",message);
             RequestDispatcher dispatcher = request.getRequestDispatcher("product/createForm.jsp");
             try {
