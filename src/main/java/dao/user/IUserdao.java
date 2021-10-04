@@ -1,4 +1,4 @@
 package dao.user;
 
-public interface IUserdao {
+public interface IUserDao {
 }

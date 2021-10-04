@@ -1,4 +1,7 @@
 package dao.brand;
 
-public interface IBrandDao {
+import dao.IGeneralDAO;
+import model.Brand;
+
+public interface IBrandDao extends IGeneralDAO<Brand> {
 }
