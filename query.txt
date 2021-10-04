@@ -83,16 +83,12 @@ create table user
 
 create table orders
 (
-    id            int auto_increment primary key,
-    first_name    nvarchar(255),
-    last_name     nvarchar(255),
-    number_phone  nvarchar(20),
-    email         nvarchar(50),
-    address       nvarchar(255),
-    date_of_birth date,
-    sex           nvarchar(50),
-    isActive      bool default true,
-    note          nvarchar(2000)
+    id         int auto_increment primary key,
+    user_id    int,
+    status     nvarchar(50),
+    isActive   bool default true,
+    note       nvarchar(2000),
+    created_at datetime
 );
 
 create table order_detail
@@ -101,15 +97,15 @@ create table order_detail
     product_id int,
     orders_id  int,
     quantity   int,
-    status     nvarchar(50),
     isActive   bool default true,
-    created_at datetime
+    note       nvarchar(2000)
 );
 
-create table role (
-    id int auto_increment primary key,
-    name nvarchar(255),
+create table role
+(
+    id       int auto_increment primary key,
+    name     nvarchar(255),
     isActive bool default true,
-    note nvarchar(2000)
+    note     nvarchar(2000)
 );
 
