@@ -75,6 +75,7 @@ create table user
     address       nvarchar(255),
     sex           nvarchar(50),
     isActive      bool default true,
+    role_id       int,
     date_of_birth date,
     created_at    datetime,
     note          nvarchar(2000)
@@ -105,5 +106,10 @@ create table order_detail
     created_at datetime
 );
 
-
+create table role (
+    id int auto_increment primary key,
+    name nvarchar(255),
+    isActive bool default true,
+    note nvarchar(2000)
+);
 
