@@ -17,7 +17,7 @@ import java.util.List;
 
 @WebServlet(name = "ProductServlet", value = "/product")
 public class ProductServlet extends HttpServlet {
-    private static IProductService productService = new ProductService();
+    private static ProductService productService = new ProductService();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
@@ -42,10 +42,83 @@ public class ProductServlet extends HttpServlet {
                 showDetail(request,response);
                 break;
             }
+            case "showDeleteProduct": {
+                showDeletedProduct(request,response);
+                break;
+            }
+            case "active" : {
+                activeProduct(request,response);
+                break;
+            }
             default: {
                 showProduct(request,response);
                 break;
             }
+        }
+    }
+
+    private void activeProduct(HttpServletRequest request, HttpServletResponse response) {
+        int id = Integer.parseInt(request.getParameter("id"));
+        try {
+            productService.active(id);
+            response.sendRedirect("product?action=showDeleteProduct");
+        } catch (SQLException | IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void showDeletedProduct(HttpServletRequest request, HttpServletResponse response) {
+        int  limit = 5;
+        int offset2 = getPage(request, 0);
+        request.setAttribute("page2",offset2);
+        int isActive = 0;
+        List<Product> products = productService.getByOffset(limit, offset2, isActive);
+        request.setAttribute("products",products);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("product/showDeleteProduct.jsp");
+        try {
+            dispatcher.forward(request,response);
+        } catch (ServletException | IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private int getPage(HttpServletRequest request, int i) {
+        int countRecord = productService.countRecord(i);
+        int totalPage = countRecord / 5 + 1;
+        request.setAttribute("totalPage", totalPage);
+        String offset = request.getParameter("page");
+        if (offset == null) {
+            offset = "0";
+        }
+        int offset2 = Integer.parseInt(offset);
+        String pre = "";
+        String next = "";
+        if (offset2 == 0) {
+            pre = "disabled";
+        } else if (offset2 >= (totalPage - 1) * 5) {
+            next = "disabled";
+        }
+        request.setAttribute("pre", pre);
+        request.setAttribute("" + "next", next);
+
+        String active = "active";
+        request.setAttribute("active", active);
+        return offset2;
+    }
+
+    private void showSearchProduct(HttpServletRequest request, HttpServletResponse response) {
+        List<Product> products ;
+        String search = request.getParameter("search");
+        if(search == null || search.equals("")) products = productService.getAll();
+        else products = productService.findByName(search);
+        request.setAttribute("products",products);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("product/showProduct.jsp");
+        try {
+            dispatcher.forward(request,response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -94,32 +167,10 @@ public class ProductServlet extends HttpServlet {
 
     private void showProduct(HttpServletRequest request, HttpServletResponse response) {
         int  limit = 5;
-        List<Product> products ;
-        String search = request.getParameter("search");
-        if(search == null || search.equals("")) products = productService.getAll();
-        else products = productService.findByName(search);
-        int countRecord = productService.countRecord();
-        int totalPage = countRecord/5 + 1;
-        request.setAttribute("totalPage",totalPage);
-        String offset = request.getParameter("offset");
-        if (offset==null) {
-            offset = "0";
-        }
-        int offset2 = Integer.parseInt(offset);
-        String pre = "";
-        String next = "";
-        if(offset2==0) {
-            pre = "disabled";
-        }else if(offset2 >= (totalPage-1)*5) {
-            next = "disabled";
-        }
-        request.setAttribute("pre",pre);
-        request.setAttribute("" + "next", next);
-
-        String active = "active";
-        request.setAttribute("active",active);
-        request.setAttribute("offset2",offset2);
-        List<Product> users = productService.getByOffset(limit, offset2);
+        int offset2 = getPage(request, 1);
+        request.setAttribute("page2",offset2);
+        int isActive = 1;
+        List<Product> products = productService.getByOffset(limit, offset2, isActive);
         request.setAttribute("products",products);
         RequestDispatcher dispatcher = request.getRequestDispatcher("product/showProduct.jsp");
         try {
@@ -127,7 +178,6 @@ public class ProductServlet extends HttpServlet {
         } catch (ServletException | IOException e) {
             e.printStackTrace();
         }
-
     }
 
     @Override
@@ -144,6 +194,10 @@ public class ProductServlet extends HttpServlet {
             }
             case "edit": {
                 editProduct(request,response);
+                break;
+            }
+            case "search": {
+                showSearchProduct(request,response);
                 break;
             }
             default: {

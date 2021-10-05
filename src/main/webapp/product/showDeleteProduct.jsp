@@ -1,23 +1,22 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: dat01
-  Date: 10/4/2021
-  Time: 3:19 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
-    <title>Edit Product</title>
+    <title>$Title$</title>
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
 
     <link rel="stylesheet" href="table/plugins/fontawesome-free/css/all.min.css">
 
+
     <link rel="stylesheet" href="table/dist/css/adminlte.min.css">
+
+
+
 </head>
 <body class="hold-transition sidebar-mini">
+
 <div class="wrapper">
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -164,8 +163,7 @@
 
 
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item "><a href="/product">Product List</a></li>
-                            <li class="breadcrumb-item active">Create Product</li>
+                            <li class="breadcrumb-item active">Product List</li>
 
 
 
@@ -183,72 +181,83 @@
 
                 <div class="card">
                     <div class="card-header">
-                        <div class="text-center row">
-                            <h2>Create Product</h2>
-                        </div>
                         <div class="row">
-                            <c:if test="${message!=null}">
-                                <c:out value="${message}"></c:out>
-                            </c:if>
+                            <h3 class="card-title">Danh sách sản phẩm</h3>
+                            <form action="/product?action=search" method="post">
+                                <input type="text" name="search" value="">
+                                <button type="submit">Search</button>
+                            </form>
                         </div>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <form action="product?action=create" method="post">
-                            <div class="mb-3">
-                                <label for="product_name" class="form-label">Product Name</label>
-                                <input type="text" class="form-control" id="product_name" name="name">
-                            </div>
-                            <div class="mb-3">
-                                <label for="product_code" class="form-label">Product Code</label>
-                                <input type="text" class="form-control" id="product_code" name="code">
-                            </div>
-                            <div class="mb-3">
-                                <label for="product_image" class="form-label">Product Image</label>
-                                <input type="text" class="form-control" id="product_image" name="image" >
-                            </div>
-                            <div class="mb-3">
-                                <label for="product_quantity" class="form-label">Product Quantity</label>
-                                <input type="number" class="form-control" id="product_quantity" name="quantity" value="0" >
-                            </div>
-                            <div class="mb-3">
-                                <label for="product_price" class="form-label">Product Price</label>
-                                <input class="form-control" id="product_price" type="number" name="price" step=".01"  >
-                            </div>
-                            <div class="mb-3">
-                                <label for="product_discount" class="form-label">Product Discount</label>
-                                <input class="form-control" id="product_discount" type="number" name="discount"step=".01" value="0" >
-                            </div>
-                            <div class="mb-3">
-                                <label for="product_discount_pct" class="form-label">Product Discount Percent</label>
-                                <input class="form-control" id="product_discount_pct" type="number" name="discount_pct" min="0" max="100" value="0">
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <select name="category_id" >
-                                        <option value="1">Dien thoai</option>
-                                        <option value="2">Laptop</option>
-                                        <option value="3">May tinh bang</option>
-                                    </select>
-                                </div>
-                                <div class="col">
-                                    <select name="brand_id">
-                                        <option value="1">SamSung</option>
-                                        <option value="2">Iphone</option>
-                                        <option value="3">Xiaomi</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="mb-3">
-                                <label for="product_description" class="form-label">Product Description</label>
-                                <input class="form-control" id="product_description" rows="5" name="description">
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <th scope="col">Product ID</th>
+                                <th scope="col">Product Name</th>
+                                <th scope="col">Product Image</th>
+                                <th scope="col">Product Quantity</th>
+                                <th scope="col">Product Category</th>
+                                <th scope="col">Product Brand</th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <c:forEach items="${products}" var="product">
+                                <tr>
+                                    <td>${product.id}</td>
+                                    <td>${product.name}</td>
+                                    <td><img src="${product.image}" alt="" width="100px" height="100px"></td>
+                                    <td>${product.quantity}</td>
+                                    <td>${product.getCategory().getName()}</td>
+                                    <td>${product.getBrand().getName()}</td>
+                                    <c:choose>
+                                        <c:when test="${product.isActive()}">
+                                            <td>Hiện</td>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <td>Ẩn</td>
+                                        </c:otherwise>
+                                    </c:choose>
+                                    <td><a href="product?action=detail&id=${product.id}" class="btn btn-info">View</a></td>
+                                    <td><a href="product?action=edit&id=${product.id}" class="btn btn-success">Edit</a></td>
+                                    <td><button type="button" class="btn btn-warning" onclick="confirmActive(${product.id})">Active</button></td>
+                                </tr>
+                            </c:forEach>
 
-                            </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </form>
+                            </tbody>
+                        </table>
                     </div>
                     <!-- /.card-body -->
                     <div class="card-footer clearfix">
+                        <div class="row">
+                            <div id="pagination">
+                                <ul class="pagination">
+                                    <li class="page-item ${pre}">
+                                        <a class="page-link" href="product?action=page&offset=${page2-5}">Previous</a>
+                                    </li>
+                                    <c:forEach begin="1" end="${totalPage}" step="1" var="i">
+                                        <c:choose>
+                                            <c:when test="${page2==((i-1)*5)}">
+                                                <li class="page-item active"><a class="page-link " href="product?action=page&page=${5*(i-1)}">${i}</a></li>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <li class="page-item"><a class="page-link" href="product?action=page&page=${5*(i-1)}">${i}</a></li>
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </c:forEach>
+                                    <li class="page-item ${next}">
+                                        <a class="page-link" href="product?action=page&offset=${page2+5}">Next</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div style="position: absolute ; right: 30px">
+                                <a href="/product?action=create" class="btn btn-primary">Add new</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -280,6 +289,20 @@
 <script src="table/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="table/dist/js/adminlte.min.js"></script>
 <script src="table/dist/js/demo.js"></script>
-
+<script>
+    function confirmActive(id) {
+        let check = confirm("Are you sure to active this product?");
+        if(check===true) {
+            window.location.href = ("product?action=active&id="+id);
+        }
+    }
+</script>
 </body>
 </html>
+
+
+
+
+
+
+

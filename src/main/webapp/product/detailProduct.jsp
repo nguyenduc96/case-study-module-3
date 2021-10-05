@@ -101,6 +101,12 @@
                                 </a>
                             </li>
                             <li class="nav-item">
+                                <a href="/product?action=showDeleteProduct" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Sản phẩm đã xoá</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
                                 <a href="../../index2.html" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Quản lí order</p>
@@ -178,7 +184,6 @@
         <!-- Main content -->
         <section class="content">
             <div class="container-fluid">
-
 
             </div><!-- /.container-fluid -->
         </section>

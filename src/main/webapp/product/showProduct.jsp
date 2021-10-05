@@ -90,21 +90,27 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="../../index.html" class="nav-link">
+                                <a href="/product" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>menu 1</p>
+                                    <p>Quản lí sản phẩm</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/product?action=showDeleteProduct" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Sản phẩm đã xoá</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="../../index2.html" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>menu 2</p>
+                                    <p>Quản lí order</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="../../index3.html" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>menu 3</p>
+                                    <p>Quản lí danh mục</p>
                                 </a>
                             </li>
                         </ul>
@@ -177,7 +183,7 @@
                     <div class="card-header">
                         <div class="row">
                             <h3 class="card-title">Danh sách sản phẩm</h3>
-                            <form action="/product" method="get">
+                            <form action="/product?action=search" method="post">
                                 <input type="text" name="search" value="">
                                 <button type="submit">Search</button>
                             </form>
@@ -194,7 +200,6 @@
                                 <th scope="col">Product Quantity</th>
                                 <th scope="col">Product Category</th>
                                 <th scope="col">Product Brand</th>
-                                <th scope="col">Product Is Active</th>
                                 <th></th>
                                 <th></th>
                                 <th></th>
@@ -209,14 +214,6 @@
                                     <td>${product.quantity}</td>
                                     <td>${product.getCategory().getName()}</td>
                                     <td>${product.getBrand().getName()}</td>
-                                    <c:choose>
-                                        <c:when test="${product.isActive()}">
-                                            <td>Hiện</td>
-                                        </c:when>
-                                        <c:otherwise>
-                                            <td>Ẩn</td>
-                                        </c:otherwise>
-                                    </c:choose>
                                     <td><a href="product?action=detail&id=${product.id}" class="btn btn-info">View</a></td>
                                     <td><a href="product?action=edit&id=${product.id}" class="btn btn-success">Edit</a></td>
                                     <td><button type="button" class="btn btn-warning" onclick="confirmDelete(${product.id})">Delete</button></td>
@@ -232,20 +229,20 @@
                             <div id="pagination">
                                 <ul class="pagination">
                                     <li class="page-item ${pre}">
-                                        <a class="page-link" href="product?action=page&offset=${offset2-5}">Previous</a>
+                                        <a class="page-link" href="product?action=page&offset=${page2-5}">Previous</a>
                                     </li>
                                     <c:forEach begin="1" end="${totalPage}" step="1" var="i">
                                         <c:choose>
-                                            <c:when test="${offset2==((i-1)*5)}">
-                                                <li class="page-item active"><a class="page-link " href="users?action=page&offset=${5*(i-1)}">${i}</a></li>
+                                            <c:when test="${page2==((i-1)*5)}">
+                                                <li class="page-item active"><a class="page-link " href="product?action=page&page=${5*(i-1)}">${i}</a></li>
                                             </c:when>
                                             <c:otherwise>
-                                                <li class="page-item"><a class="page-link" href="users?action=page&offset=${5*(i-1)}">${i}</a></li>
+                                                <li class="page-item"><a class="page-link" href="product?action=page&page=${5*(i-1)}">${i}</a></li>
                                             </c:otherwise>
                                         </c:choose>
                                     </c:forEach>
                                     <li class="page-item ${next}">
-                                        <a class="page-link" href="product?action=page&offset=${offset2+5}">Next</a>
+                                        <a class="page-link" href="product?action=page&offset=${page2+5}">Next</a>
                                     </li>
                                 </ul>
                             </div>

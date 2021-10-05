@@ -125,13 +125,14 @@ public class ProductDao implements IProductDao {
     }
 
     @Override
-    public List<Product> getByOffset(int limit, int offset) {
-        String query = "select * from product limit ? offset ?;";
+    public List<Product> getByOffset(int limit, int offset,int isActive) {
+        String query = "select * from product where isActive = ? limit ? offset ? ;";
         List<Product> products = new ArrayList<>();
         try {
             PreparedStatement statement = connection.prepareStatement(query);
-            statement.setInt(1,limit);
-            statement.setInt(2,offset);
+            statement.setInt(1,isActive);
+            statement.setInt(2,limit);
+            statement.setInt(3 ,offset);
             ResultSet rs = statement.executeQuery();
             while(rs.next()) {
                 int id = rs.getInt("id");
@@ -161,6 +162,29 @@ public class ProductDao implements IProductDao {
     }
 
     @Override
+    public void active(int id) throws SQLException {
+        PreparedStatement statement = connection.prepareStatement("update product set isActive = 1 where id = ?;");
+        statement.setInt(1,id);
+        statement.executeUpdate();
+    }
+
+    public int countRecord(int isActive) {
+        int soluong = 0;
+        try {
+            PreparedStatement statement = connection.prepareStatement("select count(id) as soluong from product where isActive = ?;");
+            statement.setInt(1,isActive);
+            ResultSet rs = statement.executeQuery();
+            rs.next();
+            soluong = rs.getInt("soluong");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return soluong;
+    }
+
+
+    @Override
     public List<Product> findByName(String name) {
         List<Product> products = new ArrayList<>();
         try {
@@ -176,4 +200,5 @@ public class ProductDao implements IProductDao {
         }
         return products;
     }
+
 }
