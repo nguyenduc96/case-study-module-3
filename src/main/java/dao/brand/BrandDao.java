@@ -14,7 +14,7 @@ public class BrandDao implements IBrandDao {
     public static final String SELECT_ALL_BRAND = "select * from brand";
     public static final String SELECT_BRAND_BY_ID = "select  * from brand where id = ?";
     public static final String INSERT_NEW_BRAND = "insert into brand (name, image, isActive) values (?,?,?)";
-    public static final String DELETE_BY_ID = "update brand set isActive = ? where id = ?";
+    public static final String UPDATE_ACTIVE = "update brand set isActive = ? where id = ?";
     public static final String UPDATE_BRAND_INFO = "update brand set name = ?, image = ? where id = ?";
     public static final String SELECT_BRAND_LIMIT = "select * from brand limit ? offset ?";
     public static final String ID = "id";
@@ -87,7 +87,7 @@ public class BrandDao implements IBrandDao {
     @Override
     public boolean delete(int id) throws SQLException {
         boolean isDelete;
-        PreparedStatement statement = connection.prepareStatement(DELETE_BY_ID);
+        PreparedStatement statement = connection.prepareStatement(UPDATE_ACTIVE);
         statement.setBoolean(1, false);
         statement.setInt(2, id);
         isDelete = statement.executeUpdate() > 0;
@@ -150,5 +150,15 @@ public class BrandDao implements IBrandDao {
             e.printStackTrace();
         }
         return count;
+    }
+
+    @Override
+    public boolean active(int id) throws SQLException {
+        boolean isActive;
+        PreparedStatement statement = connection.prepareStatement(UPDATE_ACTIVE);
+        statement.setBoolean(1, true);
+        statement.setInt(2, id);
+        isActive = statement.executeUpdate() > 0;
+        return isActive;
     }
 }

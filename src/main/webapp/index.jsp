@@ -99,9 +99,9 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="../../index.html" class="nav-link">
+                  <a href="/brands" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>menu 1</p>
+                    <p>List brand</p>
                   </a>
                 </li>
                 <li class="nav-item">
@@ -132,7 +132,7 @@
               <a href="../gallery.html" class="nav-link">
                 <i class="nav-icon far fa-image"></i>
                 <p>
-                  thích loại nào thì add không thích thì xoá
+                  <a href="brands?action=listdel">List Brand Deleted</a>
                 </p>
               </a>
             </li>
@@ -210,7 +210,6 @@
                     </tbody>
                   </table>
                 </div>
-                <!-- /.card-body -->
                 <div class="card-footer clearfix">
                   <ul class="pagination pagination-sm m-0 float-right">
                     <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>

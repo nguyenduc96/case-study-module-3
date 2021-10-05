@@ -43,4 +43,9 @@ public class CategoryService implements ICategoryService {
     public int sizeOfList() {
         return 0;
     }
+
+    @Override
+    public boolean active(int id) throws SQLException {
+        return false;
+    }
 }

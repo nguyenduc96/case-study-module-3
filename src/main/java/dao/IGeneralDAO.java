@@ -17,4 +17,6 @@ public interface IGeneralDAO<T> {
     List<T> getByOffset(int offset, int limit);
 
     int sizeOfList();
+
+    boolean active(int id) throws SQLException;
 }

@@ -172,7 +172,7 @@
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
                             <li class="breadcrumb-item active">
-                                <a href="/brands?action=create">Create new brand</a>
+                                <a href="/brands">Come back list</a>
                             </li>
                         </ol>
                     </div>
@@ -196,18 +196,17 @@
 
                             <tbody>
                             <c:forEach items="${brands}" var="brand">
-                                    <c:if test="${brand.isActive() == true}">
-                                        <tr>
-                                            <td>${brand.id}</td>
-                                            <td>${brand.name}</td>
-                                            <td><img width="40" src="${brand.image}" alt="image logo"></td>
-                                            <td>
-                                                <button><a href="brands?action=edit&id=${brand.id}">Edit</a></button>
-                                                <button><a onclick="confirmDelete(${brand.id})">Delete</a>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                    </c:if>
+                                <c:if test="${brand.isActive() == false}">
+                                    <tr>
+                                        <td>${brand.id}</td>
+                                        <td>${brand.name}</td>
+                                        <td><img width="40" src="${brand.image}" alt="image logo"></td>
+                                        <td>
+                                            <button><a onclick="confirmActive(${brand.id})">Active</a>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </c:if>
                             </c:forEach>
                             <nav aria-label="Page navigation example">
                                 <ul class="pagination">
@@ -263,10 +262,10 @@
     </aside>
 </div>
 <script>
-    function confirmDelete(id) {
-        let checkDelete = confirm("Are you sure you want to delete it?");
-        if (checkDelete) {
-            window.location.href = "brands?action=delete&id=" + id;
+    function confirmActive(id) {
+        let checkActive = confirm("Are you sure you want to active it?");
+        if (checkActive) {
+            window.location.href = "brands?action=active&id=" + id;
         }
     }
 </script>

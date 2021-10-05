@@ -3,7 +3,6 @@ package service.brand;
 import dao.brand.BrandDao;
 import model.Brand;
 
-import javax.servlet.RequestDispatcher;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -43,5 +42,10 @@ public class BrandService implements IBrandService{
     @Override
     public int sizeOfList() {
         return brandDao.sizeOfList();
+    }
+
+    @Override
+    public boolean active(int id) throws SQLException {
+        return brandDao.active(id);
     }
 }

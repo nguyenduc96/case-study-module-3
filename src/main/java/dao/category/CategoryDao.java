@@ -138,4 +138,9 @@ public class CategoryDao implements ICategoryDao {
     public int sizeOfList() {
         return 0;
     }
+
+    @Override
+    public boolean active(int id) throws SQLException {
+        return false;
+    }
 }
