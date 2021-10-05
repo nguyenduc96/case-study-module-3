@@ -97,6 +97,12 @@
                                 </a>
                             </li>
                             <li class="nav-item">
+                                <a href="/product?action=showDeleteProduct" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Sản phẩm đã xoá</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
                                 <a href="../../index2.html" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Quản lí order</p>
@@ -203,7 +209,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="product_quantity" class="form-label">Product Quantity</label>
-                                <input type="number" class="form-control" id="product_quantity" name="quantity" >
+                                <input type="number" class="form-control" id="product_quantity" name="quantity" value="0" >
                             </div>
                             <div class="mb-3">
                                 <label for="product_price" class="form-label">Product Price</label>
@@ -211,11 +217,11 @@
                             </div>
                             <div class="mb-3">
                                 <label for="product_discount" class="form-label">Product Discount</label>
-                                <input class="form-control" id="product_discount" type="number" name="discount"step=".01"  >
+                                <input class="form-control" id="product_discount" type="number" name="discount"step=".01" value="0" >
                             </div>
                             <div class="mb-3">
                                 <label for="product_discount_pct" class="form-label">Product Discount Percent</label>
-                                <input class="form-control" id="product_discount_pct" type="number" name="discount_pct" min="0" max="100" >
+                                <input class="form-control" id="product_discount_pct" type="number" name="discount_pct" min="0" max="100" value="0">
                             </div>
                             <div class="row">
                                 <div class="col">

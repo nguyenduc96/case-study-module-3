@@ -39,7 +39,7 @@ public class ProductDetailDao implements IProductDetailDao{
     public ProductDetail select(int product_id) {
         ProductDetail productDetail = null;
         try {
-            String query = "select * form product_detail where product_id =?";
+            String query = "select * from product_detail where product_id =?";
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setInt(1,product_id);
             ResultSet rs = statement.executeQuery();
@@ -51,7 +51,7 @@ public class ProductDetailDao implements IProductDetailDao{
                 String screen_resolution = rs.getString("screen_resolution");
                 String front_camera_tech = rs.getString("front_camera_tech");
                 String rear_camera_teach = rs.getString("rear_camera_teach");
-                String operator_system = rs.getString("operator_systemString");
+                String operator_system = rs.getString("operator_system");
                 String cpu = rs.getString("cpu");
                 String ram = rs.getString("ram");
                 String memory = rs.getString("memory");
@@ -81,7 +81,7 @@ public class ProductDetailDao implements IProductDetailDao{
 
     @Override
     public boolean edit(ProductDetail productDetail) {
-        String query = "update product_detail set image = ?,screen_tech = ?,screen_resolution = ?,front_camera_tech = ?,rear_camera_teach = ?,operator_system = ?,cpu = ?,ram = ?,memory = ?,connect = ?,pin = ?,charge = ? where id ?";
+        String query = "update product_detail set image = ?,screen_tech = ?,screen_resolution = ?,front_camera_tech = ?,rear_camera_teach = ?,operator_system = ?,cpu = ?,ram = ?,memory = ?,connect = ?,pin = ?,charge = ? where id = ?";
         boolean isUpdate = false;
         try {
             PreparedStatement statement = connection.prepareStatement(query);
@@ -106,17 +106,18 @@ public class ProductDetailDao implements IProductDetailDao{
     }
 
     @Override
-    public List<ProductDetail> getByOffset(int offset, int limit, int isActive) {
+    public List<ProductDetail> getByOffset(int limit, int offset, int isActive) {
         return null;
+    }
+
+
+    @Override
+    public boolean active(int id) throws SQLException {
+        return false;
     }
 
     @Override
     public int sizeOfList(int isActive) {
         return 0;
-    }
-
-    @Override
-    public boolean active(int id) throws SQLException {
-        return false;
     }
 }

@@ -1,18 +1,9 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: dat01
-  Date: 10/5/2021
-  Time: 2:54 AM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
-    <title>
-        <c:out value="${product.name}">
-        </c:out>
-    </title>
+    <title>$Title$</title>
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
 
@@ -20,8 +11,12 @@
 
 
     <link rel="stylesheet" href="table/dist/css/adminlte.min.css">
+
+
+
 </head>
 <body class="hold-transition sidebar-mini">
+
 <div class="wrapper">
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -168,8 +163,7 @@
 
 
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item"><a href="/product">Product List</a></li>
-                            <li class="breadcrumb-item active">Product Detail</li>
+                            <li class="breadcrumb-item active">Product List</li>
 
 
 
@@ -184,79 +178,99 @@
         <!-- Main content -->
         <section class="content">
             <div class="container-fluid">
-                <div class="row">
-                    <div class="col">
-                        <img src="${product.image}" alt="product" height="200px" width="200px">
-                        <p><c:out value="${product.id}"></c:out></p>
-                        <p><c:out value="${product.name}"></c:out></p>
-                        <p><c:out value="${product.code}"></c:out></p>
-                        <p><c:out value="${product.quantity}"></c:out></p>
-                        <p><c:out value="${product.price}"></c:out></p>
-                        <p><c:out value="${product.discount}"></c:out></p>
-                        <p><c:out value="${product.discount_pct}"></c:out></p>
-                        <p><c:out value="${product.getCategory()}"></c:out></p>
-                        <p><c:out value="${product.getBrand()}"></c:out></p>
-                        <p><c:out value="${product.description}"></c:out></p>
-                        <p><c:out value="${product.created_at}"></c:out></p>
-                        <p><c:out value="${product.updated_at}"></c:out></p>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="row">
+                            <h3 class="card-title">Danh sách sản phẩm</h3>
+                            <form action="/product?action=search" method="post">
+                                <input type="text" name="search" value="">
+                                <button type="submit">Search</button>
+                            </form>
+                        </div>
                     </div>
-                    <div>
-                        <form action="productdetail?action=edit&product_id=${product.id}" method="post">
-                            <p>
-                                <label>Image</label>
-                                <input type="text" name="image"  value="${productDetail.image}">
-                            </p>
-                            <p>
-                                <label>Screen Tech</label>
-                                <input type="text" name="screen_tech"  value="${productDetail.screen_tech}">
-                            </p>
-                            <p>
-                                <label>Screen resolution</label>
-                                <input type="text" name="screen_resolution"  value="${productDetail.screen_resolution}">
-                            </p>
-                            <p>
-                                <label>Front Camera</label>
-                                <input type="text" name="front_camera_tech"  value="${productDetail.front_camera_tech}">
-                            </p>
-                            <p>
-                                <label>Rear Camera</label>
-                                <input type="text" name="rear_camera_teach"  value="${productDetail.rear_camera_teach}">
-                            </p>
-                            <p>
-                                <label>Operator System</label>
-                                <input type="text" name="operator_system"  value="${productDetail.operator_system}">
-                            </p>
-                            <p>
-                                <label>CPU</label>
-                                <input type="text" name="cpu"  value="${productDetail.cpu}">
-                            </p>
-                            <p>
-                                <label>RAM</label>
-                                <input type="text" name="ram"  value="${productDetail.ram}">
-                            </p>
-                            <p>
-                                <label>Memory</label>
-                                <input type="text" name="memory"  value="${productDetail.memory}">
-                            </p>
-                            <p>
-                                <label>Connect</label>
-                                <input type="text" name="connect"  value="${productDetail.connect}">
-                            </p>
-                            <p>
-                                <label>Pin</label>
-                                <input type="text" name="pin"  value="${productDetail.pin}">
-                            </p>
-                            <p>
-                                <label>Charge</label>
-                                <input type="text" name="charge"  value="${productDetail.charge}">
-                            </p>
-                            <div class="row">
-                                <button type="submit">Save</button>
-                                <a href="/productdetail?action=delete&id=${productDetail.id}&product_id=${product.id}" class="btn btn-outline-warning">Delete Detail</a>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <th scope="col">Product ID</th>
+                                <th scope="col">Product Name</th>
+                                <th scope="col">Product Image</th>
+                                <th scope="col">Product Quantity</th>
+                                <th scope="col">Product Category</th>
+                                <th scope="col">Product Brand</th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <c:forEach items="${products}" var="product">
+                                <tr>
+                                    <td>${product.id}</td>
+                                    <td>${product.name}</td>
+                                    <td><img src="${product.image}" alt="" width="100px" height="100px"></td>
+                                    <td>${product.quantity}</td>
+                                    <td>${product.getCategory().getName()}</td>
+                                    <td>${product.getBrand().getName()}</td>
+                                    <c:choose>
+                                        <c:when test="${product.isActive()}">
+                                            <td>Hiện</td>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <td>Ẩn</td>
+                                        </c:otherwise>
+                                    </c:choose>
+                                    <td><a href="product?action=detail&id=${product.id}" class="btn btn-info">View</a></td>
+                                    <td><a href="product?action=edit&id=${product.id}" class="btn btn-success">Edit</a></td>
+                                    <td><button type="button" class="btn btn-warning" onclick="confirmActive(${product.id})">Active</button></td>
+                                </tr>
+                            </c:forEach>
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.card-body -->
+                    <div class="card-footer clearfix">
+                        <div class="row">
+                            <div id="pagination">
+                                <ul class="pagination">
+                                    <li class="page-item ${previous}">
+                                        <a class="page-link" href="brands?action=page&page=${1}">First</a>
+                                    </li>
+                                    <li class="page-item ${previous}">
+                                        <a class="page-link" href="product?action=page&page=${page-1}">Previous</a>
+                                    </li>
+                                    <c:forEach begin="1" end="${totalPage}" step="1" var="i">
+                                        <c:choose>
+                                            <c:when test="${page == 1}">
+                                                <li class="page-item active"><a class="page-link " href="product?action=page&page=${i}">${i}</a></li>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <li class="page-item"><a class="page-link" href="product?action=page&page=${i}">${i}</a></li>
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </c:forEach>
+                                    <li class="page-item ${next}">
+                                        <a class="page-link" href="product?action=page&page=${page+1}">Next</a>
+                                    </li>
+                                    <li class="page-item ${next}">
+                                        <a class="page-link" href="brands?action=page&page=${totalPage}">Last</a>
+                                    </li>
+                                </ul>
                             </div>
-                        </form>
+                            <div style="position: absolute ; right: 30px">
+                                <a href="/product?action=create" class="btn btn-primary">Add new</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
+
+
+
+
+
 
 
             </div><!-- /.container-fluid -->
@@ -276,9 +290,25 @@
 </div>
 
 
+
 <script src="table/plugins/jquery/jquery.min.js"></script>
 <script src="table/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="table/dist/js/adminlte.min.js"></script>
 <script src="table/dist/js/demo.js"></script>
+<script>
+    function confirmActive(id) {
+        let check = confirm("Are you sure to active this product?");
+        if(check===true) {
+            window.location.href = ("product?action=active&id="+id);
+        }
+    }
+</script>
 </body>
 </html>
+
+
+
+
+
+
+

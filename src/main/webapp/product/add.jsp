@@ -86,10 +86,12 @@
                          with font-awesome or any other icon font library -->
                     <li class="nav-item">
                         <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-tachometer-alt"></i>
+
                             <p>
+                                <img style="width: 20px;height: 20px;border: 1px solid white;border-radius: 5px" src="data:image/png;base64,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"/>
+                                &nbsp;
                                 Menu
-                                <i class="right fas fa-angle-left"></i>
+
                             </p>
                         </a>
                         <ul class="nav nav-treeview">

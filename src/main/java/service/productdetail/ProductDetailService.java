@@ -34,13 +34,8 @@ public class ProductDetailService implements IProductDetailService {
     }
 
     @Override
-    public List<ProductDetail> getByOffset(int offset, int limit, int isActive) {
+    public List<ProductDetail> getByOffset(int limit, int offset, int isActive) {
         return null;
-    }
-
-    @Override
-    public int sizeOfList(int isActive) {
-        return 0;
     }
 
     @Override
@@ -48,4 +43,8 @@ public class ProductDetailService implements IProductDetailService {
         return false;
     }
 
+    @Override
+    public int sizeOfList(int isActive) {
+        return 0;
+    }
 }

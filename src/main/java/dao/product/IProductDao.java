@@ -7,5 +7,4 @@ import java.util.List;
 
 public interface IProductDao extends IGeneralDAO<Product> {
     List<Product> findByName(String name);
-
 }

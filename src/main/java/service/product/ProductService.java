@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class ProductService implements IProductService {
-    private static IProductDao productDao = new ProductDao();
+    private static ProductDao productDao = new ProductDao();
 
     @Override
     public void add(Product product) throws SQLException {
@@ -38,27 +38,18 @@ public class ProductService implements IProductService {
 
     @Override
     public List<Product> getByOffset(int offset, int limit, int isActive) {
-        return null;
+        return productDao.getByOffset(offset, limit, isActive);
     }
 
     @Override
     public int sizeOfList(int isActive) {
-        return 0;
+        return productDao.sizeOfList(isActive);
     }
 
-    @Override
-    public int sizeOfListIsActive() {
-        return productDao.sizeOfListIsActive();
-    }
-
-    @Override
-    public int sizeOfListNotActive() {
-        return 0;
-    }
 
     @Override
     public boolean active(int id) throws SQLException {
-        return false;
+        return productDao.active(id);
     }
 
     @Override
