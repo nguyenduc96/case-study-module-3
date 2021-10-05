@@ -15,4 +15,8 @@ public interface IGeneralService<T> {
     boolean edit(T t);
 
     List<T> getByOffset(int offset, int limit);
+
+    int sizeOfList();
+
+    boolean active(int id) throws SQLException;
 }

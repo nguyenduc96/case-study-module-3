@@ -17,6 +17,12 @@ public class Brand {
         this.isActive = isActive;
     }
 
+    public Brand(String name, String image, boolean isActive) {
+        this.name = name;
+        this.image = image;
+        this.isActive = isActive;
+    }
+
     public int getId() {
         return id;
     }

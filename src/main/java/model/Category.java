@@ -10,6 +10,12 @@ public class Category {
     public Category() {
     }
 
+    public Category(String name, String image, boolean isActive) {
+        this.name = name;
+        this.image = image;
+        this.isActive = isActive;
+    }
+
     public Category(int id, String name, String image, boolean isActive) {
         this.id = id;
         this.name = name;

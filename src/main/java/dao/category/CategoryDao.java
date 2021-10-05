@@ -10,22 +10,25 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static dao.brand.BrandDao.*;
+
 public class CategoryDao implements ICategoryDao {
-    public static final String INSERT_CATEGORY = "insert into category (id, name, image, isActive) values (?,?,?,?)";
+    public static final String INSERT_CATEGORY = "insert into category (name, image, isActive) values (?,?,?)";
     public static final String SELECT_CATEGORY_BY_ID = "select  * from category where id = ?";
     public static final String SELECT_ALL = "select  * from  category";
-    public static final String DELETE_BY_ID = "update  category set isActive = ?, where id = ?";
+    public static final String UPDATE_ACTIVE = "update  category set isActive = ? where id = ?";
     public static final String UPDATE_CATEGORY = "update category set name = ?, image = ? where  id = ?";
+    public static final String COUNT_ID = "select count(id) as quantity from category";
+    public static final String SELECT_OFSET = "select * from category limit ? offset ?";
     private Connection connection = DBConnection.getConnection();
 
     @Override
     public void add(Category category) throws SQLException {
         PreparedStatement statement = connection.prepareStatement(INSERT_CATEGORY);
-        statement.setInt(1, category.getId());
-        statement.setString(2, category.getName());
-        statement.setString(3, category.getImage());
-        statement.setBoolean(4, category.isActive());
-        statement.executeQuery();
+        statement.setString(1, category.getName());
+        statement.setString(2, category.getImage());
+        statement.setBoolean(3, category.isActive());
+        statement.executeUpdate();
     }
 
     @Override
@@ -37,10 +40,10 @@ public class CategoryDao implements ICategoryDao {
 
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
-                String name = resultSet.getString("name");
-                String image = resultSet.getString("image");
+                String name = resultSet.getString(NAME);
+                String image = resultSet.getString(IMAGE);
                 boolean isActive;
-                int isActiveInt = resultSet.getInt("isActive");
+                int isActiveInt = resultSet.getInt(IS_ACTIVE);
                 if (isActiveInt == 1) {
                     isActive = true;
                 } else {
@@ -61,11 +64,11 @@ public class CategoryDao implements ICategoryDao {
             PreparedStatement statement = connection.prepareStatement(SELECT_ALL);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
-                int id = resultSet.getInt("id");
-                String name = resultSet.getString("name");
-                String image = resultSet.getString("image");
+                int id = resultSet.getInt(ID);
+                String name = resultSet.getString(NAME);
+                String image = resultSet.getString(IMAGE);
                 boolean isActive;
-                int isActiveInt = resultSet.getInt("isActive");
+                int isActiveInt = resultSet.getInt(IS_ACTIVE);
                 if (isActiveInt == 1) {
                     isActive = true;
                 } else {
@@ -82,9 +85,9 @@ public class CategoryDao implements ICategoryDao {
     @Override
     public boolean delete(int id) throws SQLException {
         boolean isDelete;
-        PreparedStatement statement = connection.prepareStatement(DELETE_BY_ID);
+        PreparedStatement statement = connection.prepareStatement(UPDATE_ACTIVE);
         statement.setBoolean(1, false);
-        statement.setInt(1, id);
+        statement.setInt(2, id);
         isDelete = statement.executeUpdate() > 0;
         return isDelete;
     }
@@ -108,17 +111,17 @@ public class CategoryDao implements ICategoryDao {
     public List<Category> getByOffset(int offset, int limit) {
         List<Category> categories = new ArrayList<>();
         try {
-            PreparedStatement statement = connection.prepareStatement("select * from category limit ? offset ?");
+            PreparedStatement statement = connection.prepareStatement(SELECT_OFSET);
             statement.setInt(1, limit);
             statement.setInt(2, offset);
             ResultSet resultSet = statement.executeQuery();
 
             while (resultSet.next()) {
-                int id = resultSet.getInt("id");
-                String name = resultSet.getString("name");
-                String image = resultSet.getString("image");
+                int id = resultSet.getInt(ID);
+                String name = resultSet.getString(NAME);
+                String image = resultSet.getString(IMAGE);
                 boolean isActive;
-                int isActiveInt = resultSet.getInt("isActive");
+                int isActiveInt = resultSet.getInt(IS_ACTIVE);
                 if (isActiveInt == 1) {
                     isActive = true;
                 } else {
@@ -130,5 +133,30 @@ public class CategoryDao implements ICategoryDao {
             e.printStackTrace();
         }
         return categories;
+    }
+
+    @Override
+    public int sizeOfList() {
+        int count = 0;
+        try {
+            PreparedStatement statement = connection.prepareStatement(COUNT_ID);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                count = resultSet.getInt(QUANTITY);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return count;
+    }
+
+    @Override
+    public boolean active(int id) throws SQLException {
+        boolean isActive;
+        PreparedStatement statement = connection.prepareStatement(UPDATE_ACTIVE);
+        statement.setBoolean(1, true);
+        statement.setInt(2, id);
+        isActive = statement.executeUpdate() > 0;
+        return isActive;
     }
 }
