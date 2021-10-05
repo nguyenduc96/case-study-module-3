@@ -37,8 +37,13 @@ public class ProductService implements IProductService {
     }
 
     @Override
-    public List<Product> getByOffset(int limit, int offset) {
-        return productDao.getByOffset(limit,offset);
+    public List<Product> getByOffset(int offset, int limit, int isActive) {
+        return null;
+    }
+
+    @Override
+    public int sizeOfList(int isActive) {
+        return 0;
     }
 
     @Override

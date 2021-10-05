@@ -35,19 +35,13 @@ public class BrandService implements IBrandService{
     }
 
     @Override
-    public List<Brand> getByOffset(int offset, int limit) {
-        return brandDao.getByOffset(offset, limit);
-    }
-
-
-    @Override
-    public int sizeOfListIsActive() {
-        return brandDao.sizeOfListIsActive();
+    public List<Brand> getByOffset(int offset, int limit, int isActive) {
+        return brandDao.getByOffset(offset, limit, isActive);
     }
 
     @Override
-    public int sizeOfListNotActive() {
-        return brandDao.sizeOfListNotActive();
+    public int sizeOfList(int isActive) {
+        return brandDao.sizeOfList(isActive);
     }
 
     @Override

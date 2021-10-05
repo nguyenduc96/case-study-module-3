@@ -125,6 +125,12 @@ public class ProductDao implements IProductDao {
     }
 
     @Override
+    public List<Product> getByOffset(int offset, int limit, int isActive) {
+
+        return null;
+    }
+
+    @Override
     public List<Product> getByOffset(int limit, int offset) {
         String query = "select * from product limit ? offset ?;";
         List<Product> products = new ArrayList<>();
@@ -178,6 +184,11 @@ public class ProductDao implements IProductDao {
     @Override
     public boolean active(int id) throws SQLException {
         return false;
+    }
+
+    @Override
+    public int sizeOfList(int isActive) {
+        return 0;
     }
 
     @Override

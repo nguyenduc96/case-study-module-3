@@ -5,7 +5,4 @@ import service.IGeneralService;
 
 public interface IBrandService extends IGeneralService<Brand> {
 
-    int sizeOfListIsActive();
-
-    int sizeOfListNotActive();
 }

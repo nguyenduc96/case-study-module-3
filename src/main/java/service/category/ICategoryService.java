@@ -5,7 +5,4 @@ import service.IGeneralService;
 
 public interface ICategoryService extends IGeneralService<Category> {
 
-    int sizeOfListIsActive();
-
-    int sizeOfListNotActive();
 }

@@ -5,7 +5,4 @@ import service.IGeneralService;
 
 public interface IProductDetailService extends IGeneralService<ProductDetail> {
 
-    int sizeOfListIsActive();
-
-    int sizeOfListNotActive();
 }

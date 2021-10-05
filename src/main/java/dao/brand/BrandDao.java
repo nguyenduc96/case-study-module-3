@@ -16,13 +16,12 @@ public class BrandDao implements IBrandDao {
     public static final String INSERT_NEW_BRAND = "insert into brand (name, image, isActive) values (?,?,?)";
     public static final String UPDATE_ACTIVE = "update brand set isActive = ? where id = ?";
     public static final String UPDATE_BRAND_INFO = "update brand set name = ?, image = ? where id = ?";
-    public static final String SELECT_BRAND_LIMIT = "select * from brand limit ? offset ?";
+    public static final String SELECT_BRAND_LIMIT = "select * from brand where isActive = ? limit ? offset ?";
     public static final String ID = "id";
     public static final String NAME = "name";
     public static final String IMAGE = "image";
     public static final String IS_ACTIVE = "isActive";
-    public static final String COUNT_ID_IS_ACTIVE = "select count(id) as quantity from brand where isActive = 1";
-    public static final String COUNT_ID_NOT_ACTIVE = "select count(id) as quantity from brand where isActive = 0";
+    public static final String COUNT_ID = "select count(id) as quantity from brand where isActive = ?";
     public static final String QUANTITY = "quantity";
     private Connection connection = DBConnection.getConnection();
 
@@ -43,16 +42,7 @@ public class BrandDao implements IBrandDao {
             statement.setInt(1, id);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
-                String name = resultSet.getString(NAME);
-                String image = resultSet.getString(IMAGE);
-                boolean isActive;
-                int isActiveInt = resultSet.getInt(IS_ACTIVE);
-                if (isActiveInt == 1) {
-                    isActive = true;
-                } else {
-                    isActive = false;
-                }
-                brand = new Brand(id, name, image, isActive);
+                brand = getBrand(resultSet);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -67,22 +57,27 @@ public class BrandDao implements IBrandDao {
             PreparedStatement statement = connection.prepareStatement(SELECT_ALL_BRAND);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
-                int id =  resultSet.getInt(ID);
-                String name = resultSet.getString(NAME);
-                String image = resultSet.getString(IMAGE);
-                boolean isActive;
-                int isActiveInt = resultSet.getInt(IS_ACTIVE);
-                if (isActiveInt == 1) {
-                    isActive = true;
-                } else {
-                    isActive = false;
-                }
-                brands.add(new Brand(id, name, image, isActive));
+                Brand brand = getBrand(resultSet);
+                brands.add(brand);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return brands;
+    }
+
+    private Brand getBrand(ResultSet resultSet) throws SQLException {
+        int id =  resultSet.getInt(ID);
+        String name = resultSet.getString(NAME);
+        String image = resultSet.getString(IMAGE);
+        boolean isActive;
+        int isActiveInt = resultSet.getInt(IS_ACTIVE);
+        if (isActiveInt == 1) {
+            isActive = true;
+        } else {
+            isActive = false;
+        }
+        return new Brand(id, name, image, isActive);
     }
 
     @Override
@@ -110,26 +105,19 @@ public class BrandDao implements IBrandDao {
         return isUpdate;
     }
 
+
     @Override
-    public List<Brand> getByOffset(int offset, int limit) {
+    public List<Brand> getByOffset(int offset, int limit, int isActive) {
         List<Brand> brands = new ArrayList<>();
         try {
             PreparedStatement statement = connection.prepareStatement(SELECT_BRAND_LIMIT);
-            statement.setInt(1, limit);
-            statement.setInt(2, offset);
+            statement.setInt(1, isActive);
+            statement.setInt(2, limit);
+            statement.setInt(3, offset);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
-                int id =  resultSet.getInt(ID);
-                String name = resultSet.getString(NAME);
-                String image = resultSet.getString(IMAGE);
-                boolean isActive;
-                int isActiveInt = resultSet.getInt(IS_ACTIVE);
-                if (isActiveInt == 1) {
-                    isActive = true;
-                } else {
-                    isActive = false;
-                }
-                brands.add(new Brand(id, name, image, isActive));
+                Brand brand = getBrand(resultSet);
+                brands.add(brand);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -138,28 +126,12 @@ public class BrandDao implements IBrandDao {
     }
 
     @Override
-    public int sizeOfListIsActive() {
+    public int sizeOfList(int isActive) {
         int count = 0;
         try {
-            PreparedStatement statement = connection.prepareStatement(COUNT_ID_IS_ACTIVE);
+            PreparedStatement statement = connection.prepareStatement(COUNT_ID);
+            statement.setInt(1, isActive);
             ResultSet resultSet = statement.executeQuery();
-
-            while (resultSet.next()) {
-                count = resultSet.getInt(QUANTITY);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return count;
-    }
-
-    @Override
-    public int sizeOfListNotActive() {
-         int count = 0;
-        try {
-            PreparedStatement statement = connection.prepareStatement(COUNT_ID_NOT_ACTIVE);
-            ResultSet resultSet = statement.executeQuery();
-
             while (resultSet.next()) {
                 count = resultSet.getInt(QUANTITY);
             }

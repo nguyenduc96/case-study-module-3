@@ -18,7 +18,7 @@ public class CategoryServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String action = request.getParameter("action");
+        String action = request.getParameter(ACTION);
 
         if (action == null) {
             action = EMPTY;
@@ -52,50 +52,8 @@ public class CategoryServlet extends HttpServlet {
     }
 
     private void showAll(HttpServletRequest request, HttpServletResponse response) {
-        int sizeOfList = categoryService.sizeOfListIsActive();
-        final int LIMIT = 6;
-        int totalPage;
-
-
-        if (sizeOfList % LIMIT == 0) {
-            totalPage = sizeOfList / LIMIT;
-        } else {
-            totalPage = sizeOfList / LIMIT + 1;
-        }
-
-        if (totalPage == 0) {
-            totalPage = 1;
-        }
-
-        String inputPage = request.getParameter("page");
-        if (inputPage == null) {
-            inputPage = "1";
-        }
-        int page = Integer.parseInt(inputPage);
-        int offset = (page - 1) * LIMIT;
-
-        String previous = EMPTY;
-        String next = EMPTY;
-
-        if (totalPage == 1) {
-            previous = DISABLED;
-            next = DISABLED;
-        }
-
-        if (page == 1) {
-            previous = DISABLED;
-        } else if (page == totalPage) {
-            next = DISABLED;
-        }
-
-        List<Category> categories = categoryService.getByOffset(offset, LIMIT);
-        request.setAttribute("totalPage", totalPage);
-        request.setAttribute("categories", categories);
-        String active = "active";
-        request.setAttribute("active", active);
-        request.setAttribute("page", page);
-        request.setAttribute("previous", previous);
-        request.setAttribute("next", next);
+        int numberActive = 1;
+        divisionPage(request, numberActive);
         try {
             RequestDispatcher dispatcher = request.getRequestDispatcher("category/list.jsp");
             dispatcher.forward(request, response);
@@ -105,17 +63,28 @@ public class CategoryServlet extends HttpServlet {
     }
 
     private void activeCategoryInfo(HttpServletRequest request, HttpServletResponse response) {
-        int id = Integer.parseInt(request.getParameter("id"));
+        int id = Integer.parseInt(request.getParameter(ID));
         try {
             categoryService.active(id);
-            response.sendRedirect("/categories");
+            response.sendRedirect("/categories?action=listdel");
         } catch (SQLException | IOException e) {
             e.printStackTrace();
         }
     }
 
     private void showListDelete(HttpServletRequest request, HttpServletResponse response) {
-        int sizeOfList = categoryService.sizeOfListNotActive();
+        int numberActive = 0;
+        divisionPage(request, numberActive);
+        try {
+            RequestDispatcher dispatcher = request.getRequestDispatcher("category/listDelete.jsp");
+            dispatcher.forward(request, response);
+        } catch (ServletException | IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void divisionPage(HttpServletRequest request, int numberActive) {
+        int sizeOfList = categoryService.sizeOfList(numberActive);
         final int LIMIT = 6;
         int totalPage;
         if (sizeOfList % LIMIT == 0) {
@@ -128,7 +97,7 @@ public class CategoryServlet extends HttpServlet {
             totalPage = 1;
         }
 
-        String inputPage = request.getParameter("page");
+        String inputPage = request.getParameter(PAGE);
         if (inputPage == null) {
             inputPage = "1";
         }
@@ -149,24 +118,17 @@ public class CategoryServlet extends HttpServlet {
             next = DISABLED;
         }
 
-        List<Category> categories = categoryService.getByOffset(offset, LIMIT);
-        request.setAttribute("totalPage", totalPage);
+        List<Category> categories = categoryService.getByOffset(offset, LIMIT, numberActive);
+        request.setAttribute(TOTAL_PAGE, totalPage);
         request.setAttribute("categories", categories);
-        String active = "active";
-        request.setAttribute("active", active);
-        request.setAttribute("page", page);
-        request.setAttribute("previous", previous);
-        request.setAttribute("next", next);
-        try {
-            RequestDispatcher dispatcher = request.getRequestDispatcher("category/listDelete.jsp");
-            dispatcher.forward(request, response);
-        } catch (ServletException | IOException e) {
-            e.printStackTrace();
-        }
+        request.setAttribute(ACTIVE, ACTIVE);
+        request.setAttribute(PAGE, page);
+        request.setAttribute(PREVIOUS, previous);
+        request.setAttribute(NEXT, next);
     }
 
     private void deleteCategoryInfo(HttpServletRequest request, HttpServletResponse response) {
-        int id = Integer.parseInt(request.getParameter("id"));
+        int id = Integer.parseInt(request.getParameter(ID));
         try {
             categoryService.delete(id);
             response.sendRedirect("/categories");
@@ -176,7 +138,7 @@ public class CategoryServlet extends HttpServlet {
     }
 
     private void showEditForm(HttpServletRequest request, HttpServletResponse response) {
-        int id = Integer.parseInt(request.getParameter("id"));
+        int id = Integer.parseInt(request.getParameter(ID));
         Category category = categoryService.select(id);
         request.setAttribute("category", category);
         RequestDispatcher dispatcher = request.getRequestDispatcher("category/edit.jsp");
@@ -198,7 +160,7 @@ public class CategoryServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String action = request.getParameter("action");
+        String action = request.getParameter(ACTION);
 
         if (action == null) {
             action = EMPTY;
@@ -216,9 +178,9 @@ public class CategoryServlet extends HttpServlet {
     }
 
     private void editCategoryInfo(HttpServletRequest request, HttpServletResponse response) {
-        int id = Integer.parseInt(request.getParameter("id"));
-        String name = request.getParameter("name");
-        String image = request.getParameter("image");
+        int id = Integer.parseInt(request.getParameter(ID));
+        String name = request.getParameter(NAME);
+        String image = request.getParameter(IMAGE);
         boolean isUpdate = true;
         if (name.equals(EMPTY) || image.equals(EMPTY)) {
             isUpdate = false;
@@ -231,7 +193,7 @@ public class CategoryServlet extends HttpServlet {
                 e.printStackTrace();
             }
         } else {
-            request.setAttribute("message", "Edit fails. Field can not empty");
+            request.setAttribute(MESSAGE, "Edit fails. Field can not empty");
             RequestDispatcher dispatcher = request.getRequestDispatcher("category/edit.jsp");
             try {
                 dispatcher.forward(request, response);
@@ -242,8 +204,8 @@ public class CategoryServlet extends HttpServlet {
     }
 
     private void createCategory(HttpServletRequest request, HttpServletResponse response) {
-        String name = request.getParameter("name");
-        String image = request.getParameter("image");
+        String name = request.getParameter(NAME);
+        String image = request.getParameter(IMAGE);
         boolean isCreate = true;
         if (name.equals(EMPTY) || image.equals(EMPTY)) {
             isCreate = false;
@@ -256,7 +218,7 @@ public class CategoryServlet extends HttpServlet {
                 e.printStackTrace();
             }
         } else {
-            request.setAttribute("message", "Create fails. Field can not empty");
+            request.setAttribute(MESSAGE, "Create fails. Field can not empty");
             RequestDispatcher dispatcher = request.getRequestDispatcher("category/create.jsp");
             try {
                 dispatcher.forward(request, response);

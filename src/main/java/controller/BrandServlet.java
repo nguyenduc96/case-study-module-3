@@ -26,6 +26,9 @@ public class BrandServlet extends HttpServlet {
     public static final String NEXT = "next";
     public static final String BRANDS = "brands";
     public static final String TOTAL_PAGE = "totalPage";
+    public static final String MESSAGE = "message";
+    public static final String NAME = "name";
+    public static final String IMAGE = "image";
     BrandService brandService = new BrandService();
 
     @Override
@@ -67,14 +70,25 @@ public class BrandServlet extends HttpServlet {
         int id = Integer.parseInt(request.getParameter(ID));
         try {
             brandService.active(id);
-            response.sendRedirect("/brands");
+            response.sendRedirect("/brands?action=listdel");
         } catch (SQLException | IOException e) {
             e.printStackTrace();
         }
     }
 
     private void showListDelete(HttpServletRequest request, HttpServletResponse response) {
-        int sizeOfList = brandService.sizeOfListNotActive();
+        int numberActive = 0;
+        divisionPage(request, numberActive);
+        try {
+            RequestDispatcher dispatcher = request.getRequestDispatcher("brand/listDelete.jsp");
+            dispatcher.forward(request, response);
+        } catch (ServletException | IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void divisionPage(HttpServletRequest request, int numberActive) {
+        int sizeOfList = brandService.sizeOfList(numberActive);
         final int LIMIT = 6;
         int totalPage;
         if (sizeOfList % LIMIT == 0) {
@@ -108,20 +122,13 @@ public class BrandServlet extends HttpServlet {
             next = DISABLED;
         }
 
-        List<Brand> brands = brandService.getByOffset(offset, LIMIT);
+        List<Brand> brands = brandService.getByOffset(offset, LIMIT, numberActive);
         request.setAttribute(TOTAL_PAGE, totalPage);
         request.setAttribute(BRANDS, brands);
-        String active = ACTIVE;
-        request.setAttribute(ACTIVE, active);
+        request.setAttribute(ACTIVE, ACTIVE);
         request.setAttribute(PAGE, page);
         request.setAttribute(PREVIOUS, previous);
         request.setAttribute(NEXT, next);
-        try {
-            RequestDispatcher dispatcher = request.getRequestDispatcher("brand/listDelete.jsp");
-            dispatcher.forward(request, response);
-        } catch (ServletException | IOException e) {
-            e.printStackTrace();
-        }
     }
 
     private void deleteBrandInfo(HttpServletRequest request, HttpServletResponse response) {
@@ -156,43 +163,8 @@ public class BrandServlet extends HttpServlet {
     }
 
     private void showAll(HttpServletRequest request, HttpServletResponse response) {
-        int sizeOfList = brandService.sizeOfListIsActive();
-        final int LIMIT = 6;
-        int totalPage;
-        if (sizeOfList % LIMIT == 0) {
-            totalPage = sizeOfList / LIMIT;
-        } else {
-            totalPage = sizeOfList / LIMIT + 1;
-        }
-        if (totalPage == 0) {
-            totalPage = 1;
-        }
-        String inputPage = request.getParameter(PAGE);
-        if (inputPage == null) {
-            inputPage = "1";
-        }
-        int page = Integer.parseInt(inputPage);
-        int offset = (page - 1) * LIMIT;
-        String previous = EMPTY;
-        String next = EMPTY;
-        if (totalPage == 1) {
-            previous = DISABLED;
-            next = DISABLED;
-        }
-        if (page == 1) {
-            previous = DISABLED;
-        } else if (page == totalPage) {
-            next = DISABLED;
-        }
-
-        List<Brand> brands = brandService.getByOffset(offset, LIMIT);
-        request.setAttribute(TOTAL_PAGE, totalPage);
-        request.setAttribute(BRANDS, brands);
-        String active = ACTIVE;
-        request.setAttribute(ACTIVE, active);
-        request.setAttribute(PAGE, page);
-        request.setAttribute(PREVIOUS, previous);
-        request.setAttribute(NEXT, next);
+        int numberActive = 1;
+        divisionPage(request, numberActive);
         try {
             RequestDispatcher dispatcher = request.getRequestDispatcher("brand/list.jsp");
             dispatcher.forward(request, response);
@@ -221,9 +193,9 @@ public class BrandServlet extends HttpServlet {
     }
 
     private void editBrandInfo(HttpServletRequest request, HttpServletResponse response) {
-        int id = Integer.parseInt(request.getParameter("id"));
-        String name = request.getParameter("name");
-        String image = request.getParameter("image");
+        int id = Integer.parseInt(request.getParameter(ID));
+        String name = request.getParameter(NAME);
+        String image = request.getParameter(IMAGE);
         boolean isUpdate = true;
         if (name.equals(EMPTY) || image.equals(EMPTY)) {
             isUpdate = false;
@@ -236,7 +208,7 @@ public class BrandServlet extends HttpServlet {
                 e.printStackTrace();
             }
         } else {
-            request.setAttribute("message", "Edit fails. Field can not empty");
+            request.setAttribute(MESSAGE, "Edit fails. Field can not empty");
             RequestDispatcher dispatcher = request.getRequestDispatcher("brand/edit.jsp");
             try {
                 dispatcher.forward(request, response);
@@ -247,8 +219,8 @@ public class BrandServlet extends HttpServlet {
     }
 
     private void createBand(HttpServletRequest request, HttpServletResponse response) {
-        String name = request.getParameter("name");
-        String image = request.getParameter("image");
+        String name = request.getParameter(NAME);
+        String image = request.getParameter(IMAGE);
         boolean isCreate = true;
         if (name.equals(EMPTY) || image.equals(EMPTY)) {
             isCreate = false;
@@ -261,7 +233,7 @@ public class BrandServlet extends HttpServlet {
                 e.printStackTrace();
             }
         } else {
-            request.setAttribute("message", "Create fails. Field can not empty");
+            request.setAttribute(MESSAGE, "Create fails. Field can not empty");
             RequestDispatcher dispatcher = request.getRequestDispatcher("brand/create.jsp");
             try {
                 dispatcher.forward(request, response);

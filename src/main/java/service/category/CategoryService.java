@@ -35,18 +35,13 @@ public class CategoryService implements ICategoryService {
     }
 
     @Override
-    public List<Category> getByOffset(int offset, int limit) {
-        return categoryDao.getByOffset(offset, limit);
+    public List<Category> getByOffset(int offset, int limit, int isActive) {
+        return categoryDao.getByOffset(offset, limit, isActive);
     }
 
     @Override
-    public int sizeOfListIsActive() {
-        return categoryDao.sizeOfListIsActive();
-    }
-
-    @Override
-    public int sizeOfListNotActive() {
-        return categoryDao.sizeOfListNotActive();
+    public int sizeOfList(int isActive) {
+        return categoryDao.sizeOfList(isActive);
     }
 
     @Override
