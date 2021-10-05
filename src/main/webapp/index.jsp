@@ -17,8 +17,6 @@
 
     <link rel="stylesheet" href="table/dist/css/adminlte.min.css">
 
-
-
   </head>
   <body class="hold-transition sidebar-mini">
 
