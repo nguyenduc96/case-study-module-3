@@ -6,5 +6,9 @@ import model.Product;
 import java.util.List;
 
 public interface IProductDao extends IGeneralDAO<Product> {
-    public List<Product> findByName(String name);
+    List<Product> findByName(String name);
+
+    int sizeOfListIsActive();
+
+    int sizeOfListNotActive();
 }
