@@ -18,7 +18,8 @@ public class CategoryDao implements ICategoryDao {
     public static final String SELECT_ALL = "select  * from  category";
     public static final String UPDATE_ACTIVE = "update  category set isActive = ? where id = ?";
     public static final String UPDATE_CATEGORY = "update category set name = ?, image = ? where  id = ?";
-    public static final String COUNT_ID = "select count(id) as quantity from category";
+    public static final String COUNT_ID_IS_ACTIVE = "select count(id) as quantity from category where isActive = 1";
+    public static final String COUNT_ID_NOT_ACTIVE = "select count(id) as quantity from category where isActive = 0";
     public static final String SELECT_OFSET = "select * from category limit ? offset ?";
     private Connection connection = DBConnection.getConnection();
 
@@ -136,10 +137,25 @@ public class CategoryDao implements ICategoryDao {
     }
 
     @Override
-    public int sizeOfList() {
+    public int sizeOfListIsActive() {
         int count = 0;
         try {
-            PreparedStatement statement = connection.prepareStatement(COUNT_ID);
+            PreparedStatement statement = connection.prepareStatement(COUNT_ID_IS_ACTIVE);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                count = resultSet.getInt(QUANTITY);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return count;
+    }
+
+    @Override
+    public int sizeOfListNotActive() {
+        int count = 0;
+        try {
+            PreparedStatement statement = connection.prepareStatement(COUNT_ID_NOT_ACTIVE);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 count = resultSet.getInt(QUANTITY);

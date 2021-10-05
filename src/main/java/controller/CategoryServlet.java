@@ -1,6 +1,5 @@
 package controller;
 
-import model.Brand;
 import model.Category;
 import service.category.CategoryService;
 
@@ -37,7 +36,7 @@ public class CategoryServlet extends HttpServlet {
                 deleteCategoryInfo(request, response);
                 break;
             }
-            case LISTDEL: {
+            case LIST_DEL: {
                 showListDelete(request, response);
                 break;
             }
@@ -53,7 +52,7 @@ public class CategoryServlet extends HttpServlet {
     }
 
     private void showAll(HttpServletRequest request, HttpServletResponse response) {
-        int sizeOfList = categoryService.sizeOfList();
+        int sizeOfList = categoryService.sizeOfListIsActive();
         final int LIMIT = 6;
         int totalPage;
 
@@ -116,7 +115,7 @@ public class CategoryServlet extends HttpServlet {
     }
 
     private void showListDelete(HttpServletRequest request, HttpServletResponse response) {
-        int sizeOfList = categoryService.sizeOfList();
+        int sizeOfList = categoryService.sizeOfListNotActive();
         final int LIMIT = 6;
         int totalPage;
         if (sizeOfList % LIMIT == 0) {

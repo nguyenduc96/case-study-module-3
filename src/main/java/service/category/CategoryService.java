@@ -40,8 +40,13 @@ public class CategoryService implements ICategoryService {
     }
 
     @Override
-    public int sizeOfList() {
-        return categoryDao.sizeOfList();
+    public int sizeOfListIsActive() {
+        return categoryDao.sizeOfListIsActive();
+    }
+
+    @Override
+    public int sizeOfListNotActive() {
+        return categoryDao.sizeOfListNotActive();
     }
 
     @Override
