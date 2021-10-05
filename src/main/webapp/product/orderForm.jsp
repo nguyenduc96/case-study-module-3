@@ -13,6 +13,7 @@
     <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon" />
 
     <script src="../table/dist/js/jquery-2.1.3.min.js?4" type="text/javascript"></script>
+
     <link href="../table/plugins/bootstrap/bootstrap.min.css?20171025" rel="stylesheet" type="text/css" />
     <link href="../table/plugins/css/nprogress.css?20171025" rel="stylesheet" type="text/css" />
     <link href="../table/plugins/css/font-awesome.css?20171025" rel="stylesheet" type="text/css" />
@@ -889,16 +890,16 @@
     </div>
 </form>
 
-<script src="../jquery-2.1.3.min.js?20171025" type="text/javascript"></script>
-<script src="../bootstrap.min.js?20171025" type="text/javascript"></script>
-<script src="../twine.min.js?20171025" type="text/javascript"></script>
-<script src="js/validator.min.js?20171025" type="text/javascript"></script>
-<script src="js/nprogress.js?20171025" type="text/javascript"></script>
-<script src="js/money-helper.js?20171025" type="text/javascript"></script>
-<script src="js/select2-full-min.js?20171025" type="text/javascript"></script>
+<script src="../table/plugins/js/jquery-2.1.3.min.js?20171025" type="text/javascript"></script>
+<script src="../table/plugins/js/bootstrap.min.js?20171025" type="text/javascript"></script>
+<script src="../table/plugins/js/twine.min.js?20171025" type="text/javascript"></script>
+<script src="../table/plugins/js/validator.min.js?20171025" type="text/javascript"></script>
+<script src="../table/plugins/js/nprogress.js?20171025" type="text/javascript"></script>
+<script src="../table/plugins/js/money-helper.js?20171025" type="text/javascript"></script>
+<script src="../table/plugins/js/select2-full-min.js?20171025" type="text/javascript"></script>
 
-<script src="js/ua-parser.pack.js?20180611" type='text/javascript'></script>
-<script src="js/checkout.js?20190701" type="text/javascript"></script>
+<script src="../table/plugins/js/ua-parser.pack.js?20180611" type='text/javascript'></script>
+<script src="../table/plugins/js/checkout.js?20190701" type="text/javascript"></script>
 
 
 
