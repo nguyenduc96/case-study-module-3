@@ -18,6 +18,7 @@ public class BrandServlet extends HttpServlet {
     public static final String EDIT = "edit";
     public static final String DELETE = "delete";
     public static final String LISTDEL = "listdel";
+    public static final String ACTIVE = "active";
     BrandService brandService = new BrandService();
 
     @Override
@@ -44,7 +45,7 @@ public class BrandServlet extends HttpServlet {
                 showListDelete(request, response);
                 break;
             }
-            case "active": {
+            case ACTIVE: {
                 activeBrandInfo(request, response);
                 break;
             }
@@ -73,6 +74,10 @@ public class BrandServlet extends HttpServlet {
             totalPage = sizeOfList / LIMIT;
         } else {
             totalPage = sizeOfList / LIMIT + 1;
+        }
+
+        if (totalPage == 0) {
+            totalPage = 1;
         }
 
         String inputPage = request.getParameter("page");
@@ -151,6 +156,10 @@ public class BrandServlet extends HttpServlet {
             totalPage = sizeOfList / LIMIT;
         } else {
             totalPage = sizeOfList / LIMIT + 1;
+        }
+
+        if (totalPage == 0) {
+            totalPage = 1;
         }
 
         String inputPage = request.getParameter("page");

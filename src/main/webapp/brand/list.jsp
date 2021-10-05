@@ -95,9 +95,9 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="../../index2.html" class="nav-link">
+                                <a href="/categories" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>menu 2</p>
+                                    <p>List category</p>
                                 </a>
                             </li>
                             <li class="nav-item">
@@ -134,9 +134,9 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="../../index2.html" class="nav-link">
+                                <a href="categories?action=listdel" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>menu 2</p>
+                                    <p>List category deleted</p>
                                 </a>
                             </li>
                             <li class="nav-item">
@@ -147,7 +147,6 @@
                             </li>
                         </ul>
                     </li>
-
                     <li class="nav-item">
                         <a href="../gallery.html" class="nav-link">
                             <i class="nav-icon far fa-image"></i>

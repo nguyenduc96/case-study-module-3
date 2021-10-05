@@ -41,11 +41,11 @@ public class CategoryService implements ICategoryService {
 
     @Override
     public int sizeOfList() {
-        return 0;
+        return categoryDao.sizeOfList();
     }
 
     @Override
     public boolean active(int id) throws SQLException {
-        return false;
+        return categoryDao.active(id);
     }
 }
