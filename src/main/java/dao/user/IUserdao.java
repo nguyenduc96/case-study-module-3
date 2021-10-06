@@ -1,8 +1,8 @@
-package service.user;
+package dao.user;
 
 import dao.IGeneralDAO;
 import model.User;
 
-public interface IUserService extends IGeneralDAO<User> {
+public interface IUserDao extends IGeneralDAO<User> {
     int findIdByUser(User user);
 }
