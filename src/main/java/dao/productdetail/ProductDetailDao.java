@@ -81,7 +81,7 @@ public class ProductDetailDao implements IProductDetailDao{
 
     @Override
     public boolean edit(ProductDetail productDetail) {
-        String query = "update product_detail set image = ?,screen_tech = ?,screen_resolution = ?,front_camera_tech = ?,rear_camera_teach = ?,operator_system = ?,cpu = ?,ram = ?,memory = ?,connect = ?,pin = ?,charge = ? where id = ?";
+        String query = "update product_detail set image = ?,screen_tech = ?,screen_resolution = ?,front_camera_tech = ?,rear_camera_teach = ?,operator_system = ?,cpu = ?,ram = ?,memory = ?,connect = ?,pin = ?,charge = ? where id ?";
         boolean isUpdate = false;
         try {
             PreparedStatement statement = connection.prepareStatement(query);

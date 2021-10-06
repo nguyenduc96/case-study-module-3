@@ -18,23 +18,6 @@ public class ProductDetail {
     private String charge;
     private String note;
 
-    public ProductDetail() {
-        this.isActive = true;
-        this.image = "";
-        this.screen_tech = "";
-        this.screen_resolution = "";
-        this.front_camera_tech = "";
-        this.rear_camera_teach = "";
-        this.operator_system = "";
-        this.cpu = "";
-        this.ram = "";
-        this.memory = "";
-        this.connect = "";
-        this.pin = "";
-        this.charge = "";
-        this.note = "";
-    }
-
     public ProductDetail(int id, int product_id, boolean isActive, String image, String screen_tech, String screen_resolution, String front_camera_tech, String rear_camera_teach, String operator_system, String cpu, String ram, String memory, String connect, String pin, String charge, String note) {
         this.id = id;
         this.product_id = product_id;
