@@ -13,7 +13,8 @@ import static dao.brand.BrandDao.*;
 public class UserDao implements IUserDao {
     private static final String INSERT_USER_SQL = "INSERT INTO user (username, password, first_name, last_name, number_phone, email, address, sex, isActive, role_id, date_of_birth, created_at) VALUES " +
             " (?,?,?,?,?,?,?,?,?,?,?,?);";
-    private static final String SELECT_USER_BY_USERNAME = "select * from user where userName =?";
+    private static final String SELECT_USER_BY_USERNAME = "select * from user where username = ?";
+    private static final String SELECT_USER_LIMIT = "select * from user where isActive = ? limit ? offset ?";
     private static final String SELECT_ALL_USER = "select * from user";
     private static final String UPDATE_BY_ACTIVE = "update user set isActive = ? where id = ?;";
     private static final String UPDATE_USER_SQL = "update users set  id = ?,username = ?,password= ?,first_name = ?,last_name = ?, number_phone = ?, email = ?, address = ?,sex = ?,isActive = ?,role = ?,date_of_birth = ?, created_at = ?, note = ? where userName = ?;";
@@ -157,7 +158,7 @@ public class UserDao implements IUserDao {
     public List<User> getByOffset(int offset, int limit, int isActive) {
         List<User> users = new ArrayList<>();
         try {
-            PreparedStatement statement = connection.prepareStatement(SELECT_BRAND_LIMIT);
+            PreparedStatement statement = connection.prepareStatement(SELECT_USER_LIMIT);
             statement.setInt(1, isActive);
             statement.setInt(2, limit);
             statement.setInt(3, offset);
@@ -201,20 +202,23 @@ public class UserDao implements IUserDao {
     }
 
     @Override
-    public int findIdByUser(User user) {
-        int id = 0;
+    public User findUser(String username, String password) {
+        User user = null;
         try {
-            PreparedStatement statement = connection.prepareStatement("select id form user where username = ?, password = ?");
-            statement.setString(1, user.getUsername());
-            statement.setString(2, user.getPassword());
+            PreparedStatement statement = connection.prepareStatement("select * from user where username = ? and password = ?");
+            statement.setString(1, username);
+            statement.setString(2, password);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
-                id = resultSet.getInt(ID);
+                user = new User(
+                        resultSet.getString(2),
+                        resultSet.getString(3)
+                );
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return id;
+        return user;
     }
 }
 

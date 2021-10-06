@@ -50,7 +50,7 @@ public class UserService implements IUserService{
     }
 
     @Override
-    public int findIdByUser(User user) {
-        return userDAO.findIdByUser(user);
+    public User findUser(String username, String password) {
+        return userDAO.findUser(username, password);
     }
 }

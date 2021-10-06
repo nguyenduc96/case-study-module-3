@@ -9,7 +9,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>List brand</title>
+    <title>List category</title>
 
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -188,8 +188,8 @@
                             <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Brand name</th>
-                                <th>Brand image</th>
+                                <th>Category name</th>
+                                <th>Category image</th>
                                 <th></th>
                             </tr>
                             </thead>

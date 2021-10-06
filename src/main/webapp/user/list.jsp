@@ -1,31 +1,24 @@
 <%--
   Created by IntelliJ IDEA.
-  User: tuan
-  Date: 04/10/2021
-  Time: 11:32 SA
+  User: nguye
+  Date: 10/4/2021
+  Time: 9:49 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>$Title$</title>
-    <<<<<<< HEAD
-</head>
-<body>
+    <title>List category</title>
 
-</body>
-=======
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
 
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet" href="../table/plugins/fontawesome-free/css/all.min.css">
 
-<link rel="stylesheet" href="table/plugins/fontawesome-free/css/all.min.css">
-
-
-<link rel="stylesheet" href="table/dist/css/adminlte.min.css">
-
+    <link rel="stylesheet" href="../table/dist/css/adminlte.min.css">
 </head>
 <body class="hold-transition sidebar-mini">
-
 <div class="wrapper">
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -54,7 +47,9 @@
         <!-- Brand Logo -->
         <a href="../../index3.html" class="brand-link">
 
-            <span class="brand-text font-weight-light">LOGO NHÓM 3</span>
+            <span class="brand-text font-weight-light">
+
+            </span>
         </a>
 
 
@@ -161,124 +156,133 @@
                             </p>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="../gallery.html" class="nav-link">
-                            <i class="nav-icon far fa-image"></i>
-                            <p>
-                                <button><a href="users?action=login">Dang ky</a></button>
-                            </p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="../gallery.html" class="nav-link">
-                            <i class="nav-icon far fa-image"></i>
-                            <p>
-                                <button><a href="users?action=register">Dang ky</a></button>
-                            </p>
-                        </a>
-                    </li>
                 </ul>
             </nav>
-            <!-- /.sidebar-menu -->
         </div>
-        <!-- /.sidebar -->
     </aside>
 
-
-    <!-- Content Wrapper. Contains page content -->
-
-
     <div class="content-wrapper">
-
-
         <section class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1> Trang dành cho admin</h1>
+                        <h1> Category list </h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-
-
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Product List</li>
-
-
+                            <li class="breadcrumb-item active">
+                                <a href="/categories?action=create">Create new category</a>
+                            </li>
                         </ol>
                     </div>
                 </div>
-            </div><!-- /.container-fluid -->
+            </div>
         </section>
-
-
-        <!-- Main content -->
         <section class="content">
-            <div class="container-fluid">
 
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">Danh sách sản phẩm</h3>
-                    </div>
-                    <!-- /.card-header -->
-                    <div class="card-body">
-                        <table class="table table-bordered">
+            <div class="card card-solid">
+                <div class="card-body">
+                    <div class="row">
+                        <table class="table">
                             <thead>
                             <tr>
-                                <th style="width: 10px">Number</th>
-                                <th>Name</th>
-                                <th>Quantity</th>
-                                <th>Price</th>
-                                <th>img</th>
+                                <th>#</th>
+                                <th>Username</th>
+                                <th>Password</th>
+                                <th>First name</th>
+                                <th>Last name</th>
+                                <th>Phone number</th>
+                                <th>Email</th>
+                                <th>Address</th>
+                                <th>Sex</th>
+                                <th></th>
                             </tr>
                             </thead>
-                            <tbody>
-                            <tr>
-                                <td>1.</td>
-                                <td>product 1</td>
-                                <td>5</td>
-                                <td>100.000</td>
-                                <td><img src="" alt=""></td>
-                            </tr>
 
+                            <tbody>
+                            <c:forEach items="${users}" var="user">
+                                <c:if test="${user.isActive() == true}">
+                                    <tr>
+                                        <td>${user.id}</td>
+                                        <td>${user.username}</td>
+                                        <td>${user.password}</td>
+                                        <td>${user.first_name}</td>
+                                        <td>${user.last_name}</td>
+                                        <td>${user.number_phone}</td>
+                                        <td>${user.email}</td>
+                                        <td>${user.address}</td>
+                                        <td>${user.sex}</td>
+                                        <td>
+                                            <button><a href="categories?action=edit&id=${user.id}">Edit</a></button>
+                                            <button><a onclick="confirmDelete(${user.id})">Delete</a></button>
+                                        </td>
+                                    </tr>
+                                </c:if>
+                            </c:forEach>
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination">
+                                    <li class="page-item ${previous}">
+                                        <a class="page-link" href="categories?action=page&page=${1}">First</a>
+                                    </li>
+                                    <li class="page-item ${previous}">
+                                        <a class="page-link" href="categories?action=page&page=${page - 1}">Previous</a>
+                                    </li>
+                                    <c:forEach begin="1" end="${totalPage}" step="1" var="i">
+                                        <c:choose>
+                                            <c:when test="${page == 1}">
+                                                <li class="page-item ${active}">
+                                                    <a class="page-link"
+                                                       href="categories?action=page&page=${i}">${i}</a>
+                                                </li>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <li class="page-item">
+                                                    <a class="page-link"
+                                                       href="categories?action=page&page=${i}">${i}</a>
+                                                </li>
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </c:forEach>
+                                    <li class="page-item ${next}">
+                                        <a class="page-link" href="categories?action=page&page=${page + 1}">Next</a>
+                                    </li>
+                                    <li class="page-item ${next}">
+                                        <a class="page-link" href="categories?action=page&page=${totalPage}">Last</a>
+                                    </li>
+                                </ul>
+                            </nav>
                             </tbody>
                         </table>
-                    </div>
-                    <div class="card-footer clearfix">
-                        <ul class="pagination pagination-sm m-0 float-right">
-                            <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
-                        </ul>
+                        <div class="col-12 col-sm-6">
+                        </div>
                     </div>
                 </div>
-
-
-            </div><!-- /.container-fluid -->
+            </div>
         </section>
-        <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
     <footer class="main-footer">
-        <p>Sản phẩm của Tuấn Anh, Đạt, Đức, Tú.</p>
+        <p> Sản phẩm của Tuấn Anh , Đạt , Đức , Tú . </p>
     </footer>
 
     <!-- Control Sidebar -->
     <aside class="control-sidebar control-sidebar-dark">
         <!-- Control sidebar content goes here -->
     </aside>
-    <!-- /.control-sidebar -->
 </div>
+<script>
+    function confirmDelete(id) {
+        let checkDelete = confirm("Are you sure you want to delete it?");
+        if (checkDelete) {
+            window.location.href = "users?action=delete&id=" + id;
+        }
+    }
+</script>
 
-
-<script src="table/plugins/jquery/jquery.min.js"></script>
-<script src="table/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="table/dist/js/adminlte.min.js"></script>
-<script src="table/dist/js/demo.js"></script>
-
-
+<script src="../table/plugins/jquery/jquery.min.js"></script>
+<script src="../table/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../table/dist/js/adminlte.min.js"></script>
+<script src="../table/dist/js/demo.js"></script>
 </body>
->>>>>>> 536e12136bc0c99f9d048dbc46cbca2ba26f680b
 </html>

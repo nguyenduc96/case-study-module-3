@@ -44,6 +44,7 @@
                         </div>
                     </div>
                 </div>
+                <p style="color: red">* ${message}</p>
                 <div class="row">
                     <div class="col-8">
                         <div class="icheck-primary">
