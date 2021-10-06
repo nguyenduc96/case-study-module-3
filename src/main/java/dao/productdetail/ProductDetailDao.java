@@ -112,12 +112,12 @@ public class ProductDetailDao implements IProductDetailDao{
 
 
     @Override
-    public int countRecord() {
-        return 0;
+    public boolean active(int id) throws SQLException {
+        return false;
     }
 
     @Override
-    public void active(int id) throws SQLException {
-
+    public int sizeOfList(int isActive) {
+        return 0;
     }
 }

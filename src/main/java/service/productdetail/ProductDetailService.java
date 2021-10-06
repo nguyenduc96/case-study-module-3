@@ -34,18 +34,17 @@ public class ProductDetailService implements IProductDetailService {
     }
 
     @Override
-    public List<ProductDetail> getByOffset(int limit, int offset, int isActive) {
+    public List<ProductDetail> getByOffset(int offset, int limit, int isActive) {
         return null;
     }
 
-
     @Override
-    public int countRecord() {
-        return 0;
+    public boolean active(int id) throws SQLException {
+        return false;
     }
 
     @Override
-    public void active(int id) throws SQLException {
-
+    public int sizeOfList(int isActive) {
+        return 0;
     }
 }

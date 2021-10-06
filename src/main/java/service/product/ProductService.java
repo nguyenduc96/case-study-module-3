@@ -1,7 +1,11 @@
 package service.product;
 
+import dao.brand.BrandDao;
+import dao.category.CategoryDao;
 import dao.product.IProductDao;
 import dao.product.ProductDao;
+import model.Brand;
+import model.Category;
 import model.Product;
 
 import java.sql.SQLException;
@@ -9,6 +13,8 @@ import java.util.List;
 
 public class ProductService implements IProductService {
     private static ProductDao productDao = new ProductDao();
+    private static CategoryDao categoryDao = new CategoryDao();
+    private static BrandDao brandDao = new BrandDao();
 
     @Override
     public void add(Product product) throws SQLException {
@@ -22,7 +28,6 @@ public class ProductService implements IProductService {
 
     @Override
     public List<Product> getAll() {
-
         return productDao.getAll();
     }
 
@@ -37,22 +42,26 @@ public class ProductService implements IProductService {
     }
 
     @Override
-    public List<Product> getByOffset(int limit, int offset, int isActive) {
-        return productDao.getByOffset(limit,offset,isActive);
+    public List<Product> getByOffset(int offset, int limit, int isActive) {
+        List<Product> products = productDao.getByOffset(offset, limit, isActive);
+        for(Product product : products) {
+            Category category = categoryDao.select(product.getCategory_id());
+            Brand brand = brandDao.select(product.getBrand_id());
+            product.setCategory(category);
+            product.setBrand(brand);
+        }
+        return products;
     }
 
     @Override
-    public int countRecord() {
-        return productDao.countRecord();
+    public int sizeOfList(int isActive) {
+        return productDao.sizeOfList(isActive);
     }
+
 
     @Override
-    public void active(int id) throws SQLException {
-        productDao.active(id);
-    }
-
-    public int countRecord(int isActive) {
-        return productDao.countRecord(isActive);
+    public boolean active(int id) throws SQLException {
+        return productDao.active(id);
     }
 
     @Override

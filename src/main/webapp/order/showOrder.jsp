@@ -194,8 +194,8 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="row">
-                            <h3 class="card-title">Danh sách sản phẩm</h3>
-                            <form action="/product?action=search" method="post">
+                            <h3 class="card-title">Order List</h3>
+                            <form action="/order?action=search" method="post">
                                 <input type="text" name="search" value="">
                                 <button type="submit">Search</button>
                             </form>
@@ -206,37 +206,25 @@
                         <table class="table table-striped">
                             <thead>
                             <tr>
-                                <th scope="col">Product ID</th>
-                                <th scope="col">Product Name</th>
-                                <th scope="col">Product Image</th>
-                                <th scope="col">Product Quantity</th>
-                                <th scope="col">Product Category</th>
-                                <th scope="col">Product Brand</th>
+                                <th scope="col">Order ID</th>
+                                <th scope="col">User ID</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Create At</th>
                                 <th></th>
                                 <th></th>
                                 <th></th>
                             </tr>
                             </thead>
                             <tbody>
-                            <c:forEach items="${products}" var="product">
+                            <c:forEach items="${orders}" var="order">
                                 <tr>
-                                    <td>${product.id}</td>
-                                    <td>${product.name}</td>
-                                    <td><img src="${product.image}" alt="" width="100px" height="100px"></td>
-                                    <td>${product.quantity}</td>
-                                    <td>${product.getCategory().getName()}</td>
-                                    <td>${product.getBrand().getName()}</td>
-                                    <c:choose>
-                                        <c:when test="${product.isActive()}">
-                                            <td>Hiện</td>
-                                        </c:when>
-                                        <c:otherwise>
-                                            <td>Ẩn</td>
-                                        </c:otherwise>
-                                    </c:choose>
-                                    <td><a href="product?action=detail&id=${product.id}" class="btn btn-info">View</a></td>
-                                    <td><a href="product?action=edit&id=${product.id}" class="btn btn-success">Edit</a></td>
-                                    <td><button type="button" class="btn btn-warning" onclick="confirmActive(${product.id})">Active</button></td>
+                                    <td>${order.id}</td>
+                                    <td>${order.user_id}</td>
+                                    <td>${order.status}</td>
+                                    <td>${order.created_at}</td>
+                                    <td><a href="order?action=detail&id=${order.id}" class="btn btn-info">View</a></td>
+                                    <td><a href="order?action=edit&id=${order.id}" class="btn btn-success">Edit</a></td>
+                                    <td><button type="button" class="btn btn-warning" onclick="confirmDelete(${order.id})">Delete</button></td>
                                 </tr>
                             </c:forEach>
 
@@ -280,11 +268,6 @@
                 </div>
 
 
-
-
-
-
-
             </div><!-- /.container-fluid -->
         </section>
         <!-- /.content -->
@@ -308,10 +291,10 @@
 <script src="table/dist/js/adminlte.min.js"></script>
 <script src="table/dist/js/demo.js"></script>
 <script>
-    function confirmActive(id) {
-        let check = confirm("Are you sure to active this product?");
+    function confirmDelete(id) {
+        let check = confirm("Are you sure to delete?");
         if(check===true) {
-            window.location.href = ("product?action=active&id="+id);
+            window.location.href = ("order?action=delete&id="+id);
         }
     }
 </script>

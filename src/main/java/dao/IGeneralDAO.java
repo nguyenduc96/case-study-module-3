@@ -14,9 +14,9 @@ public interface IGeneralDAO<T> {
 
     boolean edit(T t);
 
-    List<T> getByOffset(int limit,int offset, int isActive);
+    List<T> getByOffset(int offset, int limit, int isActive);
 
-    int countRecord();
+    boolean active(int id) throws SQLException;
 
-    public void active(int id) throws SQLException;
+    int sizeOfList(int isActive);
 }

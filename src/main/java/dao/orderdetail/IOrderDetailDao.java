@@ -1,4 +1,7 @@
 package dao.orderdetail;
 
-public interface IOrderDetailDao {
+import dao.IGeneralDAO;
+import model.OrderDetail;
+
+public interface IOrderDetailDao extends IGeneralDAO<OrderDetail> {
 }

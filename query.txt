@@ -17,11 +17,8 @@ create table product
     brand_id        int,
     description     longtext,
     created_at      datetime,
-    created_user_id int,
     updated_at      datetime,
-    updated_user_id int,
     deleted_at      datetime,
-    delete_user_id  int,
     note            nvarchar(2000)
 );
 
@@ -70,8 +67,8 @@ create table user
     password      nvarchar(50),
     first_name    nvarchar(255),
     last_name     nvarchar(255),
-    number_phone  nvarchar(20),
-    email         nvarchar(50),
+    number_phone  nvarchar(20) unique not null,
+    email         nvarchar(50) unique not null,
     address       nvarchar(255),
     sex           nvarchar(50),
     isActive      bool default true,
@@ -108,3 +105,5 @@ create table role
     isActive bool default true,
     note     nvarchar(2000)
 );
+
+drop table user;

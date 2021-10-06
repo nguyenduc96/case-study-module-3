@@ -90,6 +90,18 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
+                                <a href="/brands" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>List brand</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/categories" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>List category</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
                                 <a href="/product" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Quản lí sản phẩm</p>
@@ -191,7 +203,7 @@
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <table class="table table-bordered">
+                        <table class="table table-striped">
                             <thead>
                             <tr>
                                 <th scope="col">Product ID</th>
@@ -228,21 +240,27 @@
                         <div class="row">
                             <div id="pagination">
                                 <ul class="pagination">
-                                    <li class="page-item ${pre}">
-                                        <a class="page-link" href="product?action=page&offset=${page2-5}">Previous</a>
+                                    <li class="page-item ${previous}">
+                                        <a class="page-link" href="brands?action=page&page=${1}">First</a>
+                                    </li>
+                                    <li class="page-item ${previous}">
+                                        <a class="page-link" href="product?action=page&page=${page-1}">Previous</a>
                                     </li>
                                     <c:forEach begin="1" end="${totalPage}" step="1" var="i">
                                         <c:choose>
-                                            <c:when test="${page2==((i-1)*5)}">
-                                                <li class="page-item active"><a class="page-link " href="product?action=page&page=${5*(i-1)}">${i}</a></li>
+                                            <c:when test="${page == 1}">
+                                                <li class="page-item active"><a class="page-link " href="product?action=page&page=${i}">${i}</a></li>
                                             </c:when>
                                             <c:otherwise>
-                                                <li class="page-item"><a class="page-link" href="product?action=page&page=${5*(i-1)}">${i}</a></li>
+                                                <li class="page-item"><a class="page-link" href="product?action=page&page=${i}">${i}</a></li>
                                             </c:otherwise>
                                         </c:choose>
                                     </c:forEach>
                                     <li class="page-item ${next}">
-                                        <a class="page-link" href="product?action=page&offset=${page2+5}">Next</a>
+                                        <a class="page-link" href="product?action=page&page=${page+1}">Next</a>
+                                    </li>
+                                    <li class="page-item ${next}">
+                                        <a class="page-link" href="brands?action=page&page=${totalPage}">Last</a>
                                     </li>
                                 </ul>
                             </div>
@@ -252,11 +270,6 @@
                         </div>
                     </div>
                 </div>
-
-
-
-
-
 
 
             </div><!-- /.container-fluid -->
