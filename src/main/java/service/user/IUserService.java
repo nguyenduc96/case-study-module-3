@@ -1,4 +1,8 @@
 package service.user;
 
-public interface IUserService {
+import dao.IGeneralDAO;
+import model.User;
+
+public interface IUserService extends IGeneralDAO<User> {
+
 }

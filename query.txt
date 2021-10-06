@@ -102,9 +102,15 @@ create table order_detail
 );
 
 create table role
-(
-    id       int auto_increment primary key,
-    name     nvarchar(255),
-    isActive bool default true,
-    note     nvarchar(2000)
-);
+  (
+      id       int auto_increment primary key,
+      name     nvarchar(255),
+      isActive bool default true,
+      note     nvarchar(2000)
+  );
+  ALTER TABLE users ADD COLUMN role NVARCHAR(50) NOT NULL DEFAULT 'user';
+  ALTER TABLE users ADD COLUMN phoneNumber INT NOT NULL ;
+  ALTER TABLE users MODIFY COLUMN id INT AUTO_INCREMENT;
+  INSERT INTO users(userName, password, email, address,role) VALUES ('admin','admin','admin@gamil.com','Ho tung Mau','admin');
+  INSERT INTO users(userName, password, email, address) VALUES ('vu','vu','vu@gamil.com','Ha noi');
+  INSERT INTO users (userName, password, email, address,phoneNumber) VALUES ('vu','vu','vu@gamil.com','ha noi','123456789');
