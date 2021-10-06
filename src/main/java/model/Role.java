@@ -2,13 +2,13 @@ package model;
 
 import java.time.LocalDate;
 
-public class role {
+public class Role {
     private int id;
     private String name;
     private boolean isActive = true;
     private String note;
 
-    public role(int id, String name, boolean isActive, String note) {
+    public Role(int id, String name, boolean isActive, String note) {
         this.id = id;
         this.name = name;
         this.isActive = isActive;
