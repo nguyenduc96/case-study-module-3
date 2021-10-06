@@ -9,18 +9,32 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import static controller.BrandServlet.*;
+
 @WebServlet(name = "ProductDetailServlet", value = "/productdetail")
 public class ProductDetailServlet extends HttpServlet {
+    public static final String PRODUCT_ID = "product_id";
+    public static final String SCREEN_TECH = "screen_tech";
+    public static final String SCREEN_RESOLUTION = "screen_resolution";
+    public static final String FRONT_CAMERA_TECH = "front_camera_tech";
+    public static final String REAR_CAMERA_TEACH = "rear_camera_teach";
+    public static final String OPERATOR_SYSTEM = "operator_system";
+    public static final String CPU = "cpu";
+    public static final String RAM = "ram";
+    public static final String MEMORY = "memory";
+    public static final String CONNECT = "connect";
+    public static final String PIN = "pin";
+    public static final String CHARGE = "charge";
     private ProductDetailService productDetailService =  new ProductDetailService();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String action = request.getParameter("action");
+        String action = request.getParameter(ACTION);
 
         if(action == null) {
-            action = "";
+            action = EMPTY;
         }
         switch(action) {
-            case "delete" : {
+            case DELETE: {
                 deleteProductDetail(request,response);
                 break;
             }
@@ -28,8 +42,8 @@ public class ProductDetailServlet extends HttpServlet {
     }
 
     private void deleteProductDetail(HttpServletRequest request, HttpServletResponse response) {
-        int id = Integer.parseInt(request.getParameter("id"));
-        int product_id = Integer.parseInt(request.getParameter("product_id"));
+        int id = Integer.parseInt(request.getParameter(ID));
+        int product_id = Integer.parseInt(request.getParameter(PRODUCT_ID));
         ProductDetail productDetail = new ProductDetail();
         productDetail.setId(id);
         productDetail.setProduct_id(id);
@@ -43,40 +57,39 @@ public class ProductDetailServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String action = request.getParameter("action");
+        String action = request.getParameter(ACTION);
 
         if(action == null) {
-            action = "";
+            action = EMPTY;
         }
         switch(action) {
-            case "edit" : {
+            case EDIT : {
                 editProductDetail(request,response);
                 break;
             }
         }
-
     }
 
     private ProductDetail getProductDetail(HttpServletRequest request, int product_id, int id) {
         ProductDetail productDetail;
-        String image = request.getParameter("image");
-        String screen_tech = request.getParameter("screen_tech");
-        String screen_resolution = request.getParameter("screen_resolution");
-        String front_camera_tech = request.getParameter("front_camera_tech");
-        String rear_camera_teach = request.getParameter("rear_camera_teach");
-        String operator_system = request.getParameter("operator_system");
-        String cpu = request.getParameter("cpu");
-        String ram = request.getParameter("ram");
-        String memory = request.getParameter("memory");
-        String connect = request.getParameter("connect");
-        String pin = request.getParameter("pin");
-        String charge = request.getParameter("charge");
+        String image = request.getParameter(IMAGE);
+        String screen_tech = request.getParameter(SCREEN_TECH);
+        String screen_resolution = request.getParameter(SCREEN_RESOLUTION);
+        String front_camera_tech = request.getParameter(FRONT_CAMERA_TECH);
+        String rear_camera_teach = request.getParameter(REAR_CAMERA_TEACH);
+        String operator_system = request.getParameter(OPERATOR_SYSTEM);
+        String cpu = request.getParameter(CPU);
+        String ram = request.getParameter(RAM);
+        String memory = request.getParameter(MEMORY);
+        String connect = request.getParameter(CONNECT);
+        String pin = request.getParameter(PIN);
+        String charge = request.getParameter(CHARGE);
         productDetail = new ProductDetail(id, product_id,true,image,screen_tech,screen_resolution,front_camera_tech,rear_camera_teach,operator_system,cpu,ram,memory,connect,pin,charge);
         return productDetail;
     }
 
     private void editProductDetail(HttpServletRequest request, HttpServletResponse response) {
-        int product_id = Integer.parseInt(request.getParameter("product_id"));
+        int product_id = Integer.parseInt(request.getParameter(PRODUCT_ID));
         ProductDetail productDetail = productDetailService.select(product_id);
         if(productDetail==null) {
             productDetail = getProductDetail(request,product_id,product_id);
