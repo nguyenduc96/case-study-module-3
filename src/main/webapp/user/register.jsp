@@ -21,14 +21,14 @@
 <body class="hold-transition register-page">
 <div class="register-box">
     <div class="register-logo">
-        <a href="/brands"> D <sup>2</sup> T <sup>2</sup></a>
+        <a href="login?action=login"> D <sup>2</sup> T <sup>2</sup></a>
     </div>
 
     <div class="card">
         <div class="card-body register-card-body">
             <p class="login-box-msg">Register a new membership</p>
 
-            <form action="users?action=register" method="post">
+            <form action="login?action=register" method="post">
                 <div class="input-group mb-3">
                     <input type="text" id="name" class="form-control" placeholder="User name" name="username"
                            onchange="checkRegister()">

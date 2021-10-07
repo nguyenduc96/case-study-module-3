@@ -2,6 +2,7 @@ package controller;
 
 import model.Product;
 import model.ProductDetail;
+import model.User;
 import service.product.ProductService;
 import service.productdetail.ProductDetailService;
 
@@ -27,40 +28,51 @@ public class ProductServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String action = request.getParameter(ACTION);
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("user");
+        if (user != null) {
+            if (user.getRole_id() == 1) {
+                response.sendRedirect("login?action=register");
+            } else {
 
-        if (action == null) {
-            action = EMPTY;
-        }
-        switch (action) {
-            case CREATE: {
-                showCreateForm(request, response);
-                break;
+                String action = request.getParameter(ACTION);
+
+                if (action == null) {
+                    action = EMPTY;
+                }
+                switch (action) {
+                    case CREATE: {
+                        showCreateForm(request, response);
+                        break;
+                    }
+                    case EDIT: {
+                        showEditForm(request, response);
+                        break;
+                    }
+                    case DELETE: {
+                        deleteProduct(request, response);
+                        break;
+                    }
+                    case DETAIL: {
+                        showDetail(request, response);
+                        break;
+                    }
+                    case SHOW_DELETE_PRODUCT: {
+                        showDeletedProduct(request, response);
+                        break;
+                    }
+                    case ACTIVE: {
+                        activeProduct(request, response);
+                        break;
+                    }
+                    default: {
+                        showProduct(request, response);
+                        break;
+                    }
+                }
             }
-            case EDIT: {
-                showEditForm(request, response);
-                break;
-            }
-            case DELETE: {
-                deleteProduct(request, response);
-                break;
-            }
-            case DETAIL: {
-                showDetail(request, response);
-                break;
-            }
-            case SHOW_DELETE_PRODUCT: {
-                showDeletedProduct(request, response);
-                break;
-            }
-            case ACTIVE: {
-                activeProduct(request, response);
-                break;
-            }
-            default: {
-                showProduct(request, response);
-                break;
-            }
+        }else {
+            response.sendRedirect("/login?action=login");
         }
     }
 

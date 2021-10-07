@@ -210,10 +210,12 @@ public class UserDao implements IUserDao {
             statement.setString(2, password);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
+                int roleId = resultSet.getInt("role_id");
                 user = new User(
                         resultSet.getString(2),
                         resultSet.getString(3)
                 );
+                user.setRole_id(roleId);
             }
         } catch (SQLException e) {
             e.printStackTrace();

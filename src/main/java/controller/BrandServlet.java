@@ -37,39 +37,43 @@ public class BrandServlet extends HttpServlet {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
         if (user != null) {
-            String action = request.getParameter(ACTION);
+            if (user.getRole_id() == 1) {
+                response.sendRedirect("login?action=register");
+            } else {
+                String action = request.getParameter(ACTION);
 
-            if (action == null) {
-                action = EMPTY;
-            }
-            switch (action) {
-                case CREATE: {
-                    showCreateForm(request, response);
-                    break;
+                if (action == null) {
+                    action = EMPTY;
                 }
-                case EDIT: {
-                    showEditForm(request, response);
-                    break;
-                }
-                case DELETE: {
-                    deleteBrandInfo(request, response);
-                    break;
-                }
-                case LIST_DEL: {
-                    showListDelete(request, response);
-                    break;
-                }
-                case ACTIVE: {
-                    activeBrandInfo(request, response);
-                    break;
-                }
-                default: {
-                    showAll(request, response);
-                    break;
+                switch (action) {
+                    case CREATE: {
+                        showCreateForm(request, response);
+                        break;
+                    }
+                    case EDIT: {
+                        showEditForm(request, response);
+                        break;
+                    }
+                    case DELETE: {
+                        deleteBrandInfo(request, response);
+                        break;
+                    }
+                    case LIST_DEL: {
+                        showListDelete(request, response);
+                        break;
+                    }
+                    case ACTIVE: {
+                        activeBrandInfo(request, response);
+                        break;
+                    }
+                    default: {
+                        showAll(request, response);
+                        break;
+                    }
                 }
             }
         } else {
-            response.sendRedirect("users?action=login");
+            response.sendRedirect("login?action=login");
         }
     }
 

@@ -21,14 +21,14 @@
 <body class="hold-transition login-page">
 <div class="login-box">
     <div class="login-logo">
-        <a href="../../index2.html"> LOGIN </a>
+        <a href="login?action=login"> LOGIN </a>
     </div>
     <!-- /.login-logo -->
     <div class="card">
         <div class="card-body login-card-body">
             <p class="login-box-msg">Login to start Website</p>
 
-            <form action="users?action=login" method="post">
+            <form action="login?action=login" method="post">
                 <div class="input-group mb-3">
                     <input type="username" class="form-control" placeholder="User name" name="username">
                     <div class="input-group-append">
@@ -66,7 +66,7 @@
                 <div class="col-4"></div>
                 <div class="col-4">
                     <button type="button" class="btn btn-primary btn-block">
-                        <a href="users?action=register">Register</a>
+                        <a href="login?action=register">Register</a>
                     </button>
                 </div>
                 <div class="col-4"></div>
