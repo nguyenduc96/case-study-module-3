@@ -135,45 +135,6 @@ public class ProductServlet extends HttpServlet {
         request.setAttribute(NEXT, next);
     }
 
-//    private void showDeletedProduct(HttpServletRequest request, HttpServletResponse response) {
-//        int  limit = 5;
-//        int offset2 = getPage(request, 0);
-//        request.setAttribute("page2",offset2);
-//        int isActive = 0;
-//        List<Product> products = productService.getByOffset(limit, offset2, isActive);
-//        request.setAttribute("products",products);
-//        RequestDispatcher dispatcher = request.getRequestDispatcher("product/showDeleteProduct.jsp");
-//        try {
-//            dispatcher.forward(request,response);
-//        } catch (ServletException | IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
-
-    private int getPage(HttpServletRequest request, int i) {
-        int countRecord = productService.sizeOfList(i);
-        int totalPage = countRecord / 5 + 1;
-        request.setAttribute("totalPage", totalPage);
-        String offset = request.getParameter("page");
-        if (offset == null) {
-            offset = "0";
-        }
-        int offset2 = Integer.parseInt(offset);
-        String pre = "";
-        String next = "";
-        if (offset2 == 0) {
-            pre = "disabled";
-        } else if (offset2 >= (totalPage - 1) * 5) {
-            next = "disabled";
-        }
-        request.setAttribute("pre", pre);
-        request.setAttribute("" + "next", next);
-
-        String active = "active";
-        request.setAttribute("active", active);
-        return offset2;
-    }
-
     private void showSearchProduct(HttpServletRequest request, HttpServletResponse response) {
         List<Product> products;
         String search = request.getParameter(SEARCH);
@@ -243,20 +204,6 @@ public class ProductServlet extends HttpServlet {
         }
     }
 
-//    private void showProduct(HttpServletRequest request, HttpServletResponse response) {
-//        int  limit = 5;
-//        int offset2 = getPage(request, 1);
-//        request.setAttribute("page2",offset2);
-//        int isActive = 1;
-//        List<Product> products = productService.getByOffset(limit, offset2, isActive);
-//        request.setAttribute("products",products);
-//        RequestDispatcher dispatcher = request.getRequestDispatcher("product/showProduct.jsp");
-//        try {
-//            dispatcher.forward(request,response);
-//        } catch (ServletException | IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
