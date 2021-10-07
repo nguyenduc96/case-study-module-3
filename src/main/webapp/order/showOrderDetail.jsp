@@ -1,3 +1,10 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: dat01
+  Date: 10/7/2021
+  Time: 1:49 AM
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -194,11 +201,7 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="row">
-                            <h3 class="card-title">Danh sách sản phẩm</h3>
-                            <form action="/product?action=search" method="post">
-                                <input type="text" name="search" value="">
-                                <button type="submit">Search</button>
-                            </form>
+                            <h3 class="card-title">Order ${order.id}</h3>
                         </div>
                     </div>
                     <!-- /.card-header -->
@@ -206,37 +209,52 @@
                         <table class="table table-striped">
                             <thead>
                             <tr>
-                                <th scope="col">Product ID</th>
+                                <th scope="col">Order ID</th>
+                                <th scope="col">User ID</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Create At</th>
+
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>${order.id}</td>
+                                <td>${order.user_id}</td>
+                                <td>${order.status}</td>
+                                <td>${order.created_at}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="row">
+                            <h3 class="card-title">Order Detail</h3>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
                                 <th scope="col">Product Name</th>
-                                <th scope="col">Product Image</th>
-                                <th scope="col">Product Quantity</th>
-                                <th scope="col">Product Category</th>
-                                <th scope="col">Product Brand</th>
-                                <th></th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">After Discount</th>
                                 <th></th>
                                 <th></th>
                             </tr>
                             </thead>
                             <tbody>
-                            <c:forEach items="${products}" var="product">
+                            <c:forEach items="${orderDetails}" var="orderDetail">
                                 <tr>
-                                    <td>${product.id}</td>
-                                    <td>${product.name}</td>
-                                    <td><img src="${product.image}" alt="" width="100px" height="100px"></td>
-                                    <td>${product.quantity}</td>
-                                    <td>${product.getCategory().getName()}</td>
-                                    <td>${product.getBrand().getName()}</td>
-                                    <c:choose>
-                                        <c:when test="${product.isActive()}">
-                                            <td>Hiện</td>
-                                        </c:when>
-                                        <c:otherwise>
-                                            <td>Ẩn</td>
-                                        </c:otherwise>
-                                    </c:choose>
-                                    <td><a href="product?action=detail&id=${product.id}" class="btn btn-info">View</a></td>
-                                    <td><a href="product?action=edit&id=${product.id}" class="btn btn-success">Edit</a></td>
-                                    <td><button type="button" class="btn btn-warning" onclick="confirmActive(${product.id})">Active</button></td>
+                                    <td>${orderDetail.getProduct().getName()}</td>
+                                    <td>${orderDetail.quantity}</td>
+                                    <td><fmt:formatNumber value="${orderDetail.beforeDiscountMoney}"></fmt:formatNumber></td>
+                                    <td><fmt:formatNumber value="${orderDetail.afterDiscountMoney}"></fmt:formatNumber></td>
+                                    <td><a href="order_detail?action=edit&id=${orderDetail.id}" class="btn btn-success">Edit</a></td>
+                                    <td><button type="button" class="btn btn-warning" onclick="confirmDelete(${orderDetail.id})">Delete</button></td>
                                 </tr>
                             </c:forEach>
 
@@ -245,46 +263,8 @@
                     </div>
                     <!-- /.card-body -->
                     <div class="card-footer clearfix">
-                        <div class="row">
-                            <div id="pagination">
-                                <ul class="pagination">
-                                    <li class="page-item ${previous}">
-                                        <a class="page-link" href="brands?action=page&page=${1}">First</a>
-                                    </li>
-                                    <li class="page-item ${previous}">
-                                        <a class="page-link" href="product?action=page&page=${page-1}">Previous</a>
-                                    </li>
-                                    <c:forEach begin="1" end="${totalPage}" step="1" var="i">
-                                        <c:choose>
-                                            <c:when test="${page == 1}">
-                                                <li class="page-item active"><a class="page-link " href="product?action=page&page=${i}">${i}</a></li>
-                                            </c:when>
-                                            <c:otherwise>
-                                                <li class="page-item"><a class="page-link" href="product?action=page&page=${i}">${i}</a></li>
-                                            </c:otherwise>
-                                        </c:choose>
-                                    </c:forEach>
-                                    <li class="page-item ${next}">
-                                        <a class="page-link" href="product?action=page&page=${page+1}">Next</a>
-                                    </li>
-                                    <li class="page-item ${next}">
-                                        <a class="page-link" href="brands?action=page&page=${totalPage}">Last</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div style="position: absolute ; right: 30px">
-                                <a href="/product?action=create" class="btn btn-primary">Add new</a>
-                            </div>
-                        </div>
                     </div>
                 </div>
-
-
-
-
-
-
-
             </div><!-- /.container-fluid -->
         </section>
         <!-- /.content -->
@@ -308,15 +288,16 @@
 <script src="table/dist/js/adminlte.min.js"></script>
 <script src="table/dist/js/demo.js"></script>
 <script>
-    function confirmActive(id) {
-        let check = confirm("Are you sure to active this product?");
+    function confirmDelete(id) {
+        let check = confirm("Are you sure to delete?");
         if(check===true) {
-            window.location.href = ("product?action=active&id="+id);
+            window.location.href = ("order_detail?action=delete&id="+id);
         }
     }
 </script>
 </body>
 </html>
+
 
 
 

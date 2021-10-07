@@ -1,4 +1,8 @@
 package service.brand;
 
-public interface IBrandService {
+import model.Brand;
+import service.IGeneralService;
+
+public interface IBrandService extends IGeneralService<Brand> {
+
 }

@@ -226,16 +226,30 @@
                             <div class="row">
                                 <div class="col">
                                     <select name="category_id" >
-                                        <option value="1">Dien thoai</option>
-                                        <option value="2">Laptop</option>
-                                        <option value="3">May tinh bang</option>
+                                        <c:forEach items="${categories}" var="category">
+                                            <c:choose>
+                                                <c:when test="${category.id==product.category_id}">
+                                                    <option value="${category.id}" selected>${category.name}</option>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <option value="${category.id}">${category.name}</option>
+                                                </c:otherwise>
+                                            </c:choose>
+                                        </c:forEach>
                                     </select>
                                 </div>
                                 <div class="col">
                                     <select name="brand_id">
-                                        <option value="1">SamSung</option>
-                                        <option value="2">Iphone</option>
-                                        <option value="3">Xiaomi</option>
+                                        <c:forEach items="${brands}" var="brand">
+                                            <c:choose>
+                                                <c:when test="${brand.id==product.brand_id}">
+                                                    <option value="${brand.id}" selected>${brand.name}</option>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <option value="${brand.id}">${brand.name}</option>
+                                                </c:otherwise>
+                                            </c:choose>
+                                        </c:forEach>
                                     </select>
                                 </div>
                             </div>

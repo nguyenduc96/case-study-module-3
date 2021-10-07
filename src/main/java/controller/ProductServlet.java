@@ -1,8 +1,11 @@
 package controller;
 
+import model.Brand;
+import model.Category;
 import model.Product;
 import model.ProductDetail;
-import service.product.IProductService;
+import service.brand.BrandService;
+import service.category.CategoryService;
 import service.product.ProductService;
 import service.productdetail.ProductDetailService;
 
@@ -11,54 +14,64 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import static controller.BrandServlet.*;
+import static dao.brand.BrandDao.QUANTITY;
+import static dao.product.ProductDao.*;
+
 @WebServlet(name = "ProductServlet", value = "/product")
 public class ProductServlet extends HttpServlet {
+    public static final String DETAIL = "detail";
+    public static final String SHOW_DELETE_PRODUCT = "showDeleteProduct";
+    public static final String SEARCH = "search";
+    public static final String PRODUCT = "product";
     private static ProductService productService = new ProductService();
+    private static CategoryService categoryService = new CategoryService();
+    private static BrandService brandService = new BrandService();
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String action = request.getParameter("action");
+        String action = request.getParameter(ACTION);
 
-        if(action == null) {
-            action = "";
+        if (action == null) {
+            action = EMPTY;
         }
-        switch(action) {
-            case "create": {
-                showCreateForm(request,response);
+        switch (action) {
+            case CREATE: {
+                showCreateForm(request, response);
                 break;
             }
-            case "edit": {
-                showEditForm(request,response);
+            case EDIT: {
+                showEditForm(request, response);
                 break;
             }
-            case "delete": {
-                deleteProduct(request,response);
+            case DELETE: {
+                deleteProduct(request, response);
                 break;
             }
-            case "detail": {
-                showDetail(request,response);
+            case DETAIL: {
+                showDetail(request, response);
                 break;
             }
-            case "showDeleteProduct": {
-                showDeletedProduct(request,response);
+            case SHOW_DELETE_PRODUCT: {
+                showDeletedProduct(request, response);
                 break;
             }
-            case "active" : {
-                activeProduct(request,response);
+            case ACTIVE: {
+                activeProduct(request, response);
                 break;
             }
             default: {
-                showProduct(request,response);
+                showProduct(request, response);
                 break;
             }
         }
     }
 
     private void activeProduct(HttpServletRequest request, HttpServletResponse response) {
-        int id = Integer.parseInt(request.getParameter("id"));
+        int id = Integer.parseInt(request.getParameter(ID));
         try {
             productService.active(id);
             response.sendRedirect("product?action=showDeleteProduct");
@@ -68,22 +81,77 @@ public class ProductServlet extends HttpServlet {
     }
 
     private void showDeletedProduct(HttpServletRequest request, HttpServletResponse response) {
-        int  limit = 5;
-        int offset2 = getPage(request, 0);
-        request.setAttribute("page2",offset2);
-        int isActive = 0;
-        List<Product> products = productService.getByOffset(limit, offset2, isActive);
-        request.setAttribute("products",products);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("product/showDeleteProduct.jsp");
+        int numberActive = 0;
+        divisionPage(request, numberActive);
         try {
-            dispatcher.forward(request,response);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("product/showDeleteProduct.jsp");
+            dispatcher.forward(request, response);
         } catch (ServletException | IOException e) {
             e.printStackTrace();
         }
     }
 
+    private void divisionPage(HttpServletRequest request, int numberActive) {
+        int sizeOfList = productService.sizeOfList(numberActive);
+        final int LIMIT = 6;
+        int totalPage;
+        if (sizeOfList % LIMIT == 0) {
+            totalPage = sizeOfList / LIMIT;
+        } else {
+            totalPage = sizeOfList / LIMIT + 1;
+        }
+
+        if (totalPage == 0) {
+            totalPage = 1;
+        }
+
+        String inputPage = request.getParameter(PAGE);
+        if (inputPage == null) {
+            inputPage = "1";
+        }
+        int page = Integer.parseInt(inputPage);
+        int offset = (page - 1) * LIMIT;
+
+        String previous = EMPTY;
+        String next = EMPTY;
+
+        if (totalPage == 1) {
+            previous = DISABLED;
+            next = DISABLED;
+        }
+
+        if (page == 1) {
+            previous = DISABLED;
+        } else if (page == totalPage) {
+            next = DISABLED;
+        }
+
+        List<Product> products = productService.getByOffset(offset, LIMIT, numberActive);
+        request.setAttribute(TOTAL_PAGE, totalPage);
+        request.setAttribute("products", products);
+        request.setAttribute(ACTIVE, ACTIVE);
+        request.setAttribute(PAGE, page);
+        request.setAttribute(PREVIOUS, previous);
+        request.setAttribute(NEXT, next);
+    }
+
+//    private void showDeletedProduct(HttpServletRequest request, HttpServletResponse response) {
+//        int  limit = 5;
+//        int offset2 = getPage(request, 0);
+//        request.setAttribute("page2",offset2);
+//        int isActive = 0;
+//        List<Product> products = productService.getByOffset(limit, offset2, isActive);
+//        request.setAttribute("products",products);
+//        RequestDispatcher dispatcher = request.getRequestDispatcher("product/showDeleteProduct.jsp");
+//        try {
+//            dispatcher.forward(request,response);
+//        } catch (ServletException | IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
+
     private int getPage(HttpServletRequest request, int i) {
-        int countRecord = productService.countRecord(i);
+        int countRecord = productService.sizeOfList(i);
         int totalPage = countRecord / 5 + 1;
         request.setAttribute("totalPage", totalPage);
         String offset = request.getParameter("page");
@@ -107,108 +175,118 @@ public class ProductServlet extends HttpServlet {
     }
 
     private void showSearchProduct(HttpServletRequest request, HttpServletResponse response) {
-        List<Product> products ;
-        String search = request.getParameter("search");
-        if(search == null || search.equals("")) products = productService.getAll();
-        else products = productService.findByName(search);
-        request.setAttribute("products",products);
+        List<Product> products;
+        String search = request.getParameter(SEARCH);
+        if (search == null || search.equals(EMPTY)) {
+            products = productService.getAll();
+        } else {
+            products = productService.findByName(search);
+        }
+        request.setAttribute("products", products);
         RequestDispatcher dispatcher = request.getRequestDispatcher("product/showProduct.jsp");
         try {
-            dispatcher.forward(request,response);
-        } catch (ServletException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+            dispatcher.forward(request, response);
+        } catch (ServletException | IOException e) {
             e.printStackTrace();
         }
     }
 
     private void showDetail(HttpServletRequest request, HttpServletResponse response) {
         ProductDetailService productDetailService = new ProductDetailService();
-        int id = Integer.parseInt(request.getParameter("id"));
+        int id = Integer.parseInt(request.getParameter(ID));
         Product product = productService.select(id);
         ProductDetail productDetail = productDetailService.select(id);
-        request.setAttribute("product",product);
-        request.setAttribute("productDetail",productDetail);
+        request.setAttribute("product", product);
+        request.setAttribute("productDetail", productDetail);
+        sendBrandAndCategory(request);
         RequestDispatcher dispatcher = request.getRequestDispatcher("product/detailProduct.jsp");
         try {
-            dispatcher.forward(request,response);
-        } catch (ServletException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void showEditForm(HttpServletRequest request, HttpServletResponse response) {
-        int id = Integer.parseInt(request.getParameter("id"));
-        request.setAttribute("id",id);
-        Product product = productService.select(id);
-        request.setAttribute("product",product);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("product/editForm.jsp");
-        try {
-            dispatcher.forward(request,response);
-        } catch (ServletException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void showCreateForm(HttpServletRequest request, HttpServletResponse response) {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("product/createForm.jsp");
-        try {
-            dispatcher.forward(request,response);
-        } catch (ServletException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void showProduct(HttpServletRequest request, HttpServletResponse response) {
-        int  limit = 5;
-        int offset2 = getPage(request, 1);
-        request.setAttribute("page2",offset2);
-        int isActive = 1;
-        List<Product> products = productService.getByOffset(limit, offset2, isActive);
-        request.setAttribute("products",products);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("product/showProduct.jsp");
-        try {
-            dispatcher.forward(request,response);
+            dispatcher.forward(request, response);
         } catch (ServletException | IOException e) {
             e.printStackTrace();
         }
     }
 
+    private void showEditForm(HttpServletRequest request, HttpServletResponse response) {
+        int id = Integer.parseInt(request.getParameter(ID));
+        request.setAttribute(ID, id);
+        Product product = productService.select(id);
+        request.setAttribute("product", product);
+        sendBrandAndCategory(request);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("product/editForm.jsp");
+        try {
+            dispatcher.forward(request, response);
+        } catch (ServletException | IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void showCreateForm(HttpServletRequest request, HttpServletResponse response) {
+        sendBrandAndCategory(request);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("product/createForm.jsp");
+        try {
+            dispatcher.forward(request, response);
+        } catch (ServletException | IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void showProduct(HttpServletRequest request, HttpServletResponse response) {
+        int numberActive = 1;
+        divisionPage(request, numberActive);
+        try {
+            sendBrandAndCategory(request);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("product/showProduct.jsp");
+            dispatcher.forward(request, response);
+        } catch (ServletException | IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+//    private void showProduct(HttpServletRequest request, HttpServletResponse response) {
+//        int  limit = 5;
+//        int offset2 = getPage(request, 1);
+//        request.setAttribute("page2",offset2);
+//        int isActive = 1;
+//        List<Product> products = productService.getByOffset(limit, offset2, isActive);
+//        request.setAttribute("products",products);
+//        RequestDispatcher dispatcher = request.getRequestDispatcher("product/showProduct.jsp");
+//        try {
+//            dispatcher.forward(request,response);
+//        } catch (ServletException | IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String action = request.getParameter("action");
+        String action = request.getParameter(ACTION);
 
-        if(action == null) {
-            action = "";
+        if (action == null) {
+            action = EMPTY;
         }
-        switch(action) {
-            case "create": {
-                createNewProduct(request,response);
+        switch (action) {
+            case CREATE: {
+                createNewProduct(request, response);
                 break;
             }
-            case "edit": {
-                editProduct(request,response);
+            case EDIT: {
+                editProduct(request, response);
                 break;
             }
-            case "search": {
-                showSearchProduct(request,response);
+            case SEARCH: {
+                showSearchProduct(request, response);
                 break;
             }
             default: {
-                showProduct(request,response);
+                showProduct(request, response);
                 break;
             }
         }
     }
 
     private void deleteProduct(HttpServletRequest request, HttpServletResponse response) {
-        int id = Integer.parseInt(request.getParameter("id"));
+        int id = Integer.parseInt(request.getParameter(ID));
         try {
             productService.delete(id);
         } catch (SQLException e) {
@@ -222,44 +300,48 @@ public class ProductServlet extends HttpServlet {
     }
 
     private void editProduct(HttpServletRequest request, HttpServletResponse response) {
-        int id = Integer.parseInt(request.getParameter("id"));
-        Product product = getProductInfor(request);
+        int id = Integer.parseInt(request.getParameter(ID));
+        Product product = getProductInfo(request);
         product.setUpdated_at(new Date());
         product.setId(id);
         boolean isUpdate = productService.edit(product);
-        String message = "";
-        if(isUpdate) {
+        String message = EMPTY;
+        if (isUpdate) {
             message = "Changed Information!";
-        }
-        else {
+        } else {
             message = "Something Wrong?";
         }
-        request.setAttribute("message",message);
-        request.setAttribute("product",product);
+        request.setAttribute(MESSAGE, message);
+        request.setAttribute(PRODUCT, product);
+        sendBrandAndCategory(request);
         RequestDispatcher dispatcher = request.getRequestDispatcher("product/editForm.jsp");
         try {
-            dispatcher.forward(request,response);
-        } catch (ServletException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+            dispatcher.forward(request, response);
+        } catch (ServletException | IOException e) {
             e.printStackTrace();
         }
     }
 
+    private void sendBrandAndCategory(HttpServletRequest request) {
+        List<Category> categories = categoryService.getAll();
+        List<Brand> brands = brandService.getAll();
+        request.setAttribute("categories", categories);
+        request.setAttribute("brands", brands);
+    }
+
     private void createNewProduct(HttpServletRequest request, HttpServletResponse response) {
-        Product product = getProductInfor(request);
-        String message = "";
-        if(product == null) {
+        Product product = getProductInfo(request);
+        String message = EMPTY;
+        if (product == null) {
             message = "Something Wrong?";
-            request.setAttribute("message",message);
+            request.setAttribute(MESSAGE, message);
             RequestDispatcher dispatcher = request.getRequestDispatcher("product/createForm.jsp");
             try {
-                dispatcher.forward(request,response);
+                dispatcher.forward(request, response);
             } catch (ServletException | IOException e) {
                 e.printStackTrace();
             }
-        }
-        else {
+        } else {
             try {
                 productService.add(product);
             } catch (SQLException e) {
@@ -273,25 +355,25 @@ public class ProductServlet extends HttpServlet {
         }
     }
 
-    private Product getProductInfor(HttpServletRequest request) {
-        String name = request.getParameter("name");
-        String code = request.getParameter("code");
-        String image = request.getParameter("image");
-        int quantity = Integer.parseInt(request.getParameter("quantity"));
-        double price = Double.parseDouble(request.getParameter("price"));
-        double discount = Double.parseDouble(request.getParameter("discount"));
-        double discount_pct = Double.parseDouble(request.getParameter("discount_pct"));
-        int category_id = Integer.parseInt(request.getParameter("category_id"));
-        int brand_id = Integer.parseInt(request.getParameter("brand_id"));
-        String description = request.getParameter("description");
+    private Product getProductInfo(HttpServletRequest request) {
+        String name = request.getParameter(NAME);
+        String code = request.getParameter(CODE);
+        String image = request.getParameter(IMAGE);
+        int quantity = Integer.parseInt(request.getParameter(QUANTITY));
+        double price = Double.parseDouble(request.getParameter(PRICE));
+        double discount = Double.parseDouble(request.getParameter(DISCOUNT));
+        double discount_pct = Double.parseDouble(request.getParameter(DISCOUNT_PCT));
+        int category_id = Integer.parseInt(request.getParameter(CATEGORY_ID));
+        int brand_id = Integer.parseInt(request.getParameter(BRAND_ID));
+        String description = request.getParameter(DESCRIPTION);
         Date create = new Date();
         java.sql.Date create_at = new java.sql.Date(create.getTime());
 
-        if(name.equals("") || code.equals("") || image.equals("")){
+        if (name.equals(EMPTY) || code.equals(EMPTY) || image.equals(EMPTY)) {
             return null;
         }
 
-        Product product = new Product(name,code,image,quantity,price,discount,discount_pct,true,category_id,brand_id,description,create_at);
+        Product product = new Product(name, code, image, quantity, price, discount, discount_pct, true, category_id, brand_id, description, create_at);
         return product;
     }
 }
