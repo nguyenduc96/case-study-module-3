@@ -1,0 +1,58 @@
+use project_case_study_module_3;
+
+-- add role
+insert into role (name)
+values ('customer');
+insert into role (name)
+values ('admin');
+
+-- add admin
+
+insert into user (username, password, first_name, last_name, number_phone, email,
+                  address, sex, isActive, role_id, date_of_birth, created_at)
+values ('nguyenduc96', 'huynhduc', 'Nguyen', 'Duc', '0987656789', 'nguyenduc@gmail.com',
+        'Vinh Phuc', 'Male', 1, 2, 1996 - 09 - 30, now());
+
+insert into user (username, password, first_name, last_name, number_phone, email,
+                  address, sex, isActive, role_id, date_of_birth, created_at)
+values ('tuananh', 'tuananh', 'Nguyen', 'Tuan Anh', '0987659999', 'tuananh@gmail.com',
+        'Ha Noi', 'Male', 1, 2, 1997 - 09 - 30, now());
+
+insert into user (username, password, first_name, last_name, number_phone, email,
+                  address, sex, isActive, role_id, date_of_birth, created_at)
+values ('leanhtu', 'leanhtu', 'Le', 'Tu', '0987658888', 'anhtu@gmail.com',
+        'Ha Noi', 'Male', 1, 2, 1996 - 08 - 30, now());
+
+insert into user (username, password, first_name, last_name, number_phone, email,
+                  address, sex, isActive, role_id, date_of_birth, created_at)
+values ('phamdat', 'phamdat', 'Pham', 'Dat', '0987656666', 'phamdat@gmail.com',
+        'Ha Noi', 'Male', 1, 2, 1998 - 05 - 20, now());
+
+        -- add category
+        insert into category(name, image)
+        values ('Phone', 'src/main/webapp/category/image/phone.png');
+
+        insert into category(name, image)
+        values ('Laptop', 'src/main/webapp/category/image/desktopLogo.png');
+
+        insert into category(name, image)
+        values ('Tablet', 'src/main/webapp/category/image/tablet.png');
+
+        -- add brand
+        insert into brand (name, image)
+        values ('Xiaomi', 'src/main/webapp/brand/image/mi.png');
+
+        insert into brand (name, image)
+        values ('Apple', 'src/main/webapp/brand/image/appleLogo.png');
+
+        insert into brand (name, image)
+        values ('Asus', 'src/main/webapp/brand/image/asus.png');
+
+        insert into brand (name, image)
+        values ('Samsung', 'src/main/webapp/brand/image/samsungLogo.png');
+
+        insert into brand (name, image)
+        values ('HP', 'src/main/webapp/brand/image/HPLogo.png');
+
+        insert into brand (name, image)
+        values ('Oppo', 'src/main/webapp/brand/image/oppo.png');
