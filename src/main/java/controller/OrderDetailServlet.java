@@ -11,6 +11,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 @WebServlet(name = "OrderDetailServlet", value = "/order_detail")
@@ -30,6 +31,26 @@ public class OrderDetailServlet extends HttpServlet {
                 showEditForm(request,response);
                 break;
             }
+            case "delete" : {
+                deleteOrderDetail(request,response);
+                break;
+            }
+        }
+    }
+
+    private void deleteOrderDetail(HttpServletRequest request, HttpServletResponse response) {
+        int id = Integer.parseInt(request.getParameter("id"));
+        try {
+            OrderDetail orderDetail =  orderDetailService.select(id);
+            orderDetailService.delete(id);
+            Order order = orderService.select(orderDetail.getOrder_id());
+            List<OrderDetail> orderDetails = orderDetailService.selectByOrderId(orderDetail.getOrder_id());
+            request.setAttribute("order",order);
+            request.setAttribute("orderDetails",orderDetails);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("order?action=detail&id="+id);
+            dispatcher.forward(request,response);
+        } catch (SQLException | ServletException | IOException e) {
+            e.printStackTrace();
         }
     }
 

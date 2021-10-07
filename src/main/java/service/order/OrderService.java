@@ -48,4 +48,8 @@ public class OrderService implements IOrderService {
     public int sizeOfList(int isActive) {
         return orderDao.sizeOfList(isActive);
     }
+
+//    public List<Order> findByUserId(int user_id) {
+//        return orderDao.findByUserId(user_id);
+//    }
 }

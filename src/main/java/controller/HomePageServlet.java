@@ -1,6 +1,10 @@
 package controller;
 
+import model.Brand;
+import model.Category;
 import model.Product;
+import service.brand.BrandService;
+import service.category.CategoryService;
 import service.product.ProductService;
 
 import javax.servlet.*;
@@ -12,6 +16,8 @@ import java.util.List;
 @WebServlet(name = "HomePageServlet", value = "/homePage")
 public class HomePageServlet extends HttpServlet {
     private ProductService productService = new ProductService();
+    private CategoryService categoryService = new CategoryService();
+    private BrandService brandService = new BrandService();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
@@ -36,6 +42,15 @@ public class HomePageServlet extends HttpServlet {
 
         List<Product> newProduct = productService.getNewProduct(6);
         request.setAttribute("newProduct",newProduct);
+
+        List<Category> categories = categoryService.getAll();
+        request.setAttribute("categories",categories);
+
+        List<Brand> brands = brandService.getAll();
+        request.setAttribute("brands",brands);
+
+        List<Product> products = productService.getAll();
+        request.setAttribute("products",products);
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("viewCusomer/homepage.jsp");
         try {

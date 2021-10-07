@@ -28,7 +28,15 @@ public class ProductService implements IProductService {
 
     @Override
     public List<Product> getAll() {
-        return productDao.getAll();
+        List<Product> products = productDao.getAll();
+        for(Product product : products) {
+            Category category = categoryDao.select(product.getCategory_id());
+            Brand brand = brandDao.select(product.getBrand_id());
+            product.setCategory(category);
+            product.setBrand(brand);
+        }
+        return products;
+
     }
 
     @Override
