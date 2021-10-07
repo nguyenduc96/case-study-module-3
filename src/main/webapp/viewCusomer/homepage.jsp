@@ -462,24 +462,7 @@
                                                                             </div>
                                                                             <div class="col-md-6 static-menu">
                                                                                 <div class="menu">
-                                                                                    <ul>
-                                                                                        <li>
-                                                                                            <a href="#" class="main-menu">Sports &amp; Outdoors</a>
-                                                                                            <ul>
-                                                                                                <li><a href="#" >Camping &amp; Hiking</a></li>
-                                                                                                <li><a href="#" >Cameras &amp; Photo</a></li>
-                                                                                                <li><a href="#" >Cables &amp; Connectors</a></li>
-                                                                                            </ul>
-                                                                                        </li>
-                                                                                        <li>
-                                                                                            <a href="#"  class="main-menu">Electronics</a>
-                                                                                            <ul>
-                                                                                                <li><a href="#" >Battereries &amp; Chargers</a></li>
-                                                                                                <li><a href="#" >Bath &amp; Body</a></li>
-                                                                                                <li><a href="#" >Outdoor &amp; Traveling</a></li>
-                                                                                            </ul>
-                                                                                        </li>
-                                                                                    </ul>
+
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -551,21 +534,8 @@
                                                             </div>
                                                         </div>
                                                     </li>
-                                                    <li class="">
-                                                        <p class="close-menu"></p>
-                                                        <a href="blog-page.html" class="clearfix">
-                                                            <strong>Blog</strong>
-                                                            <span class="label"></span>
-                                                        </a>
-                                                    </li>
 
-                                                    <li class="hidden-md">
-                                                        <p class="close-menu"></p>
-                                                        <a href="#" class="clearfix">
-                                                            <strong>Buy Theme!</strong>
 
-                                                        </a>
-                                                    </li>
                                                 </ul>
 
                                             </div>
@@ -969,16 +939,13 @@
                                     <div class="select_category filter_type icon-select">
                                         <select class="no-border" name="category_id">
                                             <option value="0">All Categories</option>
-                                            <option value="78">Apparel</option>
-                                            <option value="77">Cables &amp; Connectors</option>
-                                            <option value="82">Cameras &amp; Photo</option>
-                                            <option value="80">Flashlights &amp; Lamps</option>
-                                            <option value="81">Mobile Accessories</option>
-                                            <option value="79">Video Games</option>
-                                            <option value="20">Jewelry &amp; Watches</option>
-                                            <option value="76">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Earings</option>
-                                            <option value="26">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Wedding Rings</option>
-                                            <option value="27">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Men Watches</option>
+                                            <option value="78">Apple</option>
+                                            <option value="77">SAMSUNG</option>
+                                            <option value="82">OPPO</option>
+                                            <option value="82">Xiaomi</option>
+                                            <option value="82">Asus</option>
+                                            <option value="82">Dell</option>
+                                            <option value="82">HP</option>
                                         </select>
                                     </div>
 
@@ -1983,45 +1950,7 @@
                         </div>
                     </div>
 
-                    <div class="col-sm-12 collapsed-block footer-links">
-                        <div class="module clearfix">
-                            <div class="modcontent">
-                                <hr class="footer-lines">
-                                <div class="footer-directory-title">
-                                    <h4 class="label-link">Top Stores : Brand Directory | Store Directory</h4>
-                                    <ul class="footer-directory">
-                                        <li>
-                                            <h4>MOST SEARCHED KEYWORDS MARKET:</h4>
-                                            <a href="#">Xiaomi Mi3</a> | <a href="#">Digiflip Pro XT 712 Tablet</a> | <a href="#">Mi 3 Phones</a> | <a href="#">View all</a></li>
-                                        <li>
-                                            <h4>MOBILES:</h4>
-                                            <a href="#">Moto E</a> | <a href="#">Samsung Mobile</a> | <a href="#">Micromax Mobile</a> | <a href="#">Nokia Mobile</a> | <a href="#">HTC Mobile</a> | <a href="#">Sony Mobile</a> | <a href="#">Apple Mobile</a> | <a href="#">LG Mobile</a> | <a href="#">Karbonn Mobile</a> | <a href="#">View all</a></li>
-                                        <li>
-                                            <h4>CAMERA:</h4>
-                                            <a href="#">Nikon Camera</a> | <a href="#">Canon Camera</a> | <a href="#">Sony Camera</a> | <a href="#">Samsung Camera</a> | <a href="#">Point shoot camera</a> | <a href="#">Camera Lens</a> | <a href="#">Camera Tripod</a> | <a href="#">Camera Bag</a> | <a href="#">View all</a></li>
-                                        <li>
-                                            <h4>LAPTOPS:</h4>
-                                            <a href="#">Apple Laptop</a> | <a href="#">Acer Laptop</a> | <a href="#">Sony Laptop</a> | <a href="#">Dell Laptop</a> | <a href="#">Asus Laptop</a> | <a href="#">Toshiba Laptop</a> | <a href="#">LG Laptop</a> | <a href="#">HP Laptop</a> | <a href="#">Notebook</a> | <a href="#">View all</a></li>
-                                        <li>
-                                            <h4>TVS:</h4>
-                                            <a href="#">Sony TV</a> | <a href="#">Samsung TV</a> | <a href="#">LG TV</a> | <a href="#">Panasonic TV</a> | <a href="#">Onida TV</a> | <a href="#">Toshiba TV</a> | <a href="#">Philips TV</a> | <a href="#">Micromax TV</a> | <a href="#">LED TV</a> | <a href="#">LCD TV</a> | <a href="#">Plasma TV</a> | <a href="#">3D TV</a> | <a href="#">Smart TV</a> | <a href="#">View all</a></li>
-                                        <li>
-                                            <h4>TABLETS:</h4>
-                                            <a href="#">Micromax Tablets</a> | <a href="#">HCL Tablets</a> | <a href="#">Samsung Tablets</a> | <a href="#">Lenovo Tablets</a> | <a href="#">Karbonn Tablets</a> | <a href="#">Asus Tablets</a> | <a href="#">Apple Tablets</a> | <a href="#">View all</a></li>
-                                        <li>
-                                            <h4>WATCHES:</h4>
-                                            <a href="#">FCUK Watches</a> | <a href="#">Titan Watches</a> | <a href="#">Casio Watches</a> | <a href="#">Fastrack Watches</a> | <a href="#">Timex Watches</a> | <a href="#">Fossil Watches</a> | <a href="#">Diesel Watches</a> | <a href="#">Luxury Watches</a> | <a href="#">View all</a></li>
-                                        <li>
-                                            <h4>CLOTHING:</h4>
-                                            <a href="#">Shirts</a> | <a href="#">Jeans</a> | <a href="#">T shirts</a> | <a href="#">Kurtis</a> | <a href="#">Sarees</a> | <a href="#">Levis Jeans</a> | <a href="#">Killer Jeans</a> | <a href="#">Pepe Jeans</a> | <a href="#">Arrow Shirts</a> | <a href="#">Ethnic Wear</a> | <a href="#">Formal Shirts</a> | <a href="#">Peter England Shirts</a> | <a href="#">View all</a></li>
-                                        <li>
-                                            <h4>FOOTWEAR:</h4>
-                                            <a href="#">Shoes</a> | <a href="#">Casual Shoes</a> | <a href="#">Adidas Shoes</a> | <a href="#">Gas Shoes</a> | <a href="#">Puma Shoes</a> | <a href="#">Reebok Shoes</a> | <a href="#">Woodland Shoes</a> | <a href="#">Red tape Shoes</a> | <a href="#">Nike Shoes</a> | <a href="#">View all</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
             </div>
         </section>
@@ -2031,9 +1960,8 @@
         <div class="footer-bottom-block ">
             <div class=" container">
                 <div class="row">
-                    <div class="col-sm-5 copyright-text"> © 2016 Market. All Rights Reserved. </div>
+                    <div class="col-sm-5 copyright-text"> © 2021 Store. All Rights Reserved. </div>
                     <div class="col-sm-7">
-                        <div class="block-payment text-right"><img src="theme/image/demo/content/payment.png" alt="payment" title="payment" ></div>
                     </div>
                     <!--Back To Top-->
                     <div class="back-to-top"><i class="fa fa-angle-up"></i><span> Top </span></div>
