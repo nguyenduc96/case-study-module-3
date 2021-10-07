@@ -1,7 +1,9 @@
 package controller;
 
 import model.Brand;
+import model.Role;
 import model.User;
+import service.Role.RoleService;
 import service.user.UserService;
 
 import javax.servlet.*;
@@ -41,6 +43,7 @@ public class UserServlet extends HttpServlet {
     private User user;
     private static final long serialVersionUID = 1L;
     private final UserService USER_SERVICE = new UserService();
+    private final RoleService ROLE_SERVICE = new RoleService();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter(ACTION);
@@ -67,16 +70,16 @@ public class UserServlet extends HttpServlet {
         String username = request.getParameter(USERNAME);
         String password = request.getParameter(PASSWORD);
         User user = USER_SERVICE.findUser(username, password);
-        RequestDispatcher dispatcher = null;
         if (user == null) {
             request.setAttribute(MESSAGE, "Username or password incorrect");
-            dispatcher = request.getRequestDispatcher("user/login.jsp");
             try {
-                dispatcher.forward(request, response);
+                request.getRequestDispatcher("index.jsp").include(request, response);
             } catch (ServletException | IOException e) {
                 e.printStackTrace();
             }
         } else {
+            HttpSession session = request.getSession();
+            session.setAttribute("user", user);
             try {
                 response.sendRedirect("categories");
             } catch (IOException e) {
@@ -154,7 +157,6 @@ public class UserServlet extends HttpServlet {
             e.printStackTrace();
         }
         requestDispatcher.forward(request, response);
-
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -177,7 +179,7 @@ public class UserServlet extends HttpServlet {
                 listUser(request, response);
                 break;
             }
-            case "login": {
+            case LOGIN: {
                 showFormLogin(request, response);
                 break;
             }
@@ -239,6 +241,11 @@ public class UserServlet extends HttpServlet {
         }
 
         List<User> users = USER_SERVICE.getByOffset(offset, LIMIT, numberActive);
+        for (User user: users) {
+            int role_id = user.getRole_id();
+            Role role = ROLE_SERVICE.select(role_id);
+            user.setRole(role);
+        }
         request.setAttribute(TOTAL_PAGE, totalPage);
         request.setAttribute("users", users);
         request.setAttribute(ACTIVE, ACTIVE);
@@ -248,7 +255,7 @@ public class UserServlet extends HttpServlet {
     }
 
     private void showFormLogin(HttpServletRequest request, HttpServletResponse response) {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("user/login.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
         try {
             dispatcher.forward(request, response);
         } catch (ServletException | IOException e) {

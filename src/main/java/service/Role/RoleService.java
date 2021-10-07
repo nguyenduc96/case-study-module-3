@@ -17,7 +17,7 @@ public class RoleService implements IRoleService{
 
     @Override
     public Role select(int id) {
-        return null;
+        return roleDAO.select(id);
     }
 
     @Override
@@ -36,7 +36,17 @@ public class RoleService implements IRoleService{
     }
 
     @Override
-    public List<Role> getByOffset(int limit, int offset) {
+    public List<Role> getByOffset(int offset, int limit, int isActive) {
         return null;
+    }
+
+    @Override
+    public boolean active(int id) throws SQLException {
+        return false;
+    }
+
+    @Override
+    public int sizeOfList(int isActive) {
+        return 0;
     }
 }

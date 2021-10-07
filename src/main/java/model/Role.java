@@ -5,8 +5,17 @@ import java.time.LocalDate;
 public class Role {
     private int id;
     private String name;
-    private boolean isActive = true;
+    private boolean isActive;
     private String note;
+
+    public Role() {
+    }
+
+    public Role(int id, String name, boolean isActive) {
+        this.id = id;
+        this.name = name;
+        this.isActive = isActive;
+    }
 
     public Role(int id, String name, boolean isActive, String note) {
         this.id = id;

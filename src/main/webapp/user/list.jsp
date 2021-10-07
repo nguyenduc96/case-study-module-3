@@ -196,6 +196,7 @@
                                 <th>Email</th>
                                 <th>Address</th>
                                 <th>Sex</th>
+                                <th>Role</th>
                                 <th></th>
                             </tr>
                             </thead>
@@ -213,6 +214,7 @@
                                         <td>${user.email}</td>
                                         <td>${user.address}</td>
                                         <td>${user.sex}</td>
+                                        <th>${user.getRole().getName()}</th>
                                         <td>
                                             <button><a href="categories?action=edit&id=${user.id}">Edit</a></button>
                                             <button><a onclick="confirmDelete(${user.id})">Delete</a></button>

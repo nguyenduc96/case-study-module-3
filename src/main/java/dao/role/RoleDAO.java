@@ -11,24 +11,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RoleDAO implements IRoleDAO {
+    public static final String SELECT_ALL_ROLE = "select * from role";
+    public static final String SELECT_ROLE_BY_ID = "select * from role where id = ?";
+    public static final String INSERT_INTO_ROLE = "insert into role (name) value (?)";
     private Connection connection = DBConnection.getConnection();
 
     @Override
     public void add(Role role) throws SQLException {
-
+        PreparedStatement statement = connection.prepareStatement(INSERT_INTO_ROLE);
     }
 
     @Override
     public Role select(int id) {
         Role role = null;
         try {
-            PreparedStatement statement = connection.prepareStatement("SELECT * from role where id = ?");
+            PreparedStatement statement = connection.prepareStatement(SELECT_ROLE_BY_ID);
             statement.setInt(1, id);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 String name = resultSet.getString("name");
-                String note = resultSet.getString("note");
-                role = new Role(id, name, true, note);
+                role = new Role(id, name, true);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -40,7 +42,7 @@ public class RoleDAO implements IRoleDAO {
     public List<Role> getAll() {
         List<Role> roles = new ArrayList<>();
         try {
-            PreparedStatement statement = connection.prepareStatement("SELECT * from Role");
+            PreparedStatement statement = connection.prepareStatement(SELECT_ALL_ROLE);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 int id = resultSet.getInt("id");
@@ -66,7 +68,17 @@ public class RoleDAO implements IRoleDAO {
     }
 
     @Override
-    public List<Role> getByOffset(int limit, int offset) {
+    public List<Role> getByOffset(int offset, int limit, int isActive) {
         return null;
+    }
+
+    @Override
+    public boolean active(int id) throws SQLException {
+        return false;
+    }
+
+    @Override
+    public int sizeOfList(int isActive) {
+        return 0;
     }
 }

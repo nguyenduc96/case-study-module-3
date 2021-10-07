@@ -1,6 +1,7 @@
 package controller;
 
 import model.Category;
+import model.User;
 import service.category.CategoryService;
 
 import javax.servlet.*;
@@ -18,37 +19,44 @@ public class CategoryServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String action = request.getParameter(ACTION);
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("user");
+        if (user!= null) {
+            String action = request.getParameter(ACTION);
 
-        if (action == null) {
-            action = EMPTY;
+            if (action == null) {
+                action = EMPTY;
+            }
+            switch (action) {
+                case CREATE: {
+                    showCreateForm(request, response);
+                    break;
+                }
+                case EDIT: {
+                    showEditForm(request, response);
+                    break;
+                }
+                case DELETE: {
+                    deleteCategoryInfo(request, response);
+                    break;
+                }
+                case LIST_DEL: {
+                    showListDelete(request, response);
+                    break;
+                }
+                case ACTIVE: {
+                    activeCategoryInfo(request, response);
+                    break;
+                }
+                default: {
+                    showAll(request, response);
+                    break;
+                }
+            }
+        } else {
+            response.sendRedirect("/users?action=login");
         }
-        switch (action) {
-            case CREATE: {
-                showCreateForm(request, response);
-                break;
-            }
-            case EDIT: {
-                showEditForm(request, response);
-                break;
-            }
-            case DELETE: {
-                deleteCategoryInfo(request, response);
-                break;
-            }
-            case LIST_DEL: {
-                showListDelete(request, response);
-                break;
-            }
-            case ACTIVE: {
-                activeCategoryInfo(request, response);
-                break;
-            }
-            default: {
-                showAll(request, response);
-                break;
-            }
-        }
+
     }
 
     private void showAll(HttpServletRequest request, HttpServletResponse response) {
