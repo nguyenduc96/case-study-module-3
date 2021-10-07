@@ -95,6 +95,18 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
+                                <a href="/brands" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>List brand</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/categories" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>List category</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
                                 <a href="/product" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Quản lí sản phẩm</p>
@@ -186,7 +198,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col">
-                        <img src="${product.image}" alt="product" height="200px" width="200px">
+                        <img src="${product.image}" alt="" width="200px" height="200px">
                         <p><c:out value="${product.id}"></c:out></p>
                         <p><c:out value="${product.name}"></c:out></p>
                         <p><c:out value="${product.code}"></c:out></p>
@@ -194,71 +206,66 @@
                         <p><c:out value="${product.price}"></c:out></p>
                         <p><c:out value="${product.discount}"></c:out></p>
                         <p><c:out value="${product.discount_pct}"></c:out></p>
-                        <p><c:out value="${product.getCategory()}"></c:out></p>
-                        <p><c:out value="${product.getBrand()}"></c:out></p>
+                        <p><c:out value="${product.getCategory().getName()}"></c:out></p>
+                        <p><c:out value="${product.getBrand().getName()}"></c:out></p>
                         <p><c:out value="${product.description}"></c:out></p>
                         <p><c:out value="${product.created_at}"></c:out></p>
                         <p><c:out value="${product.updated_at}"></c:out></p>
                     </div>
-                    <div>
-                        <form action="productdetail?action=edit&product_id=${product.id}" method="post">
+                    <div class="col">
+                        <form action="productdetail?action=edit&id=${productDetail.id}">
                             <p>
                                 <label>Image</label>
                                 <input type="text" name="image"  value="${productDetail.image}">
                             </p>
                             <p>
                                 <label>Screen Tech</label>
-                                <input type="text" name="screen_tech"  value="${productDetail.screen_tech}">
+                                <input type="text" name="image"  value="${productDetail.screen_tech}">
                             </p>
                             <p>
                                 <label>Screen resolution</label>
-                                <input type="text" name="screen_resolution"  value="${productDetail.screen_resolution}">
+                                <input type="text" name="image"  value="${productDetail.screen_resolution}">
                             </p>
                             <p>
                                 <label>Front Camera</label>
-                                <input type="text" name="front_camera_tech"  value="${productDetail.front_camera_tech}">
+                                <input type="text" name="image"  value="${productDetail.front_camera_tech}">
                             </p>
                             <p>
                                 <label>Rear Camera</label>
-                                <input type="text" name="rear_camera_teach"  value="${productDetail.rear_camera_teach}">
+                                <input type="text" name="image"  value="${productDetail.rear_camera_teach}">
                             </p>
                             <p>
                                 <label>Operator System</label>
-                                <input type="text" name="operator_system"  value="${productDetail.operator_system}">
+                                <input type="text" name="image"  value="${productDetail.operator_system}">
                             </p>
                             <p>
                                 <label>CPU</label>
-                                <input type="text" name="cpu"  value="${productDetail.cpu}">
+                                <input type="text" name="image"  value="${productDetail.cpu}">
                             </p>
                             <p>
                                 <label>RAM</label>
-                                <input type="text" name="ram"  value="${productDetail.ram}">
+                                <input type="text" name="image"  value="${productDetail.ram}">
                             </p>
                             <p>
                                 <label>Memory</label>
-                                <input type="text" name="memory"  value="${productDetail.memory}">
+                                <input type="text" name="image"  value="${productDetail.memory}">
                             </p>
                             <p>
                                 <label>Connect</label>
-                                <input type="text" name="connect"  value="${productDetail.connect}">
+                                <input type="text" name="image"  value="${productDetail.connect}">
                             </p>
                             <p>
                                 <label>Pin</label>
-                                <input type="text" name="pin"  value="${productDetail.pin}">
+                                <input type="text" name="image"  value="${productDetail.pin}">
                             </p>
                             <p>
                                 <label>Charge</label>
-                                <input type="text" name="charge"  value="${productDetail.charge}">
+                                <input type="text" name="image"  value="${productDetail.charge}">
                             </p>
-                            <div class="row">
-                                <button type="submit">Save</button>
-                                <a href="/productdetail?action=delete&id=${productDetail.id}&product_id=${product.id}" class="btn btn-outline-warning">Delete Detail</a>
-                            </div>
+                            <button type="submit">Save</button>
                         </form>
                     </div>
                 </div>
-
-
             </div><!-- /.container-fluid -->
         </section>
         <!-- /.content -->

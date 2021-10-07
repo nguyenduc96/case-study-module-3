@@ -32,7 +32,7 @@ public class ProductServlet extends HttpServlet {
         User user = (User) session.getAttribute("user");
         if (user != null) {
             if (user.getRole_id() == 1) {
-                response.sendRedirect("login?action=register");
+                response.sendRedirect("/homePage");
             } else {
 
                 String action = request.getParameter(ACTION);

@@ -90,6 +90,18 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
+                                <a href="/brands" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>List brand</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/categories" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>List category</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
                                 <a href="/product" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Quản lí sản phẩm</p>
@@ -192,7 +204,7 @@
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <table class="table table-bordered">
+                        <table class="table table-striped">
                             <thead>
                             <tr>
                                 <th scope="col">Product ID</th>
@@ -237,7 +249,7 @@
                                     </li>
                                     <c:forEach begin="1" end="${totalPage}" step="1" var="i">
                                         <c:choose>
-                                            <c:when test="${page == 1}">
+                                            <c:when test="${page == i}">
                                                 <li class="page-item active"><a class="page-link " href="product?action=page&page=${i}">${i}</a></li>
                                             </c:when>
                                             <c:otherwise>
@@ -259,11 +271,6 @@
                         </div>
                     </div>
                 </div>
-
-
-
-
-
 
 
             </div><!-- /.container-fluid -->

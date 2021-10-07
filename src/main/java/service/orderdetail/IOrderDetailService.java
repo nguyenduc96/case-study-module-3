@@ -1,4 +1,7 @@
 package service.orderdetail;
 
-public interface IOrderDetailService {
+import model.OrderDetail;
+import service.IGeneralService;
+
+public interface IOrderDetailService extends IGeneralService<OrderDetail> {
 }

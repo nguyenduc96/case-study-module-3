@@ -1,7 +1,11 @@
 package service.product;
 
+import dao.brand.BrandDao;
+import dao.category.CategoryDao;
 import dao.product.IProductDao;
 import dao.product.ProductDao;
+import model.Brand;
+import model.Category;
 import model.Product;
 
 import java.sql.SQLException;
@@ -9,6 +13,8 @@ import java.util.List;
 
 public class ProductService implements IProductService {
     private static ProductDao productDao = new ProductDao();
+    private static CategoryDao categoryDao = new CategoryDao();
+    private static BrandDao brandDao = new BrandDao();
 
     @Override
     public void add(Product product) throws SQLException {
@@ -22,7 +28,6 @@ public class ProductService implements IProductService {
 
     @Override
     public List<Product> getAll() {
-
         return productDao.getAll();
     }
 
@@ -38,7 +43,14 @@ public class ProductService implements IProductService {
 
     @Override
     public List<Product> getByOffset(int offset, int limit, int isActive) {
-        return productDao.getByOffset(offset, limit, isActive);
+        List<Product> products = productDao.getByOffset(offset, limit, isActive);
+        for(Product product : products) {
+            Category category = categoryDao.select(product.getCategory_id());
+            Brand brand = brandDao.select(product.getBrand_id());
+            product.setCategory(category);
+            product.setBrand(brand);
+        }
+        return products;
     }
 
     @Override
@@ -56,5 +68,13 @@ public class ProductService implements IProductService {
     public List<Product> findByName(String name) {
         name = "%" + name + "%";
         return productDao.findByName(name);
+    }
+
+    public List<Product> getNewProduct(int length) {
+        return productDao.getNewProduct(length);
+    }
+
+    public List<Product> selectByCategory(int category_id,int limit) {
+        return productDao.selectByCategory(category_id,limit);
     }
 }

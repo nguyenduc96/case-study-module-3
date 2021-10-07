@@ -1,4 +1,7 @@
 package service.order;
 
-public interface IOrderService {
+import model.Order;
+import service.IGeneralService;
+
+public interface IOrderService extends IGeneralService<Order> {
 }

@@ -1,3 +1,4 @@
+
 <%--
   Created by IntelliJ IDEA.
   User: nguyendangtuananh
@@ -6,6 +7,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="ftm" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html lang="en">
 <head>
     <title>Market - Premium Multipurpose HTML5/CSS3 Theme</title>
@@ -20,7 +23,7 @@
 
     <!-- Favicon
 	============================================ -->
-    <link rel="shortcut icon" href="theme/icon/favicon.png">
+    <link rel="shortcut icon" href="viewCusomer/theme/icon/favicon.png">
 
     <!-- Google web fonts
 	============================================ -->
@@ -28,22 +31,22 @@
 
     <!-- Libs CSS
 	============================================ -->
-    <link rel="stylesheet" href="theme/css/bootstrap/css/bootstrap.min.css">
-    <link href="theme/css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="theme/js/datetimepicker/bootstrap-datetimepicker.min.css" rel="stylesheet">
-    <link href="theme/js/owl-carousel/owl.carousel.css" rel="stylesheet">
-    <link href="theme/css/themecss/lib.css" rel="stylesheet">
-    <link href="theme/js/jquery-ui/jquery-ui.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="viewCusomer/theme/css/bootstrap/css/bootstrap.min.css">
+    <link href="viewCusomer/theme/css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="viewCusomer/theme/js/datetimepicker/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <link href="viewCusomer/theme/js/owl-carousel/owl.carousel.css" rel="stylesheet">
+    <link href="viewCusomer/theme/css/themecss/lib.css" rel="stylesheet">
+    <link href="viewCusomer/theme/js/jquery-ui/jquery-ui.min.css" rel="stylesheet">
 
     <!-- Theme CSS
         ============================================ -->
-    <link href="theme/css/themecss/so_megamenu.css" rel="stylesheet">
-    <link href="theme/css/themecss/so-categories.css" rel="stylesheet">
-    <link href="theme/css/themecss/so-listing-tabs.css" rel="stylesheet">
-    <link href="theme/css/footer1.css" rel="stylesheet">
-    <link href="theme/css/header2.css" rel="stylesheet">
-    <link id="color_scheme" href="theme/css/home2.css" rel="stylesheet">
-    <link href="theme/css/responsive.css" rel="stylesheet">
+    <link href="viewCusomer/theme/css/themecss/so_megamenu.css" rel="stylesheet">
+    <link href="viewCusomer/theme/css/themecss/so-categories.css" rel="stylesheet">
+    <link href="viewCusomer/theme/css/themecss/so-listing-tabs.css" rel="stylesheet">
+    <link href="viewCusomer/theme/css/footer1.css" rel="stylesheet">
+    <link href="viewCusomer/theme/css/header2.css" rel="stylesheet">
+    <link id="color_scheme" href="viewCusomer/theme/css/home2.css" rel="stylesheet">
+    <link href="viewCusomer/theme/css/responsive.css" rel="stylesheet">
 
 </head>
 <body class="common-home res layout-home1">
@@ -60,7 +63,7 @@
                 <div class="row">
                     <div class="header-top-left form-inline col-lg-6 col-md-5 col-sm-6 compact-hidden hidden-sm hidden-xs">
                         <div class="form-group navbar-welcome " >
-                            Welcome to market <a href="register.html"><strong>Join Free</strong></a> or <a href="login.html"><strong>Sign in</strong></a>
+
                         </div>
                     </div>
                     <div class="header-top-right collapsed-block text-right col-lg-6 col-md-7 col-sm-12 col-xs-12 compact-hidden">
@@ -68,26 +71,20 @@
                         <div class="tabBlock" id="TabBlock-1">
                             <ul class="top-link list-inline">
                                 <li class="account btn-group" id="my_account">
-                                    <a href="#" title="My Account" class="btn btn-xs dropdown-toggle" data-toggle="dropdown"> <span class="hidden-xs">My Account</span> <span class="fa fa-angle-down "></span></a>
-                                    <ul class="dropdown-menu ">
-                                        <li><a href="register.html"><i class="fa fa-user"></i> Register</a></li>
-                                        <li><a href="login.html"><i class="fa fa-pencil-square-o"></i> Login</a></li>
-                                    </ul>
+                                    <a href="#" title="My Account" class="btn btn-xs dropdown-toggle" > <span class="hidden-xs">${user.username}</span> </a>
                                 </li>
-                                <li class="wishlist"><a href="wishlist.html" id="wishlist-total" class="top-link-wishlist" title="Wish List (2)"><span class="hidden-xs">Wish List (2)</span></a></li>
-                                <li class="checkout"><a href="checkout.html" class="top-link-checkout" title="Checkout"><span class="hidden-xs">Checkout</span></a></li>
+                                <li class="checkout"><a href="index.jsp" class="top-link-checkout" title="Logout">Logout</a></li>
 
                             </ul>
                             <div class="form-group languages-block ">
                                 <form action="index.html" method="post" enctype="multipart/form-data" id="bt-language">
                                     <a class="btn btn-xs dropdown-toggle" data-toggle="dropdown">
-                                        <img src="theme/image/demo/flags/gb.png" alt="English" title="English">
+                                        <img src="viewCusomer/theme/image/demo/flags/gb.png" alt="English" title="English">
                                         <span class="hidden-xs">English</span>
                                         <span class="fa fa-angle-down"></span>
                                     </a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="#"><img class="image_flag" src="theme/image/demo/flags/gb.png" alt="English" title="English" /> English </a></li>
-                                        <li> <a href="#"> <img class="image_flag" src="theme/image/demo/flags/lb.png" alt="Arabic" title="Arabic" /> Arabic </a> </li>
+                                        <li><a href="#"><img class="image_flag" src="viewCusomer/theme/image/demo/flags/gb.png" alt="English" title="English" /> English </a></li>
                                     </ul>
                                 </form>
                             </div>
@@ -95,13 +92,7 @@
                             <div class="form-group currencies-block">
                                 <form action="index.html" method="post" enctype="multipart/form-data" id="currency">
                                     <a class="btn btn-xs dropdown-toggle" data-toggle="dropdown">
-                                        <span class="icon icon-credit "></span> US Dollar <span class="fa fa-angle-down"></span>
                                     </a>
-                                    <ul class="dropdown-menu btn-xs">
-                                        <li> <a href="#">(€)&nbsp;Euro</a></li>
-                                        <li> <a href="#">(£)&nbsp;Pounds	</a></li>
-                                        <li> <a href="#">($)&nbsp;US Dollar	</a></li>
-                                    </ul>
                                 </form>
                             </div>
                         </div>
@@ -117,7 +108,7 @@
                 <div class="row">
                     <!-- Logo -->
                     <div class="navbar-logo col-md-3 col-sm-12 col-xs-12">
-                        <a href="index.html"><img src="theme/image/demo/logos/theme_logo.png" title="Your Store" alt="Your Store" /></a>
+                        <a href="index.html"><img src="viewCusomer/theme/image/demo/logos/theme_logo.png" title="Your Store" alt="Your Store" /></a>
                     </div>
                     <!-- //end Logo -->
 
@@ -149,7 +140,7 @@
                                                                     <div class="col-md-15">
                                                                         <a href="index.html" class="image-link">
 																		<span class="thumbnail">
-																			<img class="img-responsive img-border" src="theme/image/demo/feature/home-1.jpg" alt="">
+																			<img class="img-responsive img-border" src="viewCusomer/theme/image/demo/feature/home-1.jpg" alt="">
 																			<span class="btn btn-default">Read More</span>
 																		</span>
                                                                             <h3 class="figcaption">Home page - (Default)</h3>
@@ -159,7 +150,7 @@
                                                                     <div class="col-md-15">
                                                                         <a href="home2.html" class="image-link">
 																		<span class="thumbnail">
-																			<img class="img-responsive img-border" src="theme/image/demo/feature/home-2.jpg" alt="">
+																			<img class="img-responsive img-border" src="viewCusomer/theme/image/demo/feature/home-2.jpg" alt="">
 																			<span class="btn btn-default">Read More</span>
 																		</span>
                                                                             <h3 class="figcaption">Home page - Layout 2</h3>
@@ -169,7 +160,7 @@
                                                                     <div class="col-md-15">
                                                                         <a href="home3.html" class="image-link">
 																		<span class="thumbnail">
-																			<img class="img-responsive img-border" src="theme/image/demo/feature/home-3.jpg" alt="">
+																			<img class="img-responsive img-border" src="viewCusomer/theme/image/demo/feature/home-3.jpg" alt="">
 																			<span class="btn btn-default">Read More</span>
 																		</span>
                                                                             <h3 class="figcaption">Home page - Layout 3</h3>
@@ -179,7 +170,7 @@
                                                                     <div class="col-md-15">
                                                                         <a href="home4.html" class="image-link">
 																		<span class="thumbnail">
-																			<img class="img-responsive img-border" src="theme/image/demo/feature/home-4.jpg" alt="">
+																			<img class="img-responsive img-border" src="viewCusomer/theme/image/demo/feature/home-4.jpg" alt="">
 																			<span class="btn btn-default">Read More</span>
 																		</span>
                                                                             <h3 class="figcaption">Home page - Layout 4</h3>
@@ -189,7 +180,7 @@
                                                                     <div class="col-md-15">
                                                                         <a href="home5.html" class="image-link">
 																		<span class="thumbnail">
-																			<img class="img-responsive img-border" src="theme/image/demo/feature/home-5.jpg" alt="">
+																			<img class="img-responsive img-border" src="viewCusomer/theme/image/demo/feature/home-5.jpg" alt="">
 																			<span class="btn btn-default">Read More</span>
 																		</span>
                                                                             <h3 class="figcaption">Home page - Layout 5</h3>
@@ -199,7 +190,7 @@
                                                                     <div class="col-md-15">
                                                                         <a href="home6.html" class="image-link">
 																		<span class="thumbnail">
-																			<img class="img-responsive img-border" src="theme/image/demo/feature/home-6.jpg" alt="">
+																			<img class="img-responsive img-border" src="viewCusomer/theme/image/demo/feature/home-6.jpg" alt="">
 																			<span class="btn btn-default">Read More</span>
 																		</span>
                                                                             <h3 class="figcaption">Home page - Layout 6</h3>
@@ -209,7 +200,7 @@
                                                                     <div class="col-md-15">
                                                                         <a href="home7.html" class="image-link">
 																		<span class="thumbnail">
-																			<img class="img-responsive img-border" src="theme/image/demo/feature/home-7.jpg" alt="">
+																			<img class="img-responsive img-border" src="viewCusomer/theme/image/demo/feature/home-7.jpg" alt="">
 																			<span class="btn btn-default">Read More</span>
 																		</span>
                                                                             <h3 class="figcaption">Home page - Layout 7</h3>
@@ -219,7 +210,7 @@
                                                                     <div class="col-md-15">
                                                                         <a href="#" class="image-link">
 																		<span class="thumbnail">
-																			<img class="img-responsive img-border" src="theme/image/demo/feature/home-8.jpg" alt="">
+																			<img class="img-responsive img-border" src="viewCusomer/theme/image/demo/feature/home-8.jpg" alt="">
 																			<span class="btn btn-default">Read More</span>
 																		</span>
                                                                             <h3 class="figcaption">Home page - Layout 8</h3>
@@ -229,7 +220,7 @@
                                                                     <div class="col-md-15">
                                                                         <a href="#" class="image-link">
 																		<span class="thumbnail">
-																			<img class="img-responsive img-border" src="theme/image/demo/feature/home-rtl.jpg" alt="">
+																			<img class="img-responsive img-border" src="viewCusomer/theme/image/demo/feature/home-rtl.jpg" alt="">
 																			<span class="btn btn-default">Read More</span>
 																		</span>
                                                                             <h3 class="figcaption">Home page - Layout RTL</h3>
@@ -239,7 +230,7 @@
                                                                     <div class="col-md-15">
                                                                         <a href="#" class="image-link">
 																		<span class="thumbnail">
-																			<img class="img-responsive img-border" src="theme/image/demo/feature/comming-soon.png" alt="">
+																			<img class="img-responsive img-border" src="viewCusomer/theme/image/demo/feature/comming-soon.png" alt="">
 
 																		</span>
                                                                             <h3 class="figcaption">Comming soon</h3>
@@ -254,7 +245,7 @@
                                                         <p class="close-menu"></p>
                                                         <a href="#" class="clearfix">
                                                             <strong>Features</strong>
-                                                            <img class="label-hot" src="theme/image/theme/icons/hot-icon.png" alt="icon items">
+                                                            <img class="label-hot" src="viewCusomer/theme/image/theme/icons/hot-icon.png" alt="icon items">
                                                             <b class="caret"></b>
                                                         </a>
                                                         <div class="sub-menu" style="width: 100%; right: auto;">
@@ -323,7 +314,7 @@
                                                         <p class="close-menu"></p>
                                                         <a href="#" class="clearfix">
                                                             <strong>Pages</strong>
-                                                            <img class="label-hot" src="theme/image/theme/icons/hot-icon.png" alt="icon items">
+                                                            <img class="label-hot" src="viewCusomer/theme/image/theme/icons/hot-icon.png" alt="icon items">
                                                             <b class="caret"></b>
                                                         </a>
                                                         <div class="sub-menu" style="width: 40%; ">
@@ -363,13 +354,13 @@
                                                                     <div class="col-sm-12">
                                                                         <div class="row">
                                                                             <div class="col-md-4 img img1">
-                                                                                <a href="#"><img src="theme/image/demo/cms/img1.jpg" alt="banner1"></a>
+                                                                                <a href="#"><img src="viewCusomer/theme/image/demo/cms/img1.jpg" alt="banner1"></a>
                                                                             </div>
                                                                             <div class="col-md-4 img img2">
-                                                                                <a href="#"><img src="theme/image/demo/cms/img2.jpg" alt="banner2"></a>
+                                                                                <a href="#"><img src="viewCusomer/theme/image/demo/cms/img2.jpg" alt="banner2"></a>
                                                                             </div>
                                                                             <div class="col-md-4 img img3">
-                                                                                <a href="#"><img src="theme/image/demo/cms/img3.jpg" alt="banner3"></a>
+                                                                                <a href="#"><img src="viewCusomer/theme/image/demo/cms/img3.jpg" alt="banner3"></a>
                                                                             </div>
 
                                                                         </div>
@@ -472,7 +463,7 @@
                                                                         <div class="col-sm-12 list-product">
                                                                             <div class="product-thumb">
                                                                                 <div class="image pull-left">
-                                                                                    <a href="#"><img src="theme/image/demo/shop/product/35.jpg" width="80" alt="Filet Mign" title="Filet Mign" class="img-responsive"></a>
+                                                                                    <a href="#"><img src="viewCusomer/theme/image/demo/shop/product/35.jpg" width="80" alt="Filet Mign" title="Filet Mign" class="img-responsive"></a>
                                                                                 </div>
                                                                                 <div class="caption">
                                                                                     <h4><a href="#">Filet Mign</a></h4>
@@ -490,7 +481,7 @@
                                                                         <div class="col-sm-12 list-product">
                                                                             <div class="product-thumb">
                                                                                 <div class="image pull-left">
-                                                                                    <a href="#"><img src="theme/image/demo/shop/product/W1.jpg" width="80" alt="Dail Lulpa" title="Dail Lulpa" class="img-responsive"></a>
+                                                                                    <a href="#"><img src="viewCusomer/theme/image/demo/shop/product/W1.jpg" width="80" alt="Dail Lulpa" title="Dail Lulpa" class="img-responsive"></a>
                                                                                 </div>
                                                                                 <div class="caption">
                                                                                     <h4><a href="#">Dail Lulpa</a></h4>
@@ -508,7 +499,7 @@
                                                                         <div class="col-sm-12 list-product">
                                                                             <div class="product-thumb">
                                                                                 <div class="image pull-left">
-                                                                                    <a href="#"><img src="theme/image/demo/shop/product/141.jpg" width="80" alt="Canon EOS 5D" title="Canon EOS 5D" class="img-responsive"></a>
+                                                                                    <a href="#"><img src="viewCusomer/theme/image/demo/shop/product/141.jpg" width="80" alt="Canon EOS 5D" title="Canon EOS 5D" class="img-responsive"></a>
                                                                                 </div>
                                                                                 <div class="caption">
                                                                                     <h4><a href="#">Canon EOS 5D</a></h4>
@@ -565,7 +556,7 @@
                                         <tbody>
                                         <tr>
                                             <td class="text-center" style="width:70px">
-                                                <a href="#"> <img src="theme/image/demo/shop/product/resize/2.jpg" style="width:70px" alt="Filet Mign" title="Filet Mign" class="preview"> </a>
+                                                <a href="#"> <img src="viewCusomer/theme/image/demo/shop/product/resize/2.jpg" style="width:70px" alt="Filet Mign" title="Filet Mign" class="preview"> </a>
                                             </td>
                                             <td class="text-left"> <a class="cart_product_name" href="product.html">Filet Mign</a> </td>
                                             <td class="text-center"> x1 </td>
@@ -579,7 +570,7 @@
                                         </tr>
                                         <tr>
                                             <td class="text-center" style="width:70px">
-                                                <a href="product.html"> <img src="theme/image/demo/shop/product/resize/3.jpg" style="width:70px" alt="Canon EOS 5D" title="Canon EOS 5D" class="preview"> </a>
+                                                <a href="product.html"> <img src="viewCusomer/theme/image/demo/shop/product/resize/3.jpg" style="width:70px" alt="Canon EOS 5D" title="Canon EOS 5D" class="preview"> </a>
                                             </td>
                                             <td class="text-left"> <a class="cart_product_name" href="product.html">Canon EOS 5D</a> </td>
                                             <td class="text-center"> x1 </td>
@@ -672,7 +663,7 @@
                                                         <li class="item-vertical style1 with-sub-menu hover">
                                                             <p class="close-menu"></p>
                                                             <a href="#" class="clearfix">
-                                                                <img src="theme/image/theme/icons/2.png" alt="icon">
+                                                                <img src="viewCusomer/theme/image/theme/icons/2.png" alt="icon">
                                                                 <span>Mobile Phone</span>
                                                                 <b class="caret"></b>
                                                             </a>
@@ -731,7 +722,7 @@
                                                             <p class="close-menu"></p>
                                                             <a href="#" class="clearfix">
                                                                 <span class="label"></span>
-                                                                <img src="theme/image/theme/icons/2.png" alt="icon">
+                                                                <img src="viewCusomer/theme/image/theme/icons/2.png" alt="icon">
                                                                 <span>Tablet</span>
                                                                 <b class="caret"></b>
                                                             </a>
@@ -775,7 +766,7 @@
                                                                         <div class="col-md-6">
                                                                             <div class="row banner">
                                                                                 <a href="#">
-                                                                                    <img src="theme/image/demo/cms/menu_bg2.jpg" alt="banner1">
+                                                                                    <img src="viewCusomer/theme/image/demo/cms/menu_bg2.jpg" alt="banner1">
                                                                                 </a>
                                                                             </div>
                                                                         </div>
@@ -786,7 +777,7 @@
                                                         <li class="item-vertical with-sub-menu hover">
                                                             <p class="close-menu"></p>
                                                             <a href="#" class="clearfix">
-                                                                <img src="theme/image/theme/icons/2.png" alt="icon">
+                                                                <img src="viewCusomer/theme/image/theme/icons/2.png" alt="icon">
                                                                 <span>Laptop</span>
                                                                 <b class="caret"></b>
                                                             </a>
@@ -884,7 +875,7 @@
                                                             <p class="close-menu"></p>
                                                             <a href="#" class="clearfix">
 
-                                                                <img src="theme/image/theme/icons/2.png" alt="icon">
+                                                                <img src="viewCusomer/theme/image/theme/icons/2.png" alt="icon">
                                                                 <span>Phụ Kiện</span>
                                                                 <b class="caret"></b>
                                                             </a>
@@ -978,13 +969,13 @@
                             <div class="module">
                                 <div class="yt-content-slider yt-content-slider--arrow1"  data-autoplay="no" data-autoheight="no" data-delay="4" data-speed="0.6" data-margin="0" data-items_column0="1" data-items_column1="1" data-items_column2="1"  data-items_column3="1" data-items_column4="1" data-arrows="yes" data-pagination="no" data-lazyload="yes" data-loop="no" data-hoverpause="yes">
                                     <div class="yt-content-slide">
-                                        <a href="#"><img src="theme/image/product/iphonenew.jpeg" style="width: 1100px;height: 422px" alt="slider1" class="img-responsive"></a>
+                                        <a href="#"><img src="viewCusomer/theme/image/product/iphonenew.jpeg" style="width: 1100px;height: 422px" alt="slider1" class="img-responsive"></a>
                                     </div>
                                     <div class="yt-content-slide">
-                                        <a href="#"><img src="theme/image/product/applewatch.jpeg" style="width: 1100px;height: 422px" alt="slider2" class="img-responsive"></a>
+                                        <a href="#"><img src="viewCusomer/theme/image/product/applewatch.jpeg" style="width: 1100px;height: 422px" alt="slider2" class="img-responsive"></a>
                                     </div>
                                     <div class="yt-content-slide">
-                                        <a href="#"><img src="theme/image/product/ipadbanner.jpeg" style="width: 1100px;height: 422px" alt="slider3" class="img-responsive"></a>
+                                        <a href="#"><img src="viewCusomer/theme/image/product/ipadbanner.jpeg" style="width: 1100px;height: 422px" alt="slider3" class="img-responsive"></a>
                                     </div>
                                 </div>
                                 <div class="loadeding"></div>
@@ -1025,19 +1016,19 @@
                                 <div class="m-banner-right">
                                     <div class="m-banner2 banners">
                                         <div>
-                                            <a href="#"><img src="theme/image/product/banner2.png" style="width: 590px;height: 120px" alt="banner1"></a>
+                                            <a href="#"><img src="viewCusomer/theme/image/product/banner2.png" style="width: 590px;height: 120px" alt="banner1"></a>
                                         </div>
                                     </div>
 
                                     <div class="m-banner34">
                                         <div class="m-banner3 banners">
                                             <div>
-                                                <a href="#"><img src="theme/image/product/paypal.jpeg" style="width: 290px;height: 120px" alt="banner1"></a>
+                                                <a href="#"><img src="viewCusomer/theme/image/product/paypal.jpeg" style="width: 290px;height: 120px" alt="banner1"></a>
                                             </div>
                                         </div>
                                         <div class="m-banner4 banners ">
                                             <div>
-                                                <a href="#"><img src="theme/image/product/tragop.jpeg" style="width: 290px;height: 120px"  alt="banner1"></a>
+                                                <a href="#"><img src="viewCusomer/theme/image/product/tragop.jpeg" style="width: 290px;height: 120px"  alt="banner1"></a>
                                             </div>
                                         </div>
 
@@ -1045,7 +1036,7 @@
                                 </div>
                                 <div class="m-banner1 banners hidden-xs">
                                     <div>
-                                        <a href="#"><img src="theme/image/product/banner4.jpeg" style="width: 270px;height: 250px" alt="banner1"></a>
+                                        <a href="#"><img src="viewCusomer/theme/image/product/banner4.jpeg" style="width: 270px;height: 250px" alt="banner1"></a>
                                     </div>
                                 </div>
 
@@ -1086,279 +1077,52 @@
                                 <!--Begin Items-->
                                 <div class="ltabs-items ltabs-items-selected items-category-20 grid" data-total="10">
                                     <div class="ltabs-items-inner ltabs-slider ">
-                                        <div class="ltabs-item product-layout">
-                                            <div class="product-item-container">
-                                                <div class="left-block">
-                                                    <div class="product-image-container second_img ">
-                                                        <img src="theme/image/product/iphone13promax.jpeg" style="width: 250px;height: 250px" alt="Apple Cinema 30&quot;" class="img-responsive" />
-                                                        <img src="theme/image/product/iphone13promax.jpeg" style="width: 250px;height: 250px" alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
+                                        <c:forEach items="${productList}" var="product">
+                                            <div class="ltabs-item product-layout">
+                                                <div class="product-item-container">
+                                                    <div class="left-block">
+                                                        <div class="product-image-container second_img ">
+                                                            <img src="${product.image}" style="width: 250px;height: 230px" alt="Apple Cinema 30&quot;" class="img-responsive" />
+                                                            <img src="${product.image}" style="width: 250px;height: 230px" alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
+                                                        </div>
+                                                        <!--Sale Label-->
+                                                        <c:if test="${product.discount_pct > 0}">
+                                                            <span class="label label-sale">-${product.discount_pct}%</span>
+                                                        </c:if>
+                                                        <!--full quick view block-->
+                                                        <a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  href="quickview.html">  Quickview</a>
+                                                        <!--end full quick view block-->
                                                     </div>
-                                                    <!--Sale Label-->
-                                                    <span class="label label-sale">-15%</span>
-                                                    <!--full quick view block-->
-                                                    <a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  href="quickview.html">  Quickview</a>
-                                                    <!--end full quick view block-->
-                                                </div>
-                                                <div class="right-block">
-                                                    <div class="caption">
-                                                        <h4><a href="product.html">iPhone 13 Promax</a></h4>
-                                                        <div class="ratings">
-                                                            <div class="rating-box">
-                                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
+                                                    <div class="right-block">
+                                                        <div class="caption">
+                                                            <h4><a href="product.html">${product.name}</a></h4>
+                                                            <div class="ratings">
+                                                                <div class="rating-box">
+                                                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+                                                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+                                                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+                                                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+                                                                    <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="price">
+                                                                <span class="price-new"><ftm:formatNumber value="${product.price - (product.price*product.discount_pct/100)}"></ftm:formatNumber>VND</span>
+                                                                <c:if test="${product.discount_pct > 0}">
+                                                                    <span class="price-old"><ftm:formatNumber value="${product.price}"></ftm:formatNumber>VND</span>
+                                                                </c:if>
                                                             </div>
                                                         </div>
 
-                                                        <div class="price">
-                                                            <span class="price-new">32.450.000</span>
-                                                            <span class="price-old">34.900.000</span>
+                                                        <div class="button-group">
+                                                            <button class="addToCart" type="button" data-toggle="tooltip" title="Add to Cart" onclick="cart.add('42', '1');"><i class="fa fa-shopping-cart"></i> <span class="">Add to Cart</span></button>
+                                                            <button class="wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('42');"><i class="fa fa-heart"></i></button>
+                                                            <button class="compare" type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('42');"><i class="fa fa-exchange"></i></button>
                                                         </div>
-                                                    </div>
-
-                                                    <div class="button-group">
-                                                        <button class="addToCart" type="button" data-toggle="tooltip" title="Add to Cart" onclick="cart.add('42', '1');"><i class="fa fa-shopping-cart"></i> <span class="">Add to Cart</span></button>
-                                                        <button class="wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('42');"><i class="fa fa-heart"></i></button>
-                                                        <button class="compare" type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('42');"><i class="fa fa-exchange"></i></button>
-                                                    </div>
-                                                </div><!-- right block -->
-                                            </div>
-                                        </div>
-                                        <div class="ltabs-item product-layout">
-                                            <div class="product-item-container">
-                                                <div class="left-block">
-                                                    <div class="product-image-container second_img ">
-                                                        <img src="theme/image/product/samsung1.jpeg" style="width: 250px;height: 250px"  alt="Apple Cinema 30&quot;" class="img-responsive" />
-                                                        <img src="theme/image/product/samsung1.jpeg" style="width: 250px;height: 250px"  alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
-                                                    </div>
-                                                    <!--New Label-->
-                                                    <span class="label label-new">New</span>
-                                                    <!--full quick view block-->
-                                                    <a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  href="quickview.html">  Quickview</a>
-                                                    <!--end full quick view block-->
+                                                    </div><!-- right block -->
                                                 </div>
-                                                <div class="right-block">
-                                                    <div class="caption">
-                                                        <h4><a href="product.html">SamSung GalaxyZ Flip 3</a></h4>
-                                                        <div class="ratings">
-                                                            <div class="rating-box">
-                                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="price">
-                                                            <span class="price-new">23.900.000</span>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="button-group">
-                                                        <button class="addToCart" type="button" data-toggle="tooltip" title="Add to Cart" onclick="cart.add('42', '1');"><i class="fa fa-shopping-cart"></i> <span class="">Add to Cart</span></button>
-                                                        <button class="wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('42');"><i class="fa fa-heart"></i></button>
-                                                        <button class="compare" type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('42');"><i class="fa fa-exchange"></i></button>
-                                                    </div>
-                                                </div><!-- right block -->
                                             </div>
-                                        </div>
-                                        <div class="ltabs-item product-layout">
-                                            <div class="product-item-container">
-                                                <div class="left-block">
-                                                    <div class="product-image-container second_img ">
-                                                        <img src="theme/image/product/iphone13.jpeg" style="width: 250px;height: 250px"  alt="Apple Cinema 30&quot;" class="img-responsive" />
-                                                        <img src="theme/image/product/iphone13.jpeg" style="width: 250px;height: 250px"   alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
-                                                    </div>
-                                                    <!--Sale Label-->
-                                                    <!--full quick view block-->
-                                                    <a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  href="quickview.html">  Quickview</a>
-                                                    <!--end full quick view block-->
-                                                </div>
-                                                <div class="right-block">
-                                                    <div class="caption">
-                                                        <h4><a href="product.html">iPhone 13</a></h4>
-                                                        <div class="ratings">
-                                                            <div class="rating-box">
-                                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="price">
-                                                            <span class="price-new">24.900.000</span>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="button-group">
-                                                        <button class="addToCart" type="button" data-toggle="tooltip" title="Add to Cart" onclick="cart.add('42', '1');"><i class="fa fa-shopping-cart"></i> <span class="">Add to Cart</span></button>
-                                                        <button class="wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('42');"><i class="fa fa-heart"></i></button>
-                                                        <button class="compare" type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('42');"><i class="fa fa-exchange"></i></button>
-                                                    </div>
-                                                </div><!-- right block -->
-                                            </div>
-                                        </div>
-                                        <div class="ltabs-item product-layout">
-                                            <div class="product-item-container">
-                                                <div class="left-block">
-                                                    <div class="product-image-container second_img ">
-                                                        <img src="theme/image/product/applewatch3.png" style="width: 250px;height: 250px" alt="Apple Cinema 30&quot;" class="img-responsive" />
-                                                        <img src="theme/image/product/applewatch3.png" style="width: 250px;height: 250px" alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
-                                                    </div>
-
-                                                    <!--full quick view block-->
-                                                    <a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  href="quickview.html">  Quickview</a>
-                                                    <!--end full quick view block-->
-                                                </div>
-                                                <div class="right-block">
-                                                    <div class="caption">
-                                                        <h4><a href="product.html">Apple Watch Serial 6</a></h4>
-                                                        <div class="ratings">
-                                                            <div class="rating-box">
-                                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="price">
-                                                            <span class="price-new">7.900.000</span>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="button-group">
-                                                        <button class="addToCart" type="button" data-toggle="tooltip" title="Add to Cart" onclick="cart.add('42', '1');"><i class="fa fa-shopping-cart"></i> <span class="">Add to Cart</span></button>
-                                                        <button class="wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('42');"><i class="fa fa-heart"></i></button>
-                                                        <button class="compare" type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('42');"><i class="fa fa-exchange"></i></button>
-                                                    </div>
-                                                </div><!-- right block -->
-                                            </div>
-                                        </div>
-                                        <div class="ltabs-item product-layout">
-                                            <div class="product-item-container">
-                                                <div class="left-block">
-                                                    <div class="product-image-container second_img ">
-                                                        <img src="theme/image/product/macbook.png" style="width: 250px ;height:250px "  alt="Apple Cinema 30&quot;" class="img-responsive" />
-                                                        <img src="theme/image/product/macbook.png" style="width: 250px ;height:250px "  alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
-                                                    </div>
-
-                                                    <!--full quick view block-->
-                                                    <a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  href="quickview.html">  Quickview</a>
-                                                    <!--end full quick view block-->
-                                                </div>
-                                                <div class="right-block">
-                                                    <div class="caption">
-                                                        <h4><a href="product.html">Macbook Air M1 128GB</a></h4>
-                                                        <div class="ratings">
-                                                            <div class="rating-box">
-                                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="price">
-                                                            <span class="price-new">25.900.00</span>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="button-group">
-                                                        <button class="addToCart" type="button" data-toggle="tooltip" title="Add to Cart" onclick="cart.add('42', '1');"><i class="fa fa-shopping-cart"></i> <span class="">Add to Cart</span></button>
-                                                        <button class="wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('42');"><i class="fa fa-heart"></i></button>
-                                                        <button class="compare" type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('42');"><i class="fa fa-exchange"></i></button>
-                                                    </div>
-                                                </div><!-- right block -->
-                                            </div>
-                                        </div>
-                                        <div class="ltabs-item product-layout">
-                                            <div class="product-item-container">
-                                                <div class="left-block">
-                                                    <div class="product-image-container second_img ">
-                                                        <img src="theme/image/product/ipadpro.png" style="width: 250px;height: 250px"  alt="Apple Cinema 30&quot;" class="img-responsive" />
-                                                        <img src="theme/image/product/ipadpro.png" style="width: 250px;height: 250px" alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
-                                                    </div>
-                                                    <!--Sale Label-->
-                                                    <span class="label label-sale">-15%</span>
-                                                    <!--full quick view block-->
-                                                    <a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  href="quickview.html">  Quickview</a>
-                                                    <!--end full quick view block-->
-                                                </div>
-                                                <div class="right-block">
-                                                    <div class="caption">
-                                                        <h4><a href="product.html">iPad Pro M1 2021 256Gb</a></h4>
-                                                        <div class="ratings">
-                                                            <div class="rating-box">
-                                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="price">
-                                                            <span class="price-new">38.900.000</span>
-                                                            <span class="price-old">41.000.000/span>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="button-group">
-                                                        <button class="addToCart" type="button" data-toggle="tooltip" title="Add to Cart" onclick="cart.add('42', '1');"><i class="fa fa-shopping-cart"></i> <span class="">Add to Cart</span></button>
-                                                        <button class="wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('42');"><i class="fa fa-heart"></i></button>
-                                                        <button class="compare" type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('42');"><i class="fa fa-exchange"></i></button>
-                                                    </div>
-                                                </div><!-- right block -->
-                                            </div>
-                                        </div>
-                                        <div class="ltabs-item product-layout">
-                                            <div class="product-item-container">
-                                                <div class="left-block">
-                                                    <div class="product-image-container second_img ">
-                                                        <img src="theme/image/product/airpod.png"  style="width: 250px;height: 250px" alt="Apple Cinema 30&quot;" class="img-responsive" />
-                                                        <img src="theme/image/product/airpod.png" style="width: 250px;height: 250px"  alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
-                                                    </div>
-                                                    <!--Sale Label-->
-                                                    <!--full quick view block-->
-                                                    <a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  href="quickview.html">  Quickview</a>
-                                                    <!--end full quick view block-->
-                                                </div>
-                                                <div class="right-block">
-                                                    <div class="caption">
-                                                        <h4><a href="product.html">Airpods Pro</a></h4>
-                                                        <div class="ratings">
-                                                            <div class="rating-box">
-                                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="price">
-                                                            <span class="price-new">5.250.000</span>
-                                                            <span class="price-old">5.650.000</span>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="button-group">
-                                                        <button class="addToCart" type="button" data-toggle="tooltip" title="Add to Cart" onclick="cart.add('42', '1');"><i class="fa fa-shopping-cart"></i> <span class="">Add to Cart</span></button>
-                                                        <button class="wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('42');"><i class="fa fa-heart"></i></button>
-                                                        <button class="compare" type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('42');"><i class="fa fa-exchange"></i></button>
-                                                    </div>
-                                                </div><!-- right block -->
-                                            </div>
-                                        </div>
+                                        </c:forEach>
 
                                     </div>
 
@@ -1381,7 +1145,7 @@
                     <div class="modcontent clearfix">
                         <div class="banners">
                             <div>
-                                <a href="#"><img src="theme/image/product/backtooffice.png" alt="left-image"></a>
+                                <a href="#"><img src="viewCusomer/theme/image/product/backtooffice.png" alt="left-image"></a>
                             </div>
                         </div>
                     </div>
@@ -1408,281 +1172,52 @@
                                 <!--Begin Items-->
                                 <div class="ltabs-items ltabs-items-selected items-category-20 grid" data-total="10">
                                     <div class="ltabs-items-inner ltabs-slider ">
-
-                                        <div class="ltabs-item product-layout">
-                                            <div class="product-item-container">
-                                                <div class="left-block">
-                                                    <div class="product-image-container second_img " style="height: 240px">
-                                                        <img src="theme/image/product/GalazyTabS7FE.png"  alt="Apple Cinema 30&quot;" class="img-responsive" />
-                                                        <img src="theme/image/product/GalazyTabS7FE.png"  alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
+                                        <c:forEach items="${newProduct}" var="product">
+                                            <div class="ltabs-item product-layout">
+                                                <div class="product-item-container">
+                                                    <div class="left-block">
+                                                        <div class="product-image-container second_img ">
+                                                            <img src="${product.image}" style="width: 270px;height: 240px" alt="Apple Cinema 30&quot;" class="img-responsive" />
+                                                            <img src="${product.image}" style="width: 270px;height: 240px" alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
+                                                        </div>
+                                                        <!--Sale Label-->
+                                                        <c:if test="${product.discount_pct > 0}">
+                                                            <span class="label label-sale">-${product.discount_pct}%</span>
+                                                        </c:if>
+                                                        <!--full quick view block-->
+                                                        <a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  href="quickview.html">  Quickview</a>
+                                                        <!--end full quick view block-->
                                                     </div>
+                                                    <div class="right-block">
+                                                        <div class="caption">
+                                                            <h4><a href="product.html">${product.name}</a></h4>
+                                                            <div class="ratings">
+                                                                <div class="rating-box">
+                                                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+                                                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+                                                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+                                                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+                                                                    <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
+                                                                </div>
+                                                            </div>
 
-                                                    <!--full quick view block-->
-                                                    <a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  href="quickview.html">  Quickview</a>
-                                                    <!--end full quick view block-->
-                                                </div>
-                                                <div class="right-block">
-                                                    <div class="caption">
-                                                        <h4><a href="product.html">Samsung Galaxy Tab 7</a></h4>
-                                                        <div class="ratings">
-                                                            <div class="rating-box">
-                                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
+                                                            <div class="price">
+                                                                <span class="price-new"><ftm:formatNumber value="${product.price - (product.price*product.discount_pct/100)}"></ftm:formatNumber>VND</span>
+                                                                <c:if test="${product.discount_pct > 0}">
+                                                                    <span class="price-old"><ftm:formatNumber value="${product.price}"></ftm:formatNumber>VND</span>
+                                                                </c:if>
                                                             </div>
                                                         </div>
 
-                                                        <div class="price">
-                                                            <span class="price-new">13.900.000</span>
+                                                        <div class="button-group">
+                                                            <button class="addToCart" type="button" data-toggle="tooltip" title="Add to Cart" onclick="cart.add('42', '1');"><i class="fa fa-shopping-cart"></i> <span class="">Add to Cart</span></button>
+                                                            <button class="wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('42');"><i class="fa fa-heart"></i></button>
+                                                            <button class="compare" type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('42');"><i class="fa fa-exchange"></i></button>
                                                         </div>
-                                                    </div>
-
-                                                    <div class="button-group">
-                                                        <button class="addToCart" type="button" data-toggle="tooltip" title="Add to Cart" onclick="cart.add('42', '1');"><i class="fa fa-shopping-cart"></i> <span class="">Add to Cart</span></button>
-                                                        <button class="wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('42');"><i class="fa fa-heart"></i></button>
-                                                        <button class="compare" type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('42');"><i class="fa fa-exchange"></i></button>
-                                                    </div>
-                                                </div><!-- right block -->
-                                            </div>
-                                        </div>
-                                        <div class="ltabs-item product-layout">
-                                            <div class="product-item-container">
-                                                <div class="left-block">
-                                                    <div class="product-image-container second_img " style="height: 240px">
-                                                        <img src="theme/image/product/XiaomiNote9.png" alt="Apple Cinema 30&quot;" class="img-responsive" />
-                                                        <img src="theme/image/product/XiaomiNote9.png"  alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
-                                                    </div>
-
-                                                    <!--full quick view block-->
-                                                    <a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  href="quickview.html">  Quickview</a>
-                                                    <!--end full quick view block-->
+                                                    </div><!-- right block -->
                                                 </div>
-                                                <div class="right-block">
-                                                    <div class="caption">
-                                                        <h4><a href="product.html">Xiaomi Note 9 4GB</a></h4>
-                                                        <div class="ratings">
-                                                            <div class="rating-box">
-                                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="price">
-                                                            <span class="price-new">4.400.000</span>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="button-group">
-                                                        <button class="addToCart" type="button" data-toggle="tooltip" title="Add to Cart" onclick="cart.add('42', '1');"><i class="fa fa-shopping-cart"></i> <span class="">Add to Cart</span></button>
-                                                        <button class="wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('42');"><i class="fa fa-heart"></i></button>
-                                                        <button class="compare" type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('42');"><i class="fa fa-exchange"></i></button>
-                                                    </div>
-                                                </div><!-- right block -->
                                             </div>
-                                        </div>
-                                        <div class="ltabs-item product-layout">
-                                            <div class="product-item-container">
-                                                <div class="left-block">
-                                                    <div class="product-image-container second_img ">
-                                                        <img src="theme/image/product/iphone13promax.jpeg" style="width: 270px;height: 240px" alt="Apple Cinema 30&quot;" class="img-responsive" />
-                                                        <img src="theme/image/product/iphone13promax.jpeg" style="width: 270px;height: 240px" alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
-                                                    </div>
-                                                    <!--Sale Label-->
-                                                    <span class="label label-sale">-10%</span>
-                                                    <!--full quick view block-->
-                                                    <a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  href="quickview.html">  Quickview</a>
-                                                    <!--end full quick view block-->
-                                                </div>
-                                                <div class="right-block">
-                                                    <div class="caption">
-                                                        <h4><a href="product.html">iPhone 13 Promax</a></h4>
-                                                        <div class="ratings">
-                                                            <div class="rating-box">
-                                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="price">
-                                                            <span class="price-new">32.450.000</span>
-                                                            <span class="price-old">34.900.000</span>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="button-group">
-                                                        <button class="addToCart" type="button" data-toggle="tooltip" title="Add to Cart" onclick="cart.add('42', '1');"><i class="fa fa-shopping-cart"></i> <span class="">Add to Cart</span></button>
-                                                        <button class="wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('42');"><i class="fa fa-heart"></i></button>
-                                                        <button class="compare" type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('42');"><i class="fa fa-exchange"></i></button>
-                                                    </div>
-                                                </div><!-- right block -->
-                                            </div>
-                                        </div>
-                                        <div class="ltabs-item product-layout">
-                                            <div class="product-item-container">
-                                                <div class="left-block">
-                                                    <div class="product-image-container second_img ">
-                                                        <img src="theme/image/product/galaxynote22.png" style="width: 270px;height: 240px"  alt="Apple Cinema 30&quot;" class="img-responsive" />
-                                                        <img src="theme/image/product/galaxynote22.png" style="width: 270px;height: 240px" alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
-                                                    </div>
-                                                    <!--Sale Label-->
-                                                    <span class="label label-sale">KM Cực lớn</span>
-                                                    <!--full quick view block-->
-                                                    <a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  href="quickview.html">  Quickview</a>
-                                                    <!--end full quick view block-->
-                                                </div>
-                                                <div class="right-block">
-                                                    <div class="caption">
-                                                        <h4><a href="product.html">Galaxy Note 22</a></h4>
-                                                        <div class="ratings">
-                                                            <div class="rating-box">
-                                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="price">
-                                                            <span class="price-new">29.900.000</span>
-                                                            <span class="price-old">34.900.000</span>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="button-group">
-                                                        <button class="addToCart" type="button" data-toggle="tooltip" title="Add to Cart" onclick="cart.add('42', '1');"><i class="fa fa-shopping-cart"></i> <span class="">Add to Cart</span></button>
-                                                        <button class="wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('42');"><i class="fa fa-heart"></i></button>
-                                                        <button class="compare" type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('42');"><i class="fa fa-exchange"></i></button>
-                                                    </div>
-                                                </div><!-- right block -->
-                                            </div>
-                                        </div>
-                                        <div class="ltabs-item product-layout">
-                                            <div class="product-item-container">
-                                                <div class="left-block">
-                                                    <div class="product-image-container second_img ">
-                                                        <img src="theme/image/product/OppoReno6.png" style="width: 270px;height: 240px"  alt="Apple Cinema 30&quot;" class="img-responsive" />
-                                                        <img src="theme/image/product/OppoReno6.png" style="width: 270px;height: 240px" alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
-                                                    </div>
-                                                    <!--New Label-->
-                                                    <span class="label label-new">New</span>
-                                                    <!--full quick view block-->
-                                                    <a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  href="quickview.html">  Quickview</a>
-                                                    <!--end full quick view block-->
-                                                </div>
-                                                <div class="right-block">
-                                                    <div class="caption">
-                                                        <h4><a href="product.html">Oppo Reno 6 Z 5G</a></h4>
-                                                        <div class="ratings">
-                                                            <div class="rating-box">
-                                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="price">
-                                                            <span class="price-new">9.490.000</span>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="button-group">
-                                                        <button class="addToCart" type="button" data-toggle="tooltip" title="Add to Cart" onclick="cart.add('42', '1');"><i class="fa fa-shopping-cart"></i> <span class="">Add to Cart</span></button>
-                                                        <button class="wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('42');"><i class="fa fa-heart"></i></button>
-                                                        <button class="compare" type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('42');"><i class="fa fa-exchange"></i></button>
-                                                    </div>
-                                                </div><!-- right block -->
-                                            </div>
-                                        </div>
-                                        <div class="ltabs-item product-layout">
-                                            <div class="product-item-container">
-                                                <div class="left-block">
-                                                    <div class="product-image-container second_img ">
-                                                        <img src="theme/image/product/iphone12.png" style="width: 270px;height: 240px" alt="Apple Cinema 30&quot;" class="img-responsive" />
-                                                        <img src="theme/image/product/iphone12.png" style="width: 270px;height: 240px" alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
-                                                    </div>
-                                                    <!--Sale Label-->
-
-                                                    <!--full quick view block-->
-                                                    <a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  href="quickview.html">  Quickview</a>
-                                                    <!--end full quick view block-->
-                                                </div>
-                                                <div class="right-block">
-                                                    <div class="caption">
-                                                        <h4><a href="product.html">iPhone 12 64GB</a></h4>
-                                                        <div class="ratings">
-                                                            <div class="rating-box">
-                                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="price">
-                                                            <span class="price-new">19.000.000</span>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="button-group">
-                                                        <button class="addToCart" type="button" data-toggle="tooltip" title="Add to Cart" onclick="cart.add('42', '1');"><i class="fa fa-shopping-cart"></i> <span class="">Add to Cart</span></button>
-                                                        <button class="wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('42');"><i class="fa fa-heart"></i></button>
-                                                        <button class="compare" type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('42');"><i class="fa fa-exchange"></i></button>
-                                                    </div>
-                                                </div><!-- right block -->
-                                            </div>
-                                        </div>
-                                        <div class="ltabs-item product-layout">
-                                            <div class="product-item-container">
-                                                <div class="left-block">
-                                                    <div class="product-image-container second_img ">
-                                                        <img src="theme/image/product/iphone13promax.jpeg" style="width: 270px;height: 240px" alt="Apple Cinema 30&quot;" class="img-responsive" />
-                                                        <img src="theme/image/product/iphone13promax.jpeg" style="width: 270px;height: 240px" alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
-                                                    </div>
-                                                    <!--Sale Label-->
-                                                    <span class="label label-sale">-10%</span>
-                                                    <!--full quick view block-->
-                                                    <a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  href="quickview.html">  Quickview</a>
-                                                    <!--end full quick view block-->
-                                                </div>
-                                                <div class="right-block">
-                                                    <div class="caption">
-                                                        <h4><a href="product.html">iPhone 13 Promax</a></h4>
-                                                        <div class="ratings">
-                                                            <div class="rating-box">
-                                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="price">
-                                                            <span class="price-new">32.450.000</span>
-                                                            <span class="price-old">34.900.000</span>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="button-group">
-                                                        <button class="addToCart" type="button" data-toggle="tooltip" title="Add to Cart" onclick="cart.add('42', '1');"><i class="fa fa-shopping-cart"></i> <span class="">Add to Cart</span></button>
-                                                        <button class="wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('42');"><i class="fa fa-heart"></i></button>
-                                                        <button class="compare" type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('42');"><i class="fa fa-exchange"></i></button>
-                                                    </div>
-                                                </div><!-- right block -->
-                                            </div>
-                                        </div>
+                                        </c:forEach>
 
                                     </div>
 
@@ -1708,113 +1243,36 @@
             </div>
             <aside class="col-md-3 col-xs-12  content-aside right_column">
                 <div class="module latest-product titleLine">
-                    <h3 class="modtitle">Latest Product</h3>
+                    <h3 class="modtitle">Accessory</h3>
                     <div class="modcontent ">
-                        <div class="product-latest-item">
-                            <div class="media">
-                                <div class="media-left">
-                                    <a href="#"><img src="theme/image/product/sacpin.png" alt="Cisi Chicken" title="Cisi Chicken" class="img-responsive" style="width: 100px; height: 82px;"></a>
-                                </div>
-                                <div class="media-body">
-                                    <div class="caption">
-                                        <h4><a href="#">Sạc pin iPhone chính hãng</a></h4>
+                        <c:forEach items="${accessory}" var="product">
+                            <div class="product-latest-item">
+                                <div class="media">
+                                    <div class="media-left">
+                                        <a href="#"><img src="${product.image}" alt="Cisi Chicken" title="Cisi Chicken" class="img-responsive" style="width: 100px; height: 82px;"></a>
+                                    </div>
+                                    <div class="media-body">
+                                        <div class="caption">
+                                            <h4><a href="#">${product.name}</a></h4>
 
-                                        <div class="price">
-                                            <span class="price-new">699.000</span>
-                                        </div>
-                                        <div class="ratings">
-                                            <div class="rating-box">
-                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+                                            <div class="price">
+                                                <span class="price-new"><ftm:formatNumber value="${product.price}"></ftm:formatNumber></span>
+                                            </div>
+                                            <div class="ratings">
+                                                <div class="rating-box">
+                                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+                                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+                                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+                                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+                                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
 
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="product-latest-item">
-                            <div class="media">
-                                <div class="media-left">
-                                    <a href="#"><img src="theme/image/product/battery.png" alt="Cisi Chicken" title="Cisi Chicken" class="img-responsive" style="width: 100px; height: 82px;"></a>
-                                </div>
-                                <div class="media-body">
-                                    <div class="caption">
-                                        <h4><a href="#">Pin dự phòng Akker</a></h4>
-
-                                        <div class="price">
-                                            <span class="price-new">499.000</span>
-                                        </div>
-                                        <div class="ratings">
-                                            <div class="rating-box">
-                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-latest-item">
-                            <div class="media">
-                                <div class="media-left">
-                                    <a href="#"><img src="theme/image/product/AirPodsMaxApple.png" alt="Cisi Chicken" title="Cisi Chicken" class="img-responsive" style="width: 100px; height: 82px;"></a>
-                                </div>
-                                <div class="media-body">
-                                    <div class="caption">
-                                        <h4><a href="#">Apple AirPods Max</a></h4>
-
-                                        <div class="price">
-                                            <span class="price-new">11.900.00</span>
-                                        </div>
-                                        <div class="ratings">
-                                            <div class="rating-box">
-                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-latest-item transition">
-                            <div class="media">
-                                <div class="media-left">
-                                    <a href="#"><img src="theme/image/product/airpod2.png" alt="Cisi Chicken" title="Cisi Chicken" class="img-responsive" style="width: 100px; height:82px;"></a>
-                                </div>
-                                <div class="media-body">
-                                    <div class="caption">
-                                        <h4><a href="#">Apple AirPod 2</a></h4>
-                                        <div class="price">
-                                            <span class="price-new">3.250.000</span>
-                                        </div>
-                                        <div class="ratings">
-                                            <div class="rating-box">
-                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-
-
+                        </c:forEach>
                     </div>
 
                 </div>
@@ -1827,7 +1285,7 @@
 
                                 <div class="yt-content-slide">
                                     <div class="client-cont">Tôi đã mua hàng và rất hài lòng về thái độ phục vụ và giá cả cạnh tranh tại đây/</div>
-                                    <div class="client-info"><img src="theme/image/product/Hop.jpg" alt="">
+                                    <div class="client-info"><img src="viewCusomer/theme/image/product/Hop.jpg" alt="">
                                         <div class="inner">Văn Hợp
                                             <p>Leader VNG</p>
                                         </div>
@@ -1835,7 +1293,7 @@
                                 </div>
                                 <div class="yt-content-slide">
                                     <div class="client-cont">Với mạng lưới phủ khắp nội thành Hà Nội tôi đã tham khảo rất nhiều và đặt trọn niềm tin vào Tuấn Anh Mobile</div>
-                                    <div class="client-info"><img src="theme/image/product/Quan.jpg" alt="">
+                                    <div class="client-info"><img src="viewCusomer/theme/image/product/Quan.jpg" alt="">
                                         <div class="inner">Trọng Quân
                                             <p>Trader Master</p>
                                         </div>
@@ -1851,7 +1309,7 @@
                     <div class="modcontent clearfix">
                         <div class="banners">
                             <div>
-                                <a href="#"><img src="theme/image/team3.png" alt="banner1"></a>
+                                <a href="#"><img src="viewCusomer/theme/image/team3.png" alt="banner1"></a>
                             </div>
                         </div>
 
@@ -1861,7 +1319,7 @@
                     <div class="modcontent clearfix">
                         <div class="banners">
                             <div>
-                                <a href="#"><img src="theme/image/product/banner6.png" alt="banner1"></a>
+                                <a href="#"><img src="viewCusomer/theme/image/product/banner6.png" alt="banner1"></a>
                             </div>
                         </div>
 
@@ -1985,7 +1443,7 @@
                     <h5>FACEBOOK</h5>
                 </div>
                 <div class="loading">
-                    <img src="theme/image/theme/lazy-loader.gif" class="ajaxloader" alt="loader">
+                    <img src="viewCusomer/theme/image/viewCusomer/theme/lazy-loader.gif" class="ajaxloader" alt="loader">
                 </div>
             </div>
         </li>
@@ -1995,7 +1453,7 @@
                     <h5>TWITTER FEEDS</h5>
                 </div>
                 <div class="loading">
-                    <img src="theme/image/theme/lazy-loader.gif" class="ajaxloader" alt="loader">
+                    <img src="viewCusomer/theme/image/viewCusomer/theme/lazy-loader.gif" class="ajaxloader" alt="loader">
                 </div>
             </div>
         </li>
@@ -2004,13 +1462,13 @@
                 <div class="title">
                     <h5>YouTube</h5>
                 </div>
-                <div class="loading"> <img src="theme/image/theme/lazy-loader.gif" class="ajaxloader" alt="loader"></div>
+                <div class="loading"> <img src="viewCusomer/theme/image/viewCusomer/theme/lazy-loader.gif" class="ajaxloader" alt="loader"></div>
             </div>
         </li><div class="product-item-container">
         <div class="left-block">
             <div class="product-image-container second_img ">
-                <img src="theme/image/product/GalazyTabS7FE.png" style="width: 250px;height: 250px" alt="Apple Cinema 30&quot;" class="img-responsive">
-                <img src="theme/image/product/GalazyTabS7FE.png" style="width: 250px;height: 250px" alt="Apple Cinema 30&quot;" class="img_0 img-responsive">
+                <img src="viewCusomer/theme/image/product/GalazyTabS7FE.png" style="width: 250px;height: 250px" alt="Apple Cinema 30&quot;" class="img-responsive">
+                <img src="viewCusomer/theme/image/product/GalazyTabS7FE.png" style="width: 250px;height: 250px" alt="Apple Cinema 30&quot;" class="img_0 img-responsive">
             </div>
 
             <!--full quick view block-->
@@ -2049,25 +1507,25 @@
 <!-- Include Libs & Plugins
 ============================================ -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script type="text/javascript" src="theme/js/jquery-2.2.4.min.js"></script>
-<script type="text/javascript" src="theme/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="theme/js/owl-carousel/owl.carousel.js"></script>
-<script type="text/javascript" src="theme/js/themejs/libs.js"></script>
-<script type="text/javascript" src="theme/js/unveil/jquery.unveil.js"></script>
-<script type="text/javascript" src="theme/js/countdown/jquery.countdown.min.js"></script>
-<script type="text/javascript" src="theme/js/dcjqaccordion/jquery.dcjqaccordion.2.8.min.js"></script>
-<script type="text/javascript" src="theme/js/datetimepicker/moment.js"></script>
-<script type="text/javascript" src="theme/js/datetimepicker/bootstrap-datetimepicker.min.js"></script>
-<script type="text/javascript" src="theme/js/jquery-ui/jquery-ui.min.js"></script>
-<script type="text/javascript" src="theme/js/modernizr/modernizr-2.6.2.min.js"></script>
+<script type="text/javascript" src="viewCusomer/theme/js/jquery-2.2.4.min.js"></script>
+<script type="text/javascript" src="viewCusomer/theme/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="viewCusomer/theme/js/owl-carousel/owl.carousel.js"></script>
+<script type="text/javascript" src="viewCusomer/theme/js/themejs/libs.js"></script>
+<script type="text/javascript" src="viewCusomer/theme/js/unveil/jquery.unveil.js"></script>
+<script type="text/javascript" src="viewCusomer/theme/js/countdown/jquery.countdown.min.js"></script>
+<script type="text/javascript" src="viewCusomer/theme/js/dcjqaccordion/jquery.dcjqaccordion.2.8.min.js"></script>
+<script type="text/javascript" src="viewCusomer/theme/js/datetimepicker/moment.js"></script>
+<script type="text/javascript" src="viewCusomer/theme/js/datetimepicker/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="viewCusomer/theme/js/jquery-ui/jquery-ui.min.js"></script>
+<script type="text/javascript" src="viewCusomer/theme/js/modernizr/modernizr-2.6.2.min.js"></script>
 
 
 <!-- Theme files
 ============================================ -->
-<script type="text/javascript" src="theme/js/themejs/application.js"></script>
-<script type="text/javascript" src="theme/js/themejs/homepage.js"></script>
-<script type="text/javascript" src="theme/js/themejs/so_megamenu.js"></script>
-<script type="text/javascript" src="theme/js/themejs/addtocart.js"></script>
+<script type="text/javascript" src="viewCusomer/theme/js/themejs/application.js"></script>
+<script type="text/javascript" src="viewCusomer/theme/js/themejs/homepage.js"></script>
+<script type="text/javascript" src="viewCusomer/theme/js/themejs/so_megamenu.js"></script>
+<script type="text/javascript" src="viewCusomer/theme/js/themejs/addtocart.js"></script>
 
 </body>
 </html>

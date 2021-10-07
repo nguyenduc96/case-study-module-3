@@ -101,9 +101,27 @@
                                 </a>
                             </li>
                             <li class="nav-item">
+                                <a href="/product" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Quản lí sản phẩm</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/product?action=showDeleteProduct" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Sản phẩm đã xoá</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../index2.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Quản lí order</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
                                 <a href="../../index3.html" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>menu 3</p>
+                                    <p>Quản lí danh mục</p>
                                 </a>
                             </li>
                         </ul>
