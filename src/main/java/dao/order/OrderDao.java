@@ -78,7 +78,9 @@ public class OrderDao implements IOrderDao{
             statement.setInt(1,order.getUser_id());
             statement.setString(2,order.getStatus());
             statement.setBoolean(3, order.isActive());
-            statement.setDate(4, (Date) order.getCreated_at());
+            java.sql.Date created_at = new java.sql.Date(order.getCreated_at().getTime());
+            statement.setDate(4, created_at);
+            statement.setInt(5,order.getId());
             isUpdate = statement.executeUpdate() > 0;
         } catch (SQLException e){
             e.printStackTrace();

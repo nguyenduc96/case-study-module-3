@@ -224,7 +224,7 @@
                                     <td>${order.created_at}</td>
                                     <td><a href="order?action=detail&id=${order.id}" class="btn btn-info">View</a></td>
                                     <td><a href="order?action=edit&id=${order.id}" class="btn btn-success">Edit</a></td>
-                                    <td><button type="button" class="btn btn-warning" onclick="confirmDelete(${order.id})">Delete</button></td>
+                                    <td><button type="button" class="btn btn-warning" onclick="confirmActive(${order.id})">Active</button></td>
                                 </tr>
                             </c:forEach>
 
@@ -233,34 +233,34 @@
                     </div>
                     <!-- /.card-body -->
                     <div class="card-footer clearfix">
-<%--                        <div class="row">--%>
-<%--&lt;%&ndash;                            <div id="pagination">&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                <ul class="pagination">&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                    <li class="page-item ${previous}">&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                        <a class="page-link" href="order?action=&page=${1}">First</a>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                    </li>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                    <li class="page-item ${previous}">&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                        <a class="page-link" href="order?action=&page=${page-1}">Previous</a>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                    </li>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                    <c:forEach begin="1" end="${totalPage}" step="1" var="i">&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                        <c:choose>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                            <c:when test="${page == i}">&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                                <li class="page-item active"><a class="page-link " href="product?action=page&page=${i}">${i}</a></li>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                            </c:when>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                            <c:otherwise>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                                <li class="page-item"><a class="page-link" href="product?action=page&page=${i}">${i}</a></li>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                            </c:otherwise>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                        </c:choose>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                    </c:forEach>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                    <li class="page-item ${next}">&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                        <a class="page-link" href="product?action=page&page=${page+1}">Next</a>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                    </li>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                    <li class="page-item ${next}">&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                        <a class="page-link" href="brands?action=page&page=${totalPage}">Last</a>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                    </li>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                </ul>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                            </div>&ndash;%&gt;--%>
-<%--                        </div>--%>
+                        <%--                        <div class="row">--%>
+                        <%--&lt;%&ndash;                            <div id="pagination">&ndash;%&gt;--%>
+                        <%--&lt;%&ndash;                                <ul class="pagination">&ndash;%&gt;--%>
+                        <%--&lt;%&ndash;                                    <li class="page-item ${previous}">&ndash;%&gt;--%>
+                        <%--&lt;%&ndash;                                        <a class="page-link" href="order?action=&page=${1}">First</a>&ndash;%&gt;--%>
+                        <%--&lt;%&ndash;                                    </li>&ndash;%&gt;--%>
+                        <%--&lt;%&ndash;                                    <li class="page-item ${previous}">&ndash;%&gt;--%>
+                        <%--&lt;%&ndash;                                        <a class="page-link" href="order?action=&page=${page-1}">Previous</a>&ndash;%&gt;--%>
+                        <%--&lt;%&ndash;                                    </li>&ndash;%&gt;--%>
+                        <%--&lt;%&ndash;                                    <c:forEach begin="1" end="${totalPage}" step="1" var="i">&ndash;%&gt;--%>
+                        <%--&lt;%&ndash;                                        <c:choose>&ndash;%&gt;--%>
+                        <%--&lt;%&ndash;                                            <c:when test="${page == i}">&ndash;%&gt;--%>
+                        <%--&lt;%&ndash;                                                <li class="page-item active"><a class="page-link " href="product?action=page&page=${i}">${i}</a></li>&ndash;%&gt;--%>
+                        <%--&lt;%&ndash;                                            </c:when>&ndash;%&gt;--%>
+                        <%--&lt;%&ndash;                                            <c:otherwise>&ndash;%&gt;--%>
+                        <%--&lt;%&ndash;                                                <li class="page-item"><a class="page-link" href="product?action=page&page=${i}">${i}</a></li>&ndash;%&gt;--%>
+                        <%--&lt;%&ndash;                                            </c:otherwise>&ndash;%&gt;--%>
+                        <%--&lt;%&ndash;                                        </c:choose>&ndash;%&gt;--%>
+                        <%--&lt;%&ndash;                                    </c:forEach>&ndash;%&gt;--%>
+                        <%--&lt;%&ndash;                                    <li class="page-item ${next}">&ndash;%&gt;--%>
+                        <%--&lt;%&ndash;                                        <a class="page-link" href="product?action=page&page=${page+1}">Next</a>&ndash;%&gt;--%>
+                        <%--&lt;%&ndash;                                    </li>&ndash;%&gt;--%>
+                        <%--&lt;%&ndash;                                    <li class="page-item ${next}">&ndash;%&gt;--%>
+                        <%--&lt;%&ndash;                                        <a class="page-link" href="brands?action=page&page=${totalPage}">Last</a>&ndash;%&gt;--%>
+                        <%--&lt;%&ndash;                                    </li>&ndash;%&gt;--%>
+                        <%--&lt;%&ndash;                                </ul>&ndash;%&gt;--%>
+                        <%--&lt;%&ndash;                            </div>&ndash;%&gt;--%>
+                        <%--                        </div>--%>
                         <div style="position: absolute ; right: 30px">
                             <a href="/order?action=create" class="btn btn-primary">Add new</a>
                         </div>
@@ -291,10 +291,10 @@
 <script src="table/dist/js/adminlte.min.js"></script>
 <script src="table/dist/js/demo.js"></script>
 <script>
-    function confirmDelete(id) {
-        let check = confirm("Are you sure to delete?");
+    function confirmActive(id) {
+        let check = confirm("Are you sure to active?");
         if(check===true) {
-            window.location.href = ("order?action=delete&id="+id);
+            window.location.href = ("order?action=active&id="+id);
         }
     }
 </script>

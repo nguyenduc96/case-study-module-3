@@ -1,3 +1,10 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: dat01
+  Date: 10/7/2021
+  Time: 1:49 AM
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -194,37 +201,69 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="row">
-                            <h3 class="card-title">Order List</h3>
-                            <form action="/order?action=search" method="post">
-                                <input type="text" name="search" value="">
-                                <button type="submit">Search</button>
-                            </form>
+                            <h3 class="card-title">Order ${order.id}</h3>
                         </div>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
+                        <form action="/order?action=edit&id=${order.id}" method="post">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th scope="col">Order ID</th>
+                                    <th scope="col">User ID</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Create At</th>
+
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+
+                                    <td>${order.id}</td>
+                                    <td><input type="number" value="${order.user_id}" name="user_id"></td>
+                                    <td>
+                                        <select name="status">
+                                            <option value="Paied">Đã thanh toán</option>
+                                            <option value="In Cart">Trong giỏ hàng</option>
+                                        </select>
+                                    </td>
+                                    <td><input type="date" value="${order.created_at}" name="created_at"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <button type="submit">Save</button>
+                        </form>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="row">
+                            <h3 class="card-title">Order Detail</h3>
+                        </div>
+                    </div>
+                    <div class="card-body">
                         <table class="table table-striped">
                             <thead>
                             <tr>
-                                <th scope="col">Order ID</th>
-                                <th scope="col">User ID</th>
-                                <th scope="col">Status</th>
-                                <th scope="col">Create At</th>
-                                <th></th>
+                                <th scope="col">Product Name</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">After Discount</th>
                                 <th></th>
                                 <th></th>
                             </tr>
                             </thead>
                             <tbody>
-                            <c:forEach items="${orders}" var="order">
+                            <c:forEach items="${orderDetails}" var="orderDetail">
                                 <tr>
-                                    <td>${order.id}</td>
-                                    <td>${order.user_id}</td>
-                                    <td>${order.status}</td>
-                                    <td>${order.created_at}</td>
-                                    <td><a href="order?action=detail&id=${order.id}" class="btn btn-info">View</a></td>
-                                    <td><a href="order?action=edit&id=${order.id}" class="btn btn-success">Edit</a></td>
-                                    <td><button type="button" class="btn btn-warning" onclick="confirmDelete(${order.id})">Delete</button></td>
+                                    <td>${orderDetail.getProduct().getName()}</td>
+                                    <td>${orderDetail.quantity}</td>
+                                    <td><fmt:formatNumber value="${orderDetail.beforeDiscountMoney}"></fmt:formatNumber></td>
+                                    <td><fmt:formatNumber value="${orderDetail.afterDiscountMoney}"></fmt:formatNumber></td>
+                                    <td><a href="order_detail?action=edit&id=${orderDetail.id}" class="btn btn-success">Edit</a></td>
+                                    <td><button type="button" class="btn btn-warning" onclick="confirmDelete(${orderDetail.id})">Delete</button></td>
                                 </tr>
                             </c:forEach>
 
@@ -233,41 +272,8 @@
                     </div>
                     <!-- /.card-body -->
                     <div class="card-footer clearfix">
-<%--                        <div class="row">--%>
-<%--&lt;%&ndash;                            <div id="pagination">&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                <ul class="pagination">&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                    <li class="page-item ${previous}">&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                        <a class="page-link" href="order?action=&page=${1}">First</a>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                    </li>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                    <li class="page-item ${previous}">&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                        <a class="page-link" href="order?action=&page=${page-1}">Previous</a>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                    </li>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                    <c:forEach begin="1" end="${totalPage}" step="1" var="i">&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                        <c:choose>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                            <c:when test="${page == i}">&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                                <li class="page-item active"><a class="page-link " href="product?action=page&page=${i}">${i}</a></li>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                            </c:when>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                            <c:otherwise>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                                <li class="page-item"><a class="page-link" href="product?action=page&page=${i}">${i}</a></li>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                            </c:otherwise>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                        </c:choose>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                    </c:forEach>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                    <li class="page-item ${next}">&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                        <a class="page-link" href="product?action=page&page=${page+1}">Next</a>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                    </li>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                    <li class="page-item ${next}">&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                        <a class="page-link" href="brands?action=page&page=${totalPage}">Last</a>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                    </li>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                </ul>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                            </div>&ndash;%&gt;--%>
-<%--                        </div>--%>
-                        <div style="position: absolute ; right: 30px">
-                            <a href="/order?action=create" class="btn btn-primary">Add new</a>
-                        </div>
                     </div>
                 </div>
-
-
             </div><!-- /.container-fluid -->
         </section>
         <!-- /.content -->
@@ -294,12 +300,13 @@
     function confirmDelete(id) {
         let check = confirm("Are you sure to delete?");
         if(check===true) {
-            window.location.href = ("order?action=delete&id="+id);
+            window.location.href = ("order_detail?action=delete&id="+id);
         }
     }
 </script>
 </body>
 </html>
+
 
 
 

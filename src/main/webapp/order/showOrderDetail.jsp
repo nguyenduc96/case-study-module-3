@@ -251,9 +251,9 @@
                                 <tr>
                                     <td>${orderDetail.getProduct().getName()}</td>
                                     <td>${orderDetail.quantity}</td>
-                                    <td>${orderDetail.beforeDiscountMoney}</td>
-                                    <td>${orderDetail.afterDiscountMoney}</td>
-                                    <td><a href="order_detail?action=edit&id=${order.id}" class="btn btn-success">Edit</a></td>
+                                    <td><fmt:formatNumber value="${orderDetail.beforeDiscountMoney}"></fmt:formatNumber></td>
+                                    <td><fmt:formatNumber value="${orderDetail.afterDiscountMoney}"></fmt:formatNumber></td>
+                                    <td><a href="order_detail?action=edit&id=${orderDetail.id}" class="btn btn-success">Edit</a></td>
                                     <td><button type="button" class="btn btn-warning" onclick="confirmDelete(${orderDetail.id})">Delete</button></td>
                                 </tr>
                             </c:forEach>

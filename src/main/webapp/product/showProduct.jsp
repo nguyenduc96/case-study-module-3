@@ -248,7 +248,7 @@
                                     </li>
                                     <c:forEach begin="1" end="${totalPage}" step="1" var="i">
                                         <c:choose>
-                                            <c:when test="${page == 1}">
+                                            <c:when test="${page == i}">
                                                 <li class="page-item active"><a class="page-link " href="product?action=page&page=${i}">${i}</a></li>
                                             </c:when>
                                             <c:otherwise>

@@ -28,7 +28,7 @@ public class OrderDetailDao implements IOrderDetailDao{
     public OrderDetail select(int id) {
         OrderDetail orderDetail = null;
         try {
-            String query = "select od.*,p.price*od.quantity as 'tientruocgiam',p.price*od.quantity - p.price*od.quantity*p.discount_pct - p.discount as 'tiensaugiam' from order_detail od join product p on od.product_id = p.id join orders o on od.orders_id = o.id where id = ?;";
+            String query = "select od.*,p.price*od.quantity as 'tientruocgiam',p.price*od.quantity - p.price*od.quantity*p.discount_pct - p.discount as 'tiensaugiam' from order_detail od join product p on od.product_id = p.id join orders o on od.orders_id = o.id where od.id = ?;";
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setInt(1,id);
             ResultSet rs = statement.executeQuery();

@@ -17,12 +17,19 @@ public class OrderDetailService implements IOrderDetailService{
     }
 
     @Override
-    public OrderDetail select(int order_id) {
-        return orderDetailDao.select(order_id);
+    public OrderDetail select(int id) {
+        return orderDetailDao.select(id);
     }
 
     public List<OrderDetail> selectByOrderId(int orders_id) {
-        return orderDetailDao.selectByOrdersId(orders_id);
+        List<OrderDetail> orderDetails = orderDetailDao.selectByOrdersId(orders_id);
+        ProductService productService = new ProductService();
+        for(OrderDetail orderDetail : orderDetails) {
+            int product_id = orderDetail.getProduct_id();
+            Product product = productService.select(product_id);
+            orderDetail.setProduct(product);
+        }
+        return orderDetails;
     }
 
     @Override
@@ -49,6 +56,7 @@ public class OrderDetailService implements IOrderDetailService{
 
     @Override
     public List<OrderDetail> getByOffset(int offset, int limit, int isActive) {
+
         return orderDetailDao.getByOffset(offset,limit,isActive);
     }
 
