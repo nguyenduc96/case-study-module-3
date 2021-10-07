@@ -694,7 +694,9 @@
                                                                                                         <ul>
                                                                                                             <c:forEach items="${products}" var="product">
                                                                                                                 <c:if test="${product.brand_id == brand.id}">
-                                                                                                                    <li><a href="#" >${product.name}</a></li>
+                                                                                                                    <c:if test="${product.category_id == category.id}">
+                                                                                                                        <li><a href="/homePage?action=detailProduct&id=${product.id}" >${product.name}</a></li>
+                                                                                                                    </c:if>
                                                                                                                 </c:if>
                                                                                                             </c:forEach>
                                                                                                         </ul>
@@ -731,7 +733,7 @@
                                         <select class="no-border" name="category_id">
                                             <option value="0">All Categories</option>
                                             <c:forEach items="${categories}" var="category">
-                                                <option value="${category.id}">${category.name}</option>
+                                                <option value="${category.id}"><a href="/homePage?action=showProductByCategory&id=${category.id}">${category.name}</a></option>
                                             </c:forEach>
                                         </select>
                                     </div>

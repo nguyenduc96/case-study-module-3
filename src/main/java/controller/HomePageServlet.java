@@ -25,11 +25,19 @@ public class HomePageServlet extends HttpServlet {
             action = "";
         }
         switch(action) {
+            case "detailProduct": {
+                showDetailProduct(request,response);
+                break;
+            }
             default: {
                 showHomePage(request,response);
                 break;
             }
         }
+    }
+
+    private void showDetailProduct(HttpServletRequest request, HttpServletResponse response) {
+
     }
 
     private void showHomePage(HttpServletRequest request, HttpServletResponse response) {
