@@ -69,4 +69,12 @@ public class ProductService implements IProductService {
         name = "%" + name + "%";
         return productDao.findByName(name);
     }
+
+    public List<Product> getNewProduct(int length) {
+        return productDao.getNewProduct(length);
+    }
+
+    public List<Product> selectByCategory(int category_id,int limit) {
+        return productDao.selectByCategory(category_id,limit);
+    }
 }
