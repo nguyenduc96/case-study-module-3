@@ -70,12 +70,10 @@
                                 <li class="account btn-group" id="my_account">
                                     <a href="#" title="My Account" class="btn btn-xs dropdown-toggle" data-toggle="dropdown"> <span class="hidden-xs">My Account</span> <span class="fa fa-angle-down "></span></a>
                                     <ul class="dropdown-menu ">
-                                        <li><a href="register.html"><i class="fa fa-user"></i> Register</a></li>
-                                        <li><a href="login.html"><i class="fa fa-pencil-square-o"></i> Login</a></li>
+                                        <li><a href="login.html"><i class="fa fa-pencil-square-o"></i> Log Out</a></li>
                                     </ul>
                                 </li>
-                                <li class="wishlist"><a href="wishlist.html" id="wishlist-total" class="top-link-wishlist" title="Wish List (2)"><span class="hidden-xs">Wish List (2)</span></a></li>
-                                <li class="checkout"><a href="checkout.html" class="top-link-checkout" title="Checkout"><span class="hidden-xs">Checkout</span></a></li>
+
 
                             </ul>
                             <div class="form-group languages-block ">
