@@ -1,4 +1,3 @@
-
 <%--
   Created by IntelliJ IDEA.
   User: nguyendangtuananh
@@ -7,8 +6,6 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="ftm" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html lang="en">
 <head>
     <title>Market - Premium Multipurpose HTML5/CSS3 Theme</title>
@@ -23,7 +20,7 @@
 
     <!-- Favicon
 	============================================ -->
-    <link rel="shortcut icon" href="viewCusomer/theme/icon/favicon.png">
+    <link rel="shortcut icon" href="theme/icon/favicon.png">
 
     <!-- Google web fonts
 	============================================ -->
@@ -31,22 +28,22 @@
 
     <!-- Libs CSS
 	============================================ -->
-    <link rel="stylesheet" href="viewCusomer/theme/css/bootstrap/css/bootstrap.min.css">
-    <link href="viewCusomer/theme/css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="viewCusomer/theme/js/datetimepicker/bootstrap-datetimepicker.min.css" rel="stylesheet">
-    <link href="viewCusomer/theme/js/owl-carousel/owl.carousel.css" rel="stylesheet">
-    <link href="viewCusomer/theme/css/themecss/lib.css" rel="stylesheet">
-    <link href="viewCusomer/theme/js/jquery-ui/jquery-ui.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="theme/css/bootstrap/css/bootstrap.min.css">
+    <link href="theme/css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="theme/js/datetimepicker/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <link href="theme/js/owl-carousel/owl.carousel.css" rel="stylesheet">
+    <link href="theme/css/themecss/lib.css" rel="stylesheet">
+    <link href="theme/js/jquery-ui/jquery-ui.min.css" rel="stylesheet">
 
     <!-- Theme CSS
         ============================================ -->
-    <link href="viewCusomer/theme/css/themecss/so_megamenu.css" rel="stylesheet">
-    <link href="viewCusomer/theme/css/themecss/so-categories.css" rel="stylesheet">
-    <link href="viewCusomer/theme/css/themecss/so-listing-tabs.css" rel="stylesheet">
-    <link href="viewCusomer/theme/css/footer1.css" rel="stylesheet">
-    <link href="viewCusomer/theme/css/header2.css" rel="stylesheet">
-    <link id="color_scheme" href="viewCusomer/theme/css/home2.css" rel="stylesheet">
-    <link href="viewCusomer/theme/css/responsive.css" rel="stylesheet">
+    <link href="theme/css/themecss/so_megamenu.css" rel="stylesheet">
+    <link href="theme/css/themecss/so-categories.css" rel="stylesheet">
+    <link href="theme/css/themecss/so-listing-tabs.css" rel="stylesheet">
+    <link href="theme/css/footer1.css" rel="stylesheet">
+    <link href="theme/css/header2.css" rel="stylesheet">
+    <link id="color_scheme" href="theme/css/home2.css" rel="stylesheet">
+    <link href="theme/css/responsive.css" rel="stylesheet">
 
 </head>
 <body class="common-home res layout-home1">
@@ -73,24 +70,22 @@
                                 <li class="account btn-group" id="my_account">
                                     <a href="#" title="My Account" class="btn btn-xs dropdown-toggle" data-toggle="dropdown"> <span class="hidden-xs">My Account</span> <span class="fa fa-angle-down "></span></a>
                                     <ul class="dropdown-menu ">
-                                        <li><a href="register.html"><i class="fa fa-user"></i> Register</a></li>
-                                        <li><a href="login.html"><i class="fa fa-pencil-square-o"></i> Login</a></li>
+                                        <li><a href="login.html"><i class="fa fa-pencil-square-o"></i> Log Out</a></li>
                                     </ul>
                                 </li>
-                                <li class="wishlist"><a href="wishlist.html" id="wishlist-total" class="top-link-wishlist" title="Wish List (2)"><span class="hidden-xs">Wish List (2)</span></a></li>
-                                <li class="checkout"><a href="checkout.html" class="top-link-checkout" title="Checkout"><span class="hidden-xs">Checkout</span></a></li>
+
 
                             </ul>
                             <div class="form-group languages-block ">
                                 <form action="index.html" method="post" enctype="multipart/form-data" id="bt-language">
                                     <a class="btn btn-xs dropdown-toggle" data-toggle="dropdown">
-                                        <img src="viewCusomer/theme/image/demo/flags/gb.png" alt="English" title="English">
+                                        <img src="theme/image/demo/flags/gb.png" alt="English" title="English">
                                         <span class="hidden-xs">English</span>
                                         <span class="fa fa-angle-down"></span>
                                     </a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="#"><img class="image_flag" src="viewCusomer/theme/image/demo/flags/gb.png" alt="English" title="English" /> English </a></li>
-                                        <li> <a href="#"> <img class="image_flag" src="viewCusomer/theme/image/demo/flags/lb.png" alt="Arabic" title="Arabic" /> Arabic </a> </li>
+                                        <li><a href="#"><img class="image_flag" src="theme/image/demo/flags/gb.png" alt="English" title="English" /> English </a></li>
+                                        <li> <a href="#"> <img class="image_flag" src="theme/image/demo/flags/lb.png" alt="Arabic" title="Arabic" /> Arabic </a> </li>
                                     </ul>
                                 </form>
                             </div>
