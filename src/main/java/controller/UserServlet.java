@@ -59,17 +59,12 @@ public class UserServlet extends HttpServlet {
                     action = EMPTY;
                 }
                 switch (action) {
-                    case EDIT: {
-                        showEditForm(request, response);
-                        break;
-                    }
-                    case "display": {
-                        listUser(request, response);
-                        break;
-                    }
                     case MANAGE: {
                         showAll(request, response);
                         break;
+                    }
+                    case DELETE: {
+
                     }
                     default:
                         showAll(request, response);
@@ -80,6 +75,8 @@ public class UserServlet extends HttpServlet {
             response.sendRedirect("login?action=login");
         }
     }
+
+
 
     private void showAll(HttpServletRequest request, HttpServletResponse response) {
         int numberActive = 1;
@@ -140,18 +137,4 @@ public class UserServlet extends HttpServlet {
         request.setAttribute(PREVIOUS, previous);
         request.setAttribute(NEXT, next);
     }
-
-    private void listUser(HttpServletRequest request, HttpServletResponse response) {
-    }
-
-    private void showEditForm(HttpServletRequest request, HttpServletResponse response) {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("view/signup.jsp");
-        try {
-            dispatcher.forward(request, response);
-        } catch (ServletException | IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-
 }

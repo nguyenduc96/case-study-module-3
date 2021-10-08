@@ -204,6 +204,7 @@
                                         <td>
                                             <button><a href="categories?action=edit&id=${category.id}">Edit</a></button>
                                             <button><a onclick="confirmDelete(${category.id})">Delete</a></button>
+
                                         </td>
                                     </tr>
                                 </c:if>
