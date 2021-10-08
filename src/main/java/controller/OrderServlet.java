@@ -2,7 +2,6 @@ package controller;
 
 import model.Order;
 import model.OrderDetail;
-import model.Product;
 import service.order.OrderService;
 import service.orderdetail.OrderDetailService;
 
@@ -13,6 +12,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -196,10 +196,32 @@ public class OrderServlet extends HttpServlet {
                 editOrder(request,response);
                 break;
             }
+            case "search": {
+                showSearchOrder(request,response);
+                break;
+            }
             default: {
                 showOrder(request,response);
                 break;
             }
+        }
+    }
+
+    private void showSearchOrder(HttpServletRequest request, HttpServletResponse response) {
+        List<Order> orders = new ArrayList<>();
+        String search = request.getParameter("search");
+        if (search == null || search.equals("")) {
+            orders = orderService.getAll();
+        } else {
+            int id = Integer.parseInt(search);
+            orders.add(orderService.select(id)) ;
+        }
+        request.setAttribute("orders", orders);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("order/showOrder.jsp");
+        try {
+            dispatcher.forward(request, response);
+        } catch (ServletException | IOException e) {
+            e.printStackTrace();
         }
     }
 

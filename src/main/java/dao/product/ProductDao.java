@@ -236,5 +236,23 @@ public class ProductDao implements IProductDao {
             e.printStackTrace();
         }
         return products;
-    };
+    }
+
+    public List<Product> selectByBrandId(int brand_id,int limit) {
+        List<Product> products = new ArrayList<>();
+        try {
+            PreparedStatement statement = statement = connection.prepareStatement("select * from product where brand_id = ? limit ?;");
+            statement.setInt(1,brand_id);
+            statement.setInt(2, limit);
+            ResultSet rs = statement.executeQuery();
+            while(rs.next()) {
+                int id = rs.getInt("id");
+                Product product = getProductInfor(id,rs);
+                products.add(product);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return products;
+    }
 }

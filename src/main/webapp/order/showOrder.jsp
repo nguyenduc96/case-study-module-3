@@ -114,9 +114,15 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="../../index2.html" class="nav-link">
+                                <a href="order" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Quản lí order</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/order?action=showDeleteOrder" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Quản lí order đã xoá</p>
                                 </a>
                             </li>
                             <li class="nav-item">
@@ -175,7 +181,7 @@
 
 
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Product List</li>
+                            <li class="breadcrumb-item active">Order List</li>
 
 
 
@@ -232,39 +238,6 @@
                         </table>
                     </div>
                     <!-- /.card-body -->
-                    <div class="card-footer clearfix">
-<%--                        <div class="row">--%>
-<%--&lt;%&ndash;                            <div id="pagination">&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                <ul class="pagination">&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                    <li class="page-item ${previous}">&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                        <a class="page-link" href="order?action=&page=${1}">First</a>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                    </li>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                    <li class="page-item ${previous}">&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                        <a class="page-link" href="order?action=&page=${page-1}">Previous</a>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                    </li>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                    <c:forEach begin="1" end="${totalPage}" step="1" var="i">&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                        <c:choose>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                            <c:when test="${page == i}">&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                                <li class="page-item active"><a class="page-link " href="product?action=page&page=${i}">${i}</a></li>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                            </c:when>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                            <c:otherwise>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                                <li class="page-item"><a class="page-link" href="product?action=page&page=${i}">${i}</a></li>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                            </c:otherwise>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                        </c:choose>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                    </c:forEach>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                    <li class="page-item ${next}">&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                        <a class="page-link" href="product?action=page&page=${page+1}">Next</a>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                    </li>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                    <li class="page-item ${next}">&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                        <a class="page-link" href="brands?action=page&page=${totalPage}">Last</a>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                    </li>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                </ul>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                            </div>&ndash;%&gt;--%>
-<%--                        </div>--%>
-                        <div style="position: absolute ; right: 30px">
-                            <a href="/order?action=create" class="btn btn-primary">Add new</a>
-                        </div>
-                    </div>
                 </div>
 
 
