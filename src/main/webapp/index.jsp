@@ -102,9 +102,9 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="/product" class="nav-link">
+                                <a href="../viewAdmin/admin.jsp" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Quản lí sản phẩm</p>
+                                    <p>Trang admin mới</p>
                                 </a>
                             </li>
                             <li class="nav-item">
