@@ -11,7 +11,7 @@ public class OrderService implements IOrderService {
 
     @Override
     public void add(Order order) throws SQLException {
-
+        orderDao.add(order);
     }
 
     @Override

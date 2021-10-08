@@ -1,3 +1,4 @@
+
 <%--
   Created by IntelliJ IDEA.
   User: nguyendangtuananh
@@ -6,6 +7,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="ftm" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
 
@@ -23,11 +26,11 @@
 
     <!-- Favicon
     ============================================ -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="theme/icon/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="theme/icon/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="theme/icon/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="theme/icon/apple-touch-icon-57-precomposed.png">
-    <link rel="shortcut icon" href="theme/icon/favicon.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="viewCusomer/theme/icon/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="viewCusomer/theme/icon/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="viewCusomer/theme/icon/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="viewCusomer/theme/icon/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="viewCusomer/theme/icon/favicon.png">
 
     <!-- Google web fonts
     ============================================ -->
@@ -35,23 +38,23 @@
 
     <!-- Libs CSS
 	============================================ -->
-    <link rel="stylesheet" href="theme/css/bootstrap/css/bootstrap.min.css">
-    <link href="theme/css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="theme/js/datetimepicker/bootstrap-datetimepicker.min.css" rel="stylesheet">
-    <link href="theme/js/owl-carousel/owl.carousel.css" rel="stylesheet">
-    <link href="theme/css/themecss/lib.css" rel="stylesheet">
-    <link href="theme/js/jquery-ui/jquery-ui.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="viewCusomer/theme/css/bootstrap/css/bootstrap.min.css">
+    <link href="viewCusomer/theme/css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="viewCusomer/theme/js/datetimepicker/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <link href="viewCusomer/theme/js/owl-carousel/owl.carousel.css" rel="stylesheet">
+    <link href="viewCusomer/theme/css/themecss/lib.css" rel="stylesheet">
+    <link href="viewCusomer/theme/js/jquery-ui/jquery-ui.min.css" rel="stylesheet">
 
     <!-- Theme CSS
     ============================================ -->
-    <link href="theme/css/themecss/so_megamenu.css" rel="stylesheet">
-    <link href="theme/css/themecss/so-categories.css" rel="stylesheet">
-    <link href="theme/css/themecss/so-listing-tabs.css" rel="stylesheet">
-    <link href="theme/css/footer1.css" rel="stylesheet">
-    <link href="theme/css/header1.css" rel="stylesheet">
-    <link id="color_scheme" href="theme/css/theme.css" rel="stylesheet">
+    <link href="viewCusomer/theme/css/themecss/so_megamenu.css" rel="stylesheet">
+    <link href="viewCusomer/theme/css/themecss/so-categories.css" rel="stylesheet">
+    <link href="viewCusomer/theme/css/themecss/so-listing-tabs.css" rel="stylesheet">
+    <link href="viewCusomer/theme/css/footer1.css" rel="stylesheet">
+    <link href="viewCusomer/theme/css/header1.css" rel="stylesheet">
+    <link id="color_scheme" href="viewCusomer/theme/css/theme.css" rel="stylesheet">
 
-    <link href="theme/css/responsive.css" rel="stylesheet">
+    <link href="viewCusomer/theme/css/responsive.css" rel="stylesheet">
 
 
 
@@ -69,12 +72,12 @@
                         <div class="form-group languages-block ">
                             <form action="index.html" method="post" enctype="multipart/form-data" id="bt-language">
                                 <a class="btn btn-xs dropdown-toggle" data-toggle="dropdown">
-                                    <img src="theme/image/demo/flags/gb.png" alt="English" title="English">
+                                    <img src="viewCusomer/theme/image/demo/flags/gb.png" alt="English" title="English">
                                     <span class="">English</span>
                                     <span class="fa fa-angle-down"></span>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="index.html"><img class="image_flag" src="theme/image/demo/flags/gb.png" alt="English" title="English" /> English </a></li>
+                                    <li><a href="index.html"><img class="image_flag" src="viewCusomer/theme/image/demo/flags/gb.png" alt="English" title="English" /> English </a></li>
                                 </ul>
                             </form>
                         </div>
@@ -119,7 +122,7 @@
                 <div class="row">
                     <!-- Logo -->
                     <div class="navbar-logo col-md-3 col-sm-12 col-xs-12">
-                        <a href="index.html"><img src="theme/image/demo/logos/theme_logo.png" title="Your Store" alt="Your Store" /></a>
+                        <a href="index.html"><img src="viewCusomer/theme/image/demo/logos/theme_logo.png" title="Your Store" alt="Your Store" /></a>
                     </div>
                     <!-- //end Logo -->
 
@@ -162,7 +165,7 @@
                                         <tbody>
                                         <tr>
                                             <td class="text-center" style="width:70px">
-                                                <a href="product.html"> <img src="theme/image/demo/shop/product/35.jpg" style="width:70px" alt="Filet Mign" title="Filet Mign" class="preview"> </a>
+                                                <a href="product.html"> <img src="viewCusomer/theme/image/demo/shop/product/35.jpg" style="width:70px" alt="Filet Mign" title="Filet Mign" class="preview"> </a>
                                             </td>
                                             <td class="text-left"> <a class="cart_product_name" href="product.html">Filet Mign</a> </td>
                                             <td class="text-center"> x1 </td>
@@ -176,7 +179,7 @@
                                         </tr>
                                         <tr>
                                             <td class="text-center" style="width:70px">
-                                                <a href="product.html"> <img src="theme/image/demo/shop/product/141.jpg" style="width:70px" alt="Canon EOS 5D" title="Canon EOS 5D" class="preview"> </a>
+                                                <a href="product.html"> <img src="viewCusomer/theme/image/demo/shop/product/141.jpg" style="width:70px" alt="Canon EOS 5D" title="Canon EOS 5D" class="preview"> </a>
                                             </td>
                                             <td class="text-left"> <a class="cart_product_name" href="product.html">Canon EOS 5D</a> </td>
                                             <td class="text-center"> x1 </td>
@@ -271,7 +274,7 @@
                                                         <li class="item-vertical style1 with-sub-menu hover">
                                                             <p class="close-menu"></p>
                                                             <a href="#" class="clearfix">
-                                                                <img src="theme/image/theme/icons/2.png" alt="icon">
+                                                                <img src="viewCusomer/theme/image/viewCusomer/theme/icons/2.png" alt="icon">
                                                                 <span>Mobile Phone</span>
                                                                 <b class="caret"></b>
                                                             </a>
@@ -330,7 +333,7 @@
                                                             <p class="close-menu"></p>
                                                             <a href="#" class="clearfix">
                                                                 <span class="label"></span>
-                                                                <img src="theme/image/theme/icons/2.png" alt="icon">
+                                                                <img src="viewCusomer/theme/image/viewCusomer/theme/icons/2.png" alt="icon">
                                                                 <span>Tablet</span>
                                                                 <b class="caret"></b>
                                                             </a>
@@ -374,7 +377,7 @@
                                                                         <div class="col-md-6">
                                                                             <div class="row banner">
                                                                                 <a href="#">
-                                                                                    <img src="theme/image/demo/cms/menu_bg2.jpg" alt="banner1">
+                                                                                    <img src="viewCusomer/theme/image/demo/cms/menu_bg2.jpg" alt="banner1">
                                                                                 </a>
                                                                             </div>
                                                                         </div>
@@ -385,7 +388,7 @@
                                                         <li class="item-vertical with-sub-menu hover">
                                                             <p class="close-menu"></p>
                                                             <a href="#" class="clearfix">
-                                                                <img src="theme/image/theme/icons/2.png" alt="icon">
+                                                                <img src="viewCusomer/theme/image/viewCusomer/theme/icons/2.png" alt="icon">
                                                                 <span>Laptop</span>
                                                                 <b class="caret"></b>
                                                             </a>
@@ -483,7 +486,7 @@
                                                             <p class="close-menu"></p>
                                                             <a href="#" class="clearfix">
 
-                                                                <img src="theme/image/theme/icons/2.png" alt="icon">
+                                                                <img src="viewCusomer/theme/image/viewCusomer/theme/icons/2.png" alt="icon">
                                                                 <span>Phụ Kiện</span>
                                                                 <b class="caret"></b>
                                                             </a>
@@ -731,23 +734,11 @@
                         <div class="row">
                             <div class="content-product-left class-honizol col-sm-6 col-xs-12 ">
                                 <div class="large-image  ">
-
-
-
-
-
-
-<%--                                    ảnh to --%>
-
-                                    <img itemprop="image" class="product-image-zoom" src="theme/image/demo/shop/product/J9.jpg" data-zoom-image="image/demo/shop/product/J9.jpg" title="Bint Beef" alt="Bint Beef">
-
-
-
+                                    <img itemprop="image" class="product-image-zoom" src="${product.image}" data-zoom-image="image/demo/shop/product/J9.jpg" title="Bint Beef" alt="Bint Beef">
                                 </div>
-                                <a class="thumb-video pull-left" href="https://www.youtube.com/watch?v=HhabgvIIXik"><i class="fa fa-youtube-play"></i></a>
                                 <div id="thumb-slider" class="owl-theme owl-loaded owl-drag full_slider">
                                     <a data-index="0" class="img thumbnail " data-image="image/demo/shop/product/J9.jpg" title="Bint Beef">
-                                        <img src="theme/image/demo/shop/product/J9.jpg" title="Bint Beef" alt="Bint Beef">
+                                        <img src="${product.image}" title="Bint Beef" alt="Bint Beef">
                                     </a>
 
                                 </div>
@@ -756,7 +747,7 @@
 
                             <div class="content-product-right col-sm-6 col-xs-12">
                                 <div class="title-product">
-                                    <h1>Bint Beef</h1>
+                                    <h1>${product.name}</h1>
                                 </div>
                                 <!-- Review ---->
                                 <div class="box-review form-group">
@@ -776,85 +767,61 @@
 
                                 <div class="product-label form-group">
                                     <div class="product_page_price price" itemprop="offerDetails" itemscope="" itemtype="http://data-vocabulary.org/Offer">
-                                        <span class="price-new" itemprop="price">$114.00</span>
-                                        <span class="price-old">$122.00</span>
+                                        <span class="price-new" itemprop="price"><ftm:formatNumber value="${product.price - (product.price*product.discount_pct/100)}"></ftm:formatNumber>VND</span>
+                                        <span class="price-old"><ftm:formatNumber value="${product.price}"></ftm:formatNumber>VND</span>
                                     </div>
                                     <div class="stock"><span>Availability:</span> <span class="status-stock">In Stock</span></div>
                                 </div>
 
                                 <div class="product-box-desc">
                                     <div class="inner-box-desc">
-                                        <div class="price-tax"><span>Ex Tax:</span> $60.00</div>
-                                        <div class="reward"><span>Price in reward points:</span> 400</div>
-                                        <div class="brand"><span>Brand:</span><a href="#">Apple</a>		</div>
-                                        <div class="model"><span>Product Code:</span> Product 15</div>
-                                        <div class="reward"><span>Reward Points:</span> 100</div>
+                                        <div class="price-tax"><span>Screen Tech: </span> ${productDetail.screen_tech}</div>
+                                        <div class="price-tax"><span>Screen Resolution: </span> ${productDetail.screen_resolution}</div>
+                                        <div class="price-tax"><span>Front Camera: </span> ${productDetail.front_camera_tech}</div>
+                                        <div class="price-tax"><span>Rear Camera: </span> ${productDetail.rear_camera_teach}</div>
+                                        <div class="price-tax"><span>Operator System: </span> ${productDetail.operator_system}</div>
+                                        <div class="price-tax"><span>CPU: </span> ${productDetail.cpu}</div>
+                                        <div class="price-tax"><span>RAM: </span> ${productDetail.ram}</div>
+                                        <div class="price-tax"><span>Memory: </span> ${productDetail.memory}</div>
+                                        <div class="price-tax"><span>Connect: </span> ${productDetail.connect}</div>
+                                        <div class="price-tax"><span>Batter: </span> ${productDetail.pin}</div>
+                                        <div class="price-tax"><span>Charge: </span> ${productDetail.charge}</div>
                                     </div>
                                 </div>
 
 
                                 <div id="product">
                                     <h4>Available Options</h4>
-                                    <div class="image_option_type form-group required">
-                                        <label class="control-label">Colors</label>
-                                        <ul class="product-options clearfix"id="input-option231">
-                                            <li class="radio">
-                                                <label>
-                                                    <input class="image_radio" type="radio" name="option[231]" value="33">
-                                                    <img src="theme/image/demo/colors/blue.jpg" data-original-title="blue +$12.00" class="img-thumbnail icon icon-color">				<i class="fa fa-check"></i>
-                                                    <label> </label>
-                                                </label>
-                                            </li>
-                                            <li class="radio">
-                                                <label>
-                                                    <input class="image_radio" type="radio" name="option[231]" value="34">
-                                                    <img src="theme/image/demo/colors/brown.jpg" data-original-title="brown -$12.00" class="img-thumbnail icon icon-color">				<i class="fa fa-check"></i>
-                                                    <label> </label>
-                                                </label>
-                                            </li>
-                                            <li class="radio">
-                                                <label>
-                                                    <input class="image_radio" type="radio" name="option[231]" value="35"> <img src="theme/image/demo/colors/green.jpg"
-                                                                                                                                data-original-title="green +$12.00" class="img-thumbnail icon icon-color">				<i class="fa fa-check"></i>
-                                                    <label> </label>
-                                                </label>
-                                            </li>
-                                            <li class="selected-option">
-                                            </li>
-                                        </ul>
-                                    </div>
-
-
 
                                     <div class="form-group box-info-product">
-                                        <div class="option quantity">
-                                            <div class="input-group quantity-control" unselectable="on" style="-webkit-user-select: none;">
-                                                <label>Qty</label>
-                                                <input class="form-control" type="text" name="quantity"
-                                                       value="1">
-                                                <input type="hidden" name="product_id" value="50">
-                                                <span class="input-group-addon product_quantity_down">−</span>
-                                                <span class="input-group-addon product_quantity_up">+</span>
+                                        <form action="order?action=addToCart&id=${product.id}" method="post">
+                                            <div class="option quantity">
+                                                <div class="input-group quantity-control" unselectable="on" style="-webkit-user-select: none;">
+                                                    <label>Qty</label>
+                                                    <input class="form-control" type="text" name="quantity" value="1">
+                                                    <span class="input-group-addon product_quantity_down">−</span>
+                                                    <span class="input-group-addon product_quantity_up">+</span>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="cart">
-                                            <input type="button" data-toggle="tooltip" title="" value="Add to Cart" data-loading-text="Loading..." id="button-cart" class="btn btn-mega btn-lg" onclick="cart.add('42', '1');" data-original-title="Add to Cart">
-                                        </div>
-                                        <div class="add-to-links wish_comp">
-                                            <ul class="blank list-inline">
-                                                <li class="wishlist">
-                                                    <a class="icon" data-toggle="tooltip" title=""
-                                                       onclick="wishlist.add('50');" data-original-title="Add to Wish List"><i class="fa fa-heart"></i>
-                                                    </a>
-                                                </li>
-                                                <li class="compare">
-                                                    <a class="icon" data-toggle="tooltip" title=""
-                                                       onclick="compare.add('50');" data-original-title="Compare this Product"><i class="fa fa-exchange"></i>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-
+                                            <div class="cart">
+                                                <button id="button-cart" type="submit" class="btn btn-outline-warning" onclick="cart.add('42', '1');">Add to Cart</button>
+<%--                                                <input type="button" data-toggle="tooltip" title="" value="Add to Cart" data-loading-text="Loading..."  onclick="cart.add('42', '1');" data-original-title="Add to Cart">--%>
+                                            </div>
+                                            <div class="add-to-links wish_comp">
+                                                <ul class="blank list-inline">
+                                                    <li class="wishlist">
+                                                        <a class="icon" data-toggle="tooltip" title=""
+                                                           onclick="wishlist.add('50');" data-original-title="Add to Wish List"><i class="fa fa-heart"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li class="compare">
+                                                        <a class="icon" data-toggle="tooltip" title=""
+                                                           onclick="compare.add('50');" data-original-title="Compare this Product"><i class="fa fa-exchange"></i>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </form>
                                     </div>
 
                                 </div>
@@ -888,67 +855,6 @@
                         </div>
                     </section>
                 </div>
-
-                <!-- Product Tabs -->
-
-
-                <!-- Related Products -->
-                <div class="related titleLine products-list grid module ">
-                    <h3 class="modtitle">Related Products  </h3>
-                    <div class="releate-products ">
-                        <div class="product-layout">
-                            <div class="product-item-container">
-                                <div class="left-block">
-                                    <div class="product-image-container second_img ">
-                                        <img  src="theme/image/demo/shop/product/e11.jpg"  title="Apple Cinema 30&quot;" class="img-responsive" />
-                                        <img  src="theme/image/demo/shop/product/e11.jpg"  title="Apple Cinema 30&quot;" class="img_0 img-responsive" />
-                                    </div>
-                                    <!--Sale Label-->
-                                    <span class="label label-sale">Sale</span>
-                                    <!--full quick view block-->
-                                    <a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  href="quickview.html">  Quickview</a>
-                                    <!--end full quick view block-->
-                                </div>
-
-
-                                <div class="right-block">
-                                    <div class="caption">
-                                        <h4><a href="product.html">Apple Cinema 30&quot;</a></h4>
-                                        <div class="ratings">
-                                            <div class="rating-box">
-                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                            </div>
-                                        </div>
-
-                                        <div class="price">
-                                            <span class="price-new">$74.00</span>
-                                            <span class="price-old">$122.00</span>
-                                            <span class="label label-percent">-40%</span>
-                                        </div>
-                                        <div class="description item-desc hidden">
-                                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut l..</p>
-                                        </div>
-                                    </div>
-
-                                    <div class="button-group">
-                                        <button class="addToCart" type="button" data-toggle="tooltip" title="Add to Cart" onclick="cart.add('42', '1');"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs">Add to Cart</span></button>
-                                        <button class="wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('42');"><i class="fa fa-heart"></i></button>
-                                        <button class="compare" type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('42');"><i class="fa fa-exchange"></i></button>
-                                    </div>
-                                </div><!-- right block -->
-
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-                <!-- end Related  Products-->
-
 
             </div>
 
@@ -1058,25 +964,25 @@
 <!-- Include Libs & Plugins
 	============================================ -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script type="text/javascript" src="theme/js/jquery-2.2.4.min.js"></script>
-<script type="text/javascript" src="theme/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="theme/js/owl-carousel/owl.carousel.js"></script>
-<script type="text/javascript" src="theme/js/themejs/libs.js"></script>
-<script type="text/javascript" src="theme/js/unveil/jquery.unveil.js"></script>
-<script type="text/javascript" src="theme/js/countdown/jquery.countdown.min.js"></script>
-<script type="text/javascript" src="theme/js/dcjqaccordion/jquery.dcjqaccordion.2.8.min.js"></script>
-<script type="text/javascript" src="theme/js/datetimepicker/moment.js"></script>
-<script type="text/javascript" src="theme/js/datetimepicker/bootstrap-datetimepicker.min.js"></script>
-<script type="text/javascript" src="theme/js/jquery-ui/jquery-ui.min.js"></script>
+<script type="text/javascript" src="viewCusomer/theme/js/jquery-2.2.4.min.js"></script>
+<script type="text/javascript" src="viewCusomer/theme/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="viewCusomer/theme/js/owl-carousel/owl.carousel.js"></script>
+<script type="text/javascript" src="viewCusomer/theme/js/themejs/libs.js"></script>
+<script type="text/javascript" src="viewCusomer/theme/js/unveil/jquery.unveil.js"></script>
+<script type="text/javascript" src="viewCusomer/theme/js/countdown/jquery.countdown.min.js"></script>
+<script type="text/javascript" src="viewCusomer/theme/js/dcjqaccordion/jquery.dcjqaccordion.2.8.min.js"></script>
+<script type="text/javascript" src="viewCusomer/theme/js/datetimepicker/moment.js"></script>
+<script type="text/javascript" src="viewCusomer/theme/js/datetimepicker/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="viewCusomer/theme/js/jquery-ui/jquery-ui.min.js"></script>
 
 
 <!-- Theme files
 ============================================ -->
 
 
-<script type="text/javascript" src="theme/js/themejs/so_megamenu.js"></script>
-<script type="text/javascript" src="theme/js/themejs/addtocart.js"></script>
-<script type="text/javascript" src="theme/js/themejs/application.js"></script>
+<script type="text/javascript" src="viewCusomer/theme/js/themejs/so_megamenu.js"></script>
+<script type="text/javascript" src="viewCusomer/theme/js/themejs/addtocart.js"></script>
+<script type="text/javascript" src="viewCusomer/theme/js/themejs/application.js"></script>
 <script type="text/javascript">
     // Check if Cookie exists
     if($.cookie('display')){

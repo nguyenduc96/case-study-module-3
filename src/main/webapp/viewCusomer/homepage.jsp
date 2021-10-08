@@ -6,6 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="ftm" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html lang="en">
 <head>
     <title>Market - Premium Multipurpose HTML5/CSS3 Theme</title>
@@ -20,7 +22,7 @@
 
     <!-- Favicon
 	============================================ -->
-    <link rel="shortcut icon" href="theme/icon/favicon.png">
+    <link rel="shortcut icon" href="viewCusomer/theme/icon/favicon.png">
 
     <!-- Google web fonts
 	============================================ -->
@@ -28,22 +30,22 @@
 
     <!-- Libs CSS
 	============================================ -->
-    <link rel="stylesheet" href="theme/css/bootstrap/css/bootstrap.min.css">
-    <link href="theme/css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="theme/js/datetimepicker/bootstrap-datetimepicker.min.css" rel="stylesheet">
-    <link href="theme/js/owl-carousel/owl.carousel.css" rel="stylesheet">
-    <link href="theme/css/themecss/lib.css" rel="stylesheet">
-    <link href="theme/js/jquery-ui/jquery-ui.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="viewCusomer/theme/css/bootstrap/css/bootstrap.min.css">
+    <link href="viewCusomer/theme/css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="viewCusomer/theme/js/datetimepicker/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <link href="viewCusomer/theme/js/owl-carousel/owl.carousel.css" rel="stylesheet">
+    <link href="viewCusomer/theme/css/themecss/lib.css" rel="stylesheet">
+    <link href="viewCusomer/theme/js/jquery-ui/jquery-ui.min.css" rel="stylesheet">
 
     <!-- Theme CSS
         ============================================ -->
-    <link href="theme/css/themecss/so_megamenu.css" rel="stylesheet">
-    <link href="theme/css/themecss/so-categories.css" rel="stylesheet">
-    <link href="theme/css/themecss/so-listing-tabs.css" rel="stylesheet">
-    <link href="theme/css/footer1.css" rel="stylesheet">
-    <link href="theme/css/header2.css" rel="stylesheet">
-    <link id="color_scheme" href="theme/css/home2.css" rel="stylesheet">
-    <link href="theme/css/responsive.css" rel="stylesheet">
+    <link href="viewCusomer/theme/css/themecss/so_megamenu.css" rel="stylesheet">
+    <link href="viewCusomer/theme/css/themecss/so-categories.css" rel="stylesheet">
+    <link href="viewCusomer/theme/css/themecss/so-listing-tabs.css" rel="stylesheet">
+    <link href="viewCusomer/theme/css/footer1.css" rel="stylesheet">
+    <link href="viewCusomer/theme/css/header2.css" rel="stylesheet">
+    <link id="color_scheme" href="viewCusomer/theme/css/home2.css" rel="stylesheet">
+    <link href="viewCusomer/theme/css/responsive.css" rel="stylesheet">
 
 </head>
 <body class="common-home res layout-home1">
@@ -79,13 +81,13 @@
                             <div class="form-group languages-block ">
                                 <form action="index.html" method="post" enctype="multipart/form-data" id="bt-language">
                                     <a class="btn btn-xs dropdown-toggle" data-toggle="dropdown">
-                                        <img src="theme/image/demo/flags/gb.png" alt="English" title="English">
+                                        <img src="viewCusomer/theme/image/demo/flags/gb.png" alt="English" title="English">
                                         <span class="hidden-xs">English</span>
                                         <span class="fa fa-angle-down"></span>
                                     </a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="#"><img class="image_flag" src="theme/image/demo/flags/gb.png" alt="English" title="English" /> English </a></li>
-                                        <li> <a href="#"> <img class="image_flag" src="theme/image/demo/flags/lb.png" alt="Arabic" title="Arabic" /> Arabic </a> </li>
+                                        <li><a href="#"><img class="image_flag" src="viewCusomer/theme/image/demo/flags/gb.png" alt="English" title="English" /> English </a></li>
+                                        <li> <a href="#"> <img class="image_flag" src="viewCusomer/theme/image/demo/flags/lb.png" alt="Arabic" title="Arabic" /> Arabic </a> </li>
                                     </ul>
                                 </form>
                             </div>
@@ -670,7 +672,7 @@
                                                         <c:forEach items="${categories}" var="category">
                                                             <li class="item-vertical style1 with-sub-menu hover">
                                                                 <p class="close-menu"></p>
-                                                                <a href="#" class="clearfix">
+                                                                <a href="/homePage?action=viewByCategory&id=${category.id}" class="clearfix">
                                                                     <img src="viewCusomer/theme/image/theme/icons/2.png" alt="icon">
                                                                     <span>${category.name}</span>
                                                                     <b class="caret"></b>
@@ -875,7 +877,7 @@
                                                 <div class="product-item-container">
                                                     <div class="left-block">
                                                         <div class="product-image-container second_img ">
-                                                            <a href="/homePage?action=detial&id=${product.id}">
+                                                            <a href="/homePage?action=detailProduct&id=${product.id}">
                                                                 <img src="${product.image}" style="width: 250px;height: 230px" alt="Apple Cinema 30&quot;" class="img-responsive" />
                                                                 <img src="${product.image}" style="width: 250px;height: 230px" alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
                                                             </a>
@@ -889,7 +891,7 @@
                                                     </div>
                                                     <div class="right-block">
                                                         <div class="caption">
-                                                            <h4><a href="/homePage?action=detial&id=${product.id}">${product.name}</a></h4>
+                                                            <h4><a href="/homePage?action=detailProduct&id=${product.id}">${product.name}</a></h4>
                                                             <div class="ratings">
                                                                 <div class="rating-box">
                                                                     <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
@@ -917,7 +919,6 @@
                                                 </div>
                                             </div>
                                         </c:forEach>
-
                                     </div>
 
                                 </div>
@@ -971,7 +972,7 @@
                                                 <div class="product-item-container">
                                                     <div class="left-block">
                                                         <div class="product-image-container second_img ">
-                                                            <a href="/homePage?action=detail&id=${product.id}">
+                                                            <a href="/homePage?action=detailProduct&id=${product.id}">
                                                                 <img src="${product.image}" style="width: 270px;height: 240px" alt="Apple Cinema 30&quot;" class="img-responsive" />
                                                                 <img src="${product.image}" style="width: 270px;height: 240px" alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
                                                             </a>
@@ -986,7 +987,7 @@
                                                     </div>
                                                     <div class="right-block">
                                                         <div class="caption">
-                                                            <h4><a href="/homePage?action=detail&id=${product.id}">${product.name}</a></h4>
+                                                            <h4><a href="/homePage?action=detailProduct&id=${product.id}">${product.name}</a></h4>
                                                             <div class="ratings">
                                                                 <div class="rating-box">
                                                                     <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
@@ -1006,7 +1007,7 @@
                                                         </div>
 
                                                         <div class="button-group">
-                                                            <button class="addToCart" type="button" data-toggle="tooltip" title="Add to Cart" onclick="cart.add('42', '1');"><i class="fa fa-shopping-cart"></i> <span class="">Add to Cart</span></button>
+                                                            <button class="addToCart" type="button" data-toggle="tooltip" title="Add to Cart" onclick="cart.add('42', '1');"><i class="fa fa-shopping-cart"></i> <span class=""> Add to Cart</span></button>
                                                             <button class="wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('42');"><i class="fa fa-heart"></i></button>
                                                             <button class="compare" type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('42');"><i class="fa fa-exchange"></i></button>
                                                         </div>
@@ -1045,11 +1046,11 @@
                             <div class="product-latest-item">
                                 <div class="media">
                                     <div class="media-left">
-                                        <a href="#"><img src="${product.image}" alt="Cisi Chicken" title="Cisi Chicken" class="img-responsive" style="width: 100px; height: 82px;"></a>
+                                        <a href="/homePage?action=detailProduct&id=${product.id}"><img src="${product.image}" alt="Cisi Chicken" title="Cisi Chicken" class="img-responsive" style="width: 100px; height: 82px;"></a>
                                     </div>
                                     <div class="media-body">
                                         <div class="caption">
-                                            <h4><a href="#">${product.name}</a></h4>
+                                            <h4><a href="/homePage?action=detailProduct&id=${product.id}">${product.name}</a></h4>
 
                                             <div class="price">
                                                 <span class="price-new"><ftm:formatNumber value="${product.price}"></ftm:formatNumber></span>
