@@ -880,20 +880,21 @@
                                                 <div class="product-item-container">
                                                     <div class="left-block">
                                                         <div class="product-image-container second_img ">
-                                                            <img src="${product.image}" style="width: 250px;height: 230px" alt="Apple Cinema 30&quot;" class="img-responsive" />
-                                                            <img src="${product.image}" style="width: 250px;height: 230px" alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
+                                                            <a href="/homePage?action=detial&id=${product.id}">
+                                                                <img src="${product.image}" style="width: 250px;height: 230px" alt="Apple Cinema 30&quot;" class="img-responsive" />
+                                                                <img src="${product.image}" style="width: 250px;height: 230px" alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
+                                                            </a>
                                                         </div>
                                                         <!--Sale Label-->
                                                         <c:if test="${product.discount_pct > 0}">
                                                             <span class="label label-sale">-${product.discount_pct}%</span>
                                                         </c:if>
                                                         <!--full quick view block-->
-                                                        <a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  href="quickview.html">  Quickview</a>
                                                         <!--end full quick view block-->
                                                     </div>
                                                     <div class="right-block">
                                                         <div class="caption">
-                                                            <h4><a href="product.html">${product.name}</a></h4>
+                                                            <h4><a href="/homePage?action=detial&id=${product.id}">${product.name}</a></h4>
                                                             <div class="ratings">
                                                                 <div class="rating-box">
                                                                     <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
@@ -975,20 +976,22 @@
                                                 <div class="product-item-container">
                                                     <div class="left-block">
                                                         <div class="product-image-container second_img ">
-                                                            <img src="${product.image}" style="width: 270px;height: 240px" alt="Apple Cinema 30&quot;" class="img-responsive" />
-                                                            <img src="${product.image}" style="width: 270px;height: 240px" alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
+                                                            <a href="/homePage?action=detail&id=${product.id}">
+                                                                <img src="${product.image}" style="width: 270px;height: 240px" alt="Apple Cinema 30&quot;" class="img-responsive" />
+                                                                <img src="${product.image}" style="width: 270px;height: 240px" alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
+                                                            </a>
                                                         </div>
                                                         <!--Sale Label-->
                                                         <c:if test="${product.discount_pct > 0}">
                                                             <span class="label label-sale">-${product.discount_pct}%</span>
                                                         </c:if>
+
                                                         <!--full quick view block-->
-                                                        <a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  href="quickview.html">  Quickview</a>
                                                         <!--end full quick view block-->
                                                     </div>
                                                     <div class="right-block">
                                                         <div class="caption">
-                                                            <h4><a href="product.html">${product.name}</a></h4>
+                                                            <h4><a href="/homePage?action=detail&id=${product.id}">${product.name}</a></h4>
                                                             <div class="ratings">
                                                                 <div class="rating-box">
                                                                     <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
