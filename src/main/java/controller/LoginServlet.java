@@ -27,7 +27,6 @@ import static controller.UserServlet.*;
 
 @WebServlet(name = "RoleServlet", value = "/login")
 public class LoginServlet extends HttpServlet {
-    private UserService userService = new UserService();
 
 
     @Override
@@ -106,7 +105,7 @@ public class LoginServlet extends HttpServlet {
         java.util.Date utilDate = new java.util.Date();
         java.sql.Date created_at = new java.sql.Date(utilDate.getTime());
         User user = new User(username, password, first_name, last_name, number_phone, email, address, sex, true, role_id, date_of_birth, created_at);
-        List<User> users = userService.getAll();
+        List<User> users = USER_SERVICE.getAll();
         boolean isAdd = true;
         request.setAttribute("users", users);
         for (User u : users) {
@@ -125,8 +124,8 @@ public class LoginServlet extends HttpServlet {
         }
         if (isAdd) {
             try {
-                userService.add(user);
-                request.setAttribute(MESSAGE, "New user was created");
+                USER_SERVICE.add(user);
+                request.setAttribute(MESSAGE, "Account was created");
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -137,13 +136,12 @@ public class LoginServlet extends HttpServlet {
         } catch (ServletException | IOException e) {
             e.printStackTrace();
         }
-        requestDispatcher.forward(request, response);
     }
 
     private void loginAccount(HttpServletRequest request, HttpServletResponse response) {
         String username = request.getParameter(USERNAME);
         String password = request.getParameter(PASSWORD);
-        User user = userService.findUser(username, password);
+        User user = USER_SERVICE.findUser(username, password);
 
         if (user == null) {
             request.setAttribute(MESSAGE, "Username or password incorrect");
@@ -156,7 +154,11 @@ public class LoginServlet extends HttpServlet {
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
             try {
-                response.sendRedirect("brands");
+                if (user.getRole_id() == 1) {
+                    response.sendRedirect("homePage");
+                } else {
+                    response.sendRedirect("brands");
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }

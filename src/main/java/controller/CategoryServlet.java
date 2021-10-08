@@ -97,7 +97,7 @@ public class CategoryServlet extends HttpServlet {
 
     private void divisionPage(HttpServletRequest request, int numberActive) {
         int sizeOfList = categoryService.sizeOfList(numberActive);
-        final int LIMIT = 6;
+        final int LIMIT = 5;
         int totalPage;
         if (sizeOfList % LIMIT == 0) {
             totalPage = sizeOfList / LIMIT;

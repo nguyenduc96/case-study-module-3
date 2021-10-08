@@ -169,10 +169,8 @@
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">
-                                <a href="/brands?action=create">Create new brand</a>
-                            </li>
+                            <li class="breadcrumb-item"><a href="brands">Home</a></li>
+                            <li class="breadcrumb-item active">Brand list</li>
                         </ol>
                     </div>
                 </div>
@@ -180,21 +178,21 @@
         </section>
         <section class="content">
             <div class="card-footer clearfix">
-            <div class="card card-solid">
-                <div class="card-body">
-                    <div class="row">
-                        <table class="table">
-                            <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Brand name</th>
-                                <th>Brand image</th>
-                                <th></th>
-                            </tr>
-                            </thead>
+                <div class="card card-solid">
+                    <div class="card-body">
+                        <div class="row">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Brand name</th>
+                                    <th>Brand image</th>
+                                    <th></th>
+                                </tr>
+                                </thead>
 
-                            <tbody>
-                            <c:forEach items="${brands}" var="brand">
+                                <tbody>
+                                <c:forEach items="${brands}" var="brand">
                                     <c:if test="${brand.isActive() == true}">
                                         <tr>
                                             <td>${brand.id}</td>
@@ -207,53 +205,58 @@
                                             </td>
                                         </tr>
                                     </c:if>
-                            </c:forEach>
-                            <tr>
-                                <nav aria-label="Page navigation example">
-                                    <ul class="pagination">
-                                        <li class="page-item ${previous}">
-                                            <a class="page-link" href="brands?action=page&page=${1}">First</a>
-                                        </li>
-                                        <li class="page-item ${previous}">
-                                            <a class="page-link" href="brands?action=page&page=${page - 1}">Previous</a>
-                                        </li>
-                                        <c:forEach begin="1" end="${totalPage}" step="1" var="i">
-                                            <c:choose>
-                                                <c:when test="${page == 1}">
-                                                    <li class="page-item ${active}">
-                                                        <a class="page-link"
-                                                           href="brands?action=page&page=${i}">${i}</a>
-                                                    </li>
-                                                </c:when>
-                                                <c:otherwise>
-                                                    <li class="page-item">
-                                                        <a class="page-link"
-                                                           href="brands?action=page&page=${i}">${i}</a>
-                                                    </li>
-                                                </c:otherwise>
-                                            </c:choose>
-                                        </c:forEach>
-                                        <li class="page-item ${next}">
-                                            <a class="page-link" href="brands?action=page&page=${page + 1}">Next</a>
-                                        </li>
-                                        <li class="page-item ${next}">
-                                            <a class="page-link" href="brands?action=page&page=${totalPage}">Last</a>
-                                        </li>
-                                    </ul>
-                                </nav>
-                            </tr>
+                                </c:forEach>
+                                <tr>
 
-                            </tbody>
-                        </table>
-                        <div class="col-12 col-sm-6">
+                                </tr>
+
+                                </tbody>
+                            </table>
+                            <div class="col-12 col-sm-6">
 
 
+                            </div>
                         </div>
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination">
+                                <li class="page-item ${previous}">
+                                    <a class="page-link" href="brands?action=page&page=${1}">First</a>
+                                </li>
+                                <li class="page-item ${previous}">
+                                    <a class="page-link" href="brands?action=page&page=${page - 1}">Previous</a>
+                                </li>
+                                <c:forEach begin="1" end="${totalPage}" step="1" var="i">
+                                    <c:choose>
+                                        <c:when test="${page == 1}">
+                                            <li class="page-item ${active}">
+                                                <a class="page-link"
+                                                   href="brands?action=page&page=${i}">${i}</a>
+                                            </li>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <li class="page-item">
+                                                <a class="page-link"
+                                                   href="brands?action=page&page=${i}">${i}</a>
+                                            </li>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </c:forEach>
+                                <li class="page-item ${next}">
+                                    <a class="page-link" href="brands?action=page&page=${page + 1}">Next</a>
+                                </li>
+                                <li class="page-item ${next}">
+                                    <a class="page-link" href="brands?action=page&page=${totalPage}">Last</a>
+                                </li>
+                            </ul>
+                        </nav>
                     </div>
+
                 </div>
+
             </div>
         </section>
     </div>
+
     <!-- /.content-wrapper -->
     <footer class="main-footer">
         <p> Sản phẩm của Tuấn Anh , Đạt , Đức , Tú . </p>

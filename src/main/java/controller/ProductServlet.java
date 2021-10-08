@@ -34,7 +34,6 @@ public class ProductServlet extends HttpServlet {
             if (user.getRole_id() == 1) {
                 response.sendRedirect("/homePage");
             } else {
-
                 String action = request.getParameter(ACTION);
 
                 if (action == null) {
@@ -99,7 +98,7 @@ public class ProductServlet extends HttpServlet {
 
     private void divisionPage(HttpServletRequest request, int numberActive) {
         int sizeOfList = productService.sizeOfList(numberActive);
-        final int LIMIT = 6;
+        final int LIMIT = 5;
         int totalPage;
         if (sizeOfList % LIMIT == 0) {
             totalPage = sizeOfList / LIMIT;

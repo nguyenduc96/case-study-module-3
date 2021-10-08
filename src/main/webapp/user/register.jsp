@@ -27,7 +27,7 @@
     <div class="card">
         <div class="card-body register-card-body">
             <p class="login-box-msg">Register a new membership</p>
-
+            <p class="text-blue">${message}</p>
             <form action="login?action=register" method="post">
                 <div class="input-group mb-3">
                     <input type="text" id="name" class="form-control" placeholder="User name" name="username"
@@ -39,7 +39,7 @@
                     </div>
                 </div>
 
-                <p id="output_username">${messagename}</p>
+                <p id="output_username" class="text-danger">${messagename}</p>
                 <div class="input-group mb-3">
                     <input type="password" class="form-control" onchange="checkPasswordLength()" placeholder="Password"
                            name="password" id="password">
@@ -49,7 +49,7 @@
                         </div>
                     </div>
                 </div>
-                <p id="output_length" style="color:red;"></p>
+                <p id="output_length" class="text-danger"></p>
                 <div class="input-group mb-3">
                     <input type="password" class="form-control" onchange="checkPassword()" placeholder="Retype password"
                            name="rePassword" id="rePassword">
@@ -59,7 +59,7 @@
                         </div>
                     </div>
                 </div>
-                <p id="output" style="color:red;"></p>
+                <p id="output" class="text-danger"></p>
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" placeholder="First name" id="firstName" name="first_name"
                            onchange="checkRegister()">
@@ -69,7 +69,7 @@
                         </div>
                     </div>
                 </div>
-                <p id="output_firstName"></p>
+                <p id="output_firstName" class="text-danger"></p>
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" placeholder="Last name" id="lastName" name="last_name"
                            onchange="checkRegister()">
@@ -79,7 +79,7 @@
                         </div>
                     </div>
                 </div>
-                <p id="output_lastName"></p>
+                <p id="output_lastName" class="text-danger"></p>
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" placeholder="Number phone" id="phone" name="number_phone"
                            onchange="checkRegister()">
@@ -89,7 +89,7 @@
                         </div>
                     </div>
                 </div>
-                <p id="output_phone">${messagephone}</p>
+                <p id="output_phone" class="text-danger">${messagephone}</p>
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" placeholder="Address" id="address" name="address"
                            onchange="checkRegister()">
@@ -108,7 +108,7 @@
                         </div>
                     </div>
                 </div>
-                <p id="output_mail">${messagemail}</p>
+                <p id="output_mail" class="text-danger">${messagemail}</p>
                 <div class="col-md-12 mb-4 ">
                     <h6 class="mb-2 pb-1">Gender: </h6>
                     <div class="form-check form-check-inline mr-4">
@@ -150,7 +150,7 @@
                 <div class="input-group mb-3">
                     <input type="date" class="form-control" id="date" name="date_of_birth" onchange="checkRegister()">
                 </div>
-                <p id="output_date"></p>
+                <p id="output_date" class="text-danger"></p>
                 <div class="row">
                     <div class="col-8">
                         <div class="icheck-primary">
@@ -205,7 +205,7 @@
         let phone = document.getElementById("phone").value;
         let mail = document.getElementById("mail").value;
         if (!usernamePattern.test(username)) {
-            document.getElementById("output_username").innerText = "Username is between 6 - 16 characters";
+            document.getElementById("output_username").innerText = "Username is between 6 - 16 characters. Does not contain special characters";
         } else if (!regexPhone.test(phone)) {
             document.getElementById("output_phone").innerText = "Phone number is not match. Phone number must have 10 characters";
         } else if (firstName === "") {
@@ -217,6 +217,12 @@
         } else if (mail === "") {
             document.getElementById("output_mail").innerText = "Field can not empty";
         } else {
+            document.getElementById("output_username").innerText = "";
+            document.getElementById("output_phone").innerText = "";
+            document.getElementById("output_firstName").innerText = "";
+            document.getElementById("output_lastName").innerText = "";
+            document.getElementById("output_date").innerText = "";
+            document.getElementById("output_mail").innerText = "";
             document.getElementById("button").innerHTML = "<button type='submit' class='btn btn-primary btn-block'>Register</button>";
         }
     }

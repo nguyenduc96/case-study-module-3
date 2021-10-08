@@ -41,7 +41,7 @@ public class UserServlet extends HttpServlet {
     }
 
     private User user;
-    private final UserService USER_SERVICE = new UserService();
+    public static final UserService USER_SERVICE = new UserService();
     private final RoleService ROLE_SERVICE = new RoleService();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -94,7 +94,7 @@ public class UserServlet extends HttpServlet {
 
     private void divisionPage(HttpServletRequest request, int numberActive) {
         int sizeOfList = USER_SERVICE.sizeOfList(numberActive);
-        final int LIMIT = 6;
+        final int LIMIT = 5;
         int totalPage;
         if (sizeOfList % LIMIT == 0) {
             totalPage = sizeOfList / LIMIT;

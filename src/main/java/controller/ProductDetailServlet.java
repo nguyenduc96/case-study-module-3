@@ -36,6 +36,7 @@ public class ProductDetailServlet extends HttpServlet {
             if (user.getRole_id() == 1) {
                 response.sendRedirect("homePage");
             } else {
+
                 String action = request.getParameter(ACTION);
 
                 if (action == null) {
