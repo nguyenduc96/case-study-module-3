@@ -65,13 +65,17 @@ public class HomePageServlet extends HttpServlet {
         request.setAttribute("newProduct",newProduct);
 
         List<Category> categories = categoryService.getAll();
-        request.setAttribute("categories",categories);
 
         List<Brand> brands = brandService.getAll();
-        request.setAttribute("brands",brands);
 
         List<Product> products = productService.getAll();
-        request.setAttribute("products",products);
+
+        HttpSession session = request.getSession();
+        session.setAttribute("categories",categories);
+        session.setAttribute("brands",brands);
+        session.setAttribute("products",products);
+
+
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("viewCusomer/homepage.jsp");
         try {
