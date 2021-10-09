@@ -157,7 +157,7 @@ public class LoginServlet extends HttpServlet {
                 if (user.getRole_id() == 1) {
                     response.sendRedirect("homePage");
                 } else {
-                    response.sendRedirect("brands");
+                    response.sendRedirect("admin");
                 }
             } catch (IOException e) {
                 e.printStackTrace();

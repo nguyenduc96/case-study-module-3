@@ -45,18 +45,15 @@
                         </div>
                     </div>
                 </div>
-                <p style="color: red">* ${message}</p>
+                <p style="color: red">${message}</p>
                 <div class="row">
-                    <div class="col-8">
-                        <div class="icheck-primary">
-                            <input type="checkbox" id="remember">
-                            <label for="remember">
-                                Remember Me
-                            </label>
-                        </div>
+                    <div class="col-6">
+                        <button type="button" class="btn btn-primary btn-block">
+                            <a href="login?action=register" style="color:#ffffff;">Register</a>
+                        </button>
                     </div>
                     <!-- /.col -->
-                    <div class="col-4">
+                    <div class="col-6">
                         <button type="submit" class="btn btn-primary btn-block">Login</button>
                     </div>
                     <!-- /.col -->
@@ -65,9 +62,7 @@
             <div>
                 <div class="col-4"></div>
                 <div class="col-4">
-                    <button type="button" class="btn btn-primary btn-block">
-                        <a href="login?action=register">Register</a>
-                    </button>
+
                 </div>
                 <div class="col-4"></div>
             </div>
