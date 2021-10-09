@@ -140,24 +140,43 @@ public class OrderDao implements IOrderDao{
         }
         return count;
     }
-//
-//    public List<Order> findByUserId(int user_id) {
-//        List<Order> orders = new ArrayList<>();
-//        try {
-//            PreparedStatement statement = connection.prepareStatement("select  * from orders where user_id = ?");
-//            statement.setInt(1,user_id);
-//            ResultSet rs = statement.executeQuery();
-//            while (rs.next()) {
-//                int id = rs.getInt("id");
-//                String status = rs.getString("status");
-//                boolean isActive = rs.getBoolean("isActive");
-//                Date created_at = rs.getDate("created_at");
-//                Order order = new Order(id,user_id,status,isActive,created_at);
-//                orders.add(order);
-//            }
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//        return orders;
-//    }
+
+    public List<Order> findByUserId(int user_id) {
+        List<Order> orders = new ArrayList<>();
+        try {
+            PreparedStatement statement = connection.prepareStatement("select  * from orders where user_id = ?");
+            statement.setInt(1,user_id);
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String status = rs.getString("status");
+                boolean isActive = rs.getBoolean("isActive");
+                Date created_at = rs.getDate("created_at");
+                Order order = new Order(id,user_id,status,isActive,created_at);
+                orders.add(order);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return orders;
+    }
+
+    public Order findCart(int user_id) {
+        Order order = null;
+        try {
+            PreparedStatement statement = connection.prepareStatement("select  * from orders where user_id = ? and status = 'In cart'");
+            statement.setInt(1,user_id);
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String status = rs.getString("status");
+                boolean isActive = rs.getBoolean("isActive");
+                Date created_at = rs.getDate("created_at");
+                order = new Order(id,user_id,status,isActive,created_at);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return  order;
+    }
 }

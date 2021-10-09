@@ -3,6 +3,7 @@ package controller;
 import model.Brand;
 import model.Category;
 import model.Product;
+import model.User;
 import service.brand.BrandService;
 import service.category.CategoryService;
 import service.product.ProductService;
@@ -20,19 +21,27 @@ public class HomePageServlet extends HttpServlet {
     private BrandService brandService = new BrandService();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String action = request.getParameter("action");
-        if(action == null) {
-            action = "";
-        }
-        switch(action) {
-            case "detailProduct": {
-                showDetailProduct(request,response);
-                break;
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("user");
+        if (user != null) {
+            if (user.getRole_id() == 1) {
+                String action = request.getParameter("action");
+                if (action == null) {
+                    action = "";
+                }
+                switch (action) {
+                    case "detailProduct": {
+                        showDetailProduct(request, response);
+                        break;
+                    }
+                    default: {
+                        showHomePage(request, response);
+                        break;
+                    }
+                }
             }
-            default: {
-                showHomePage(request,response);
-                break;
-            }
+        } else {
+            response.sendRedirect("login?action=login");
         }
     }
 
@@ -42,7 +51,7 @@ public class HomePageServlet extends HttpServlet {
 
     private void showHomePage(HttpServletRequest request, HttpServletResponse response) {
         List<Product> productList = productService.getAll();
-        productList = productList.subList(0,6);
+        productList = productList.subList(0,0);
         request.setAttribute("productList",productList);
 
         List<Product> accessory = productService.selectByCategory(1,4);

@@ -985,13 +985,5 @@
 <script type="text/javascript" src="theme/js/themejs/so_megamenu.js"></script>
 <script type="text/javascript" src="theme/js/themejs/addtocart.js"></script>
 <script type="text/javascript" src="theme/js/themejs/application.js"></script>
-
-</body>
-</html>
-
-<title>check out</title>
-</head>
-<body>
-
 </body>
 </html>
