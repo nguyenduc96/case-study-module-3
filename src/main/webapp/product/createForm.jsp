@@ -241,23 +241,18 @@
                                         <div class="row">
                                             <div class="col">
                                                 <select name="category_id" >
-                                                    <option value="1">Dien thoai</option>
-                                                    <option value="2">Laptop</option>
-                                                    <option value="3">May tinh bang</option>
+                                                    <c:forEach items="${categories}" var="category">
+                                                        <option value="${category.id}">${category.name}</option>
+                                                    </c:forEach>
                                                 </select>
                                             </div>
                                             <div class="col">
                                                 <select name="brand_id">
-                                                    <option value="1">SamSung</option>
-                                                    <option value="2">Iphone</option>
-                                                    <option value="3">Xiaomi</option>
+                                                    <c:forEach items="${brands}" var="brand">
+                                                        <option value="${brand.id}">${brand.name}</option>
+                                                    </c:forEach>
                                                 </select>
                                             </div>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="product_description" class="form-label">Product Description</label>
-                                            <input class="form-control" id="product_description" rows="5" name="description">
-
                                         </div>
                                         <button type="submit" class="btn btn-primary">Submit</button>
                                     </form>

@@ -144,9 +144,7 @@
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                     <div class="breadcome-heading ">
                                         <div class="row">
-                                            <input type="text" placeholder="Search..." style="height: 36px; width: 220px; margin: 10px 0 0 20px; border-radius: 25px; border: none">
-                                            <button type="button" class="btn btn-custon-rounded-three btn-default" style="border-radius: 25px;margin: 8px 0px 8px 10px; border: none">Search</button>
-                                        </div>
+                                            </div>
                                    </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
@@ -165,50 +163,6 @@
     </div>
     <div class="static-table-area mg-t-15">
         <div class="container-fluid" >
-            <div class="sparkline8-list" style="color: white">
-                <div class="sparkline8-hd">
-                    <div class="main-sparkline8-hd">
-                        <button type="button" class="btn btn-custon-rounded-three btn-primary" style="border-radius: 25px">Create New Product</button>
-                    </div>
-                    <div class="main-sparkline8-hd">
-                        <p></p>
-                    </div>
-                </div>
-                <div class="sparkline8-graph">
-                    <div class="static-table-list">
-                        <table class="table" style="color: white">
-                            <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Username</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Mamun</td>
-                                <td>Roshid</td>
-                                <td>@Facebook</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Suhag</td>
-                                <td>Khan</td>
-                                <td>@Twitter</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Sakil</td>
-                                <td>Shak</td>
-                                <td>@Linkedin</td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
     <!-- Static Table End -->

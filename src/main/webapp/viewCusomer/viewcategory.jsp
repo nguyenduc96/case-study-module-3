@@ -1,3 +1,4 @@
+
 <%--
   Created by IntelliJ IDEA.
   User: nguyendangtuananh
@@ -6,6 +7,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="ftm" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
 
@@ -23,11 +26,11 @@
 
     <!-- Favicon
     ============================================ -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="theme/icon/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="theme/icon/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="theme/icon/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="theme/icon/apple-touch-icon-57-precomposed.png">
-    <link rel="shortcut icon" href="theme/icon/favicon.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="viewCusomer/theme/icon/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="viewCusomer/theme/icon/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="viewCusomer/theme/icon/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="viewCusomer/theme/icon/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="viewCusomer/theme/icon/favicon.png">
 
     <!-- Google web fonts
     ============================================ -->
@@ -35,23 +38,23 @@
 
     <!-- Libs CSS
 	============================================ -->
-    <link rel="stylesheet" href="theme/css/bootstrap/css/bootstrap.min.css">
-    <link href="theme/css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="theme/js/datetimepicker/bootstrap-datetimepicker.min.css" rel="stylesheet">
-    <link href="theme/js/owl-carousel/owl.carousel.css" rel="stylesheet">
-    <link href="theme/css/themecss/lib.css" rel="stylesheet">
-    <link href="theme/js/jquery-ui/jquery-ui.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="viewCusomer/theme/css/bootstrap/css/bootstrap.min.css">
+    <link href="viewCusomer/theme/css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="viewCusomer/theme/js/datetimepicker/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <link href="viewCusomer/theme/js/owl-carousel/owl.carousel.css" rel="stylesheet">
+    <link href="viewCusomer/theme/css/themecss/lib.css" rel="stylesheet">
+    <link href="viewCusomer/theme/js/jquery-ui/jquery-ui.min.css" rel="stylesheet">
 
     <!-- Theme CSS
     ============================================ -->
-    <link href="theme/css/themecss/so_megamenu.css" rel="stylesheet">
-    <link href="theme/css/themecss/so-categories.css" rel="stylesheet">
-    <link href="theme/css/themecss/so-listing-tabs.css" rel="stylesheet">
-    <link href="theme/css/footer1.css" rel="stylesheet">
-    <link href="theme/css/header1.css" rel="stylesheet">
-    <link id="color_scheme" href="theme/css/theme.css" rel="stylesheet">
+    <link href="viewCusomer/theme/css/themecss/so_megamenu.css" rel="stylesheet">
+    <link href="viewCusomer/theme/css/themecss/so-categories.css" rel="stylesheet">
+    <link href="viewCusomer/theme/css/themecss/so-listing-tabs.css" rel="stylesheet">
+    <link href="viewCusomer/theme/css/footer1.css" rel="stylesheet">
+    <link href="viewCusomer/theme/css/header1.css" rel="stylesheet">
+    <link id="color_scheme" href="viewCusomer/theme/css/theme.css" rel="stylesheet">
 
-    <link href="theme/css/responsive.css" rel="stylesheet">
+    <link href="viewCusomer/theme/css/responsive.css" rel="stylesheet">
 
 
 
@@ -67,20 +70,20 @@
                 <div class="row">
                     <div class="header-top-left form-inline col-sm-6 col-xs-12 compact-hidden">
                         <div class="form-group languages-block ">
-                            <form action="index.html" method="post" enctype="multipart/form-data" id="bt-language">
+                            <form action="#" method="post" enctype="multipart/form-data" id="bt-language">
                                 <a class="btn btn-xs dropdown-toggle" data-toggle="dropdown">
-                                    <img src="theme/image/demo/flags/gb.png" alt="English" title="English">
+                                    <img src="viewCusomer/theme/image/demo/flags/gb.png" alt="English" title="English">
                                     <span class="">English</span>
                                     <span class="fa fa-angle-down"></span>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="index.html"><img class="image_flag" src="theme/image/demo/flags/gb.png" alt="English" title="English" /> English </a></li>
+                                    <li><a href="#"><img class="image_flag" src="viewCusomer/theme/image/demo/flags/gb.png" alt="English" title="English" /> English </a></li>
                                 </ul>
                             </form>
                         </div>
 
                         <div class="form-group currencies-block">
-                            <form action="index.html" method="post" enctype="multipart/form-data" id="currency">
+                            <form action="#" method="post" enctype="multipart/form-data" id="currency">
                                 <a class="btn btn-xs dropdown-toggle" data-toggle="dropdown">
                                     <span class="icon icon-credit "></span> US Dollar <span class="fa fa-angle-down"></span>
                                 </a>
@@ -95,11 +98,10 @@
                         <h5 class="tabBlockTitle visible-xs">More<a class="expander " href="#TabBlock-1"><i class="fa fa-angle-down"></i></a></h5>
                         <div class="tabBlock" id="TabBlock-1">
                             <ul class="top-link list-inline">
-                                <li class="account" id="my_account">
-                                    <a href="#" title="My Account" class="btn btn-xs dropdown-toggle" data-toggle="dropdown"> <span >My Account</span> <span class="fa fa-angle-down"></span></a>
+                                <li class="account btn-group" id="my_account">
+                                    <a href="#" title="My Account" class="btn btn-xs dropdown-toggle" data-toggle="dropdown"> <span class="hidden-xs">My Account</span> <span class="fa fa-angle-down "></span></a>
                                     <ul class="dropdown-menu ">
-                                        <li><a href="register.html"><i class="fa fa-user"></i> Register</a></li>
-                                        <li><a href="login.html"><i class="fa fa-pencil-square-o"></i> Login</a></li>
+                                        <li><a href="#"><i class="fa fa-pencil-square-o"></i> Log Out</a></li>
                                     </ul>
                                 </li>
                                 <li class="wishlist"><a href="wishlist.html" id="wishlist-total" class="top-link-wishlist" title="Wish List (2)"><span>Wish List (2)</span></a></li>
@@ -119,7 +121,7 @@
                 <div class="row">
                     <!-- Logo -->
                     <div class="navbar-logo col-md-3 col-sm-12 col-xs-12">
-                        <a href="index.html"><img src="theme/image/demo/logos/theme_logo.png" title="Your Store" alt="Your Store" /></a>
+                        <a href="#"><img src="viewCusomer/theme/image/demo/logos/theme_logo.png" title="Your Store" alt="Your Store" /></a>
                     </div>
                     <!-- //end Logo -->
 
@@ -162,7 +164,7 @@
                                         <tbody>
                                         <tr>
                                             <td class="text-center" style="width:70px">
-                                                <a href="product.html"> <img src="theme/image/demo/shop/product/35.jpg" style="width:70px" alt="Filet Mign" title="Filet Mign" class="preview"> </a>
+                                                <a href="product.html"> <img src="viewCusomer/theme/image/demo/shop/product/35.jpg" style="width:70px" alt="Filet Mign" title="Filet Mign" class="preview"> </a>
                                             </td>
                                             <td class="text-left"> <a class="cart_product_name" href="product.html">Filet Mign</a> </td>
                                             <td class="text-center"> x1 </td>
@@ -176,7 +178,7 @@
                                         </tr>
                                         <tr>
                                             <td class="text-center" style="width:70px">
-                                                <a href="product.html"> <img src="theme/image/demo/shop/product/141.jpg" style="width:70px" alt="Canon EOS 5D" title="Canon EOS 5D" class="preview"> </a>
+                                                <a href="product.html"> <img src="viewCusomer/theme/image/demo/shop/product/141.jpg" style="width:70px" alt="Canon EOS 5D" title="Canon EOS 5D" class="preview"> </a>
                                             </td>
                                             <td class="text-left"> <a class="cart_product_name" href="product.html">Canon EOS 5D</a> </td>
                                             <td class="text-center"> x1 </td>
@@ -268,257 +270,47 @@
                                             <div class="megamenu-pattern">
                                                 <div class="container">
                                                     <ul class="megamenu">
-                                                        <li class="item-vertical style1 with-sub-menu hover">
-                                                            <p class="close-menu"></p>
-                                                            <a href="#" class="clearfix">
-                                                                <img src="theme/image/theme/icons/2.png" alt="icon">
-                                                                <span>Mobile Phone</span>
-                                                                <b class="caret"></b>
-                                                            </a>
-                                                            <div class="sub-menu" data-subwidth="100" >
-                                                                <div class="content" >
-                                                                    <div class="row">
-                                                                        <div class="col-sm-12">
-                                                                            <div class="row">
-                                                                                <div class="col-md-4 static-menu">
-                                                                                    <div class="menu">
-                                                                                        <ul>
-                                                                                            <li>
-                                                                                                <a href="#"  class="main-menu">Apple</a>
-                                                                                                <ul>
-                                                                                                    <li><a href="#" >iPhone 13 ProMax</a></li>
-                                                                                                    <li><a href="#" >iPhone 13</a></li>
-                                                                                                    <li><a  href="#" >iPhone 12 ProMax</a></li>
-                                                                                                    <li><a href="#" >iPhone 12</a></li>
-                                                                                                    <li><a href="#" >iPhone 13 Mini</a></li>
-                                                                                                    <li><a href="#" >iPhone 13</a></li>
-                                                                                                </ul>
-                                                                                            </li>
-                                                                                            <li>
-                                                                                                <a href="#"  class="main-menu">Samsung</a>
-                                                                                                <ul>
-                                                                                                    <li><a href="#" >Samsung Galaxy Flip Z</a></li>
-                                                                                                    <li><a href="#" >Samsung Galaxy S21</a></li>
-                                                                                                    <li><a href="#" >Samsung Galaxy Tab S</a></li>
-                                                                                                </ul>
-                                                                                            </li>
-                                                                                        </ul>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="col-md-4 static-menu">
-                                                                                    <div class="menu">
-                                                                                        <ul>
-                                                                                            <li>
-                                                                                                <a href="#"  class="main-menu">OPPO</a>
-                                                                                                <ul>
-                                                                                                    <li><a href="#" >OPPO Reno 6</a></li>
-                                                                                                    <li><a href="#" >OPPO A74</a></li>
-                                                                                                </ul>
-                                                                                            </li>
-
-                                                                                        </ul>
-                                                                                    </div>
-                                                                                </div>
-
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="item-vertical with-sub-menu hover">
-                                                            <p class="close-menu"></p>
-                                                            <a href="#" class="clearfix">
-                                                                <span class="label"></span>
-                                                                <img src="theme/image/theme/icons/2.png" alt="icon">
-                                                                <span>Tablet</span>
-                                                                <b class="caret"></b>
-                                                            </a>
-                                                            <div class="sub-menu" data-subwidth="60" >
-                                                                <div class="content">
-                                                                    <div class="row">
-                                                                        <div class="col-md-6">
-                                                                            <div class="row">
-                                                                                <div class="col-md-12 static-menu">
-                                                                                    <div class="menu">
-                                                                                        <ul>
-                                                                                            <li>
-                                                                                                <a href="#" onclick="window.location = '81';" class="main-menu">Apple</a>
-                                                                                                <ul>
-                                                                                                    <li><a href="#" onclick="window.location = '33_63';">iPad Pro M1 12.9 inch</a></li>
-                                                                                                    <li><a href="#" onclick="window.location = '24_64';">iPad Pro M1 11 inch</a></li>
-                                                                                                    <li><a href="#" onclick="window.location = '17';">iPad Pro 12.9 inch 2020</a></li>
-                                                                                                    <li><a href="#" onclick="window.location = '17';">iPad Pro 11 inch 2020</a></li>
-                                                                                                    <li><a href="#" onclick="window.location = '17';">iPad Pro 10.9 inch 2019</a></li>
-                                                                                                </ul>
-                                                                                            </li>
-                                                                                            <li>
-                                                                                                <a href="#" onclick="window.location = '18_46';" class="main-menu">SAMSUNG</a>
-                                                                                                <ul>
-                                                                                                    <li><a href="#" onclick="window.location = '25_28';">SAMSUNG GALAXY TAB S7 FE</a></li>
-                                                                                                    <li><a href="#" onclick="window.location = '80';">SAMSUNG GALAXY TAB S7</a></li>
-                                                                                                    <li><a href="#" onclick="window.location = '24_66';">SAMSUNG GALAXY TAB S6</a></li>
-                                                                                                </ul>
-                                                                                            </li>
-                                                                                            <li>
-                                                                                                <a href="#" onclick="window.location = '25_31';" class="main-menu">Xiaomi</a>
-                                                                                                <ul>
-                                                                                                    <li><a href="#" onclick="window.location = '57_73';">Xiaomi Pad 5</a></li>
-                                                                                                </ul>
-                                                                                            </li>
-                                                                                        </ul>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-md-6">
-                                                                            <div class="row banner">
-                                                                                <a href="#">
-                                                                                    <img src="theme/image/demo/cms/menu_bg2.jpg" alt="banner1">
-                                                                                </a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="item-vertical with-sub-menu hover">
-                                                            <p class="close-menu"></p>
-                                                            <a href="#" class="clearfix">
-                                                                <img src="theme/image/theme/icons/2.png" alt="icon">
-                                                                <span>Laptop</span>
-                                                                <b class="caret"></b>
-                                                            </a>
-                                                            <div class="sub-menu" data-subwidth="100" >
-                                                                <div class="content" >
-                                                                    <div class="row">
-                                                                        <div class="col-md-12">
-                                                                            <div class="row">
-                                                                                <div class="col-md-4 static-menu">
-                                                                                    <div class="menu">
-                                                                                        <ul>
-                                                                                            <li>
-                                                                                                <a href="#" class="main-menu">Apple</a>
-                                                                                                <ul>
-                                                                                                    <li><a href="#" >Macbook Pro M1</a></li>
-                                                                                                    <li><a href="#" >Macbook Air M1</a></li>
-                                                                                                    <li><a href="#" >Macbook Pro 16 inch 2019</a></li>
-                                                                                                    <li><a href="#" >Macbook Pro 15 inch 2019</a></li>
-                                                                                                    <li><a href="#" >Macbook Pro 13 inch 2020</a></li>
-                                                                                                    <li><a href="#" >Macbook Air 13 inch 2020</a></li>
-                                                                                                </ul>
-                                                                                            </li>
-                                                                                            <li>
-                                                                                                <a href="24" onclick="window.location = '24';" class="main-menu">Dell</a>
+                                                        <c:forEach items="${categories}" var="category">
+                                                            <li class="item-vertical style1 with-sub-menu hover">
+                                                                <p class="close-menu"></p>
+                                                                <a href="/homePage?action=viewByCategory&id=${category.id}" class="clearfix">
+                                                                    <img src="viewCusomer/theme/image/theme/icons/2.png" alt="icon">
+                                                                    <span>${category.name}</span>
+                                                                    <b class="caret"></b>
+                                                                </a>
+                                                                <div class="sub-menu" data-subwidth="100" >
+                                                                    <div class="content" >
+                                                                        <div class="row">
+                                                                            <div class="col-sm-12">
+                                                                                <div class="row">
+                                                                                    <c:forEach items="${brands}" var="brand">
+                                                                                        <div class="col-md-4 static-menu">
+                                                                                            <div class="menu">
                                                                                                 <ul>
                                                                                                     <li>
-                                                                                                        <a href="#" >Dell Gaming G3</a>
-                                                                                                    </li>
-                                                                                                    <li>
-                                                                                                        <a href="#" >Dell Inspiron</a>
-                                                                                                    </li>
-                                                                                                    <li>
-                                                                                                        <a href="#" >Dell XPS i7</a>
-                                                                                                    </li>
-                                                                                                    <li>
-                                                                                                        <a href="#">Dell XPS i5</a>
-                                                                                                    </li>
-                                                                                                    <li>
-                                                                                                        <a href="#">Dell Gaming G15</a>
-                                                                                                    </li>
-
-                                                                                                </ul>
-                                                                                            </li>
-                                                                                        </ul>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="col-md-4 static-menu">
-                                                                                    <div class="menu">
-                                                                                        <ul>
-                                                                                            <li>
-                                                                                                <a href="#"  class="main-menu">Asus</a>
-                                                                                                <ul>
-                                                                                                    <li>
-                                                                                                        <a href="#">Asus TUF Gaming FX7</a>
-                                                                                                    </li>
-                                                                                                    <li>
-                                                                                                        <a href="#" >Asus TUF Gaming FX5</a>
-                                                                                                    </li>
-                                                                                                    <li>
-                                                                                                        <a href="#" >Asus ROG G14</a>
-                                                                                                    </li>
-                                                                                                    <li>
-                                                                                                        <a href="#">Asus Zenbook</a>
+                                                                                                        <a href="/homePage?action=viewByBrand&id=${brand.id}"  class="main-menu">${brand.name}</a>
+                                                                                                        <ul>
+                                                                                                            <c:forEach items="${products}" var="product">
+                                                                                                                <c:if test="${product.brand_id == brand.id}">
+                                                                                                                    <c:if test="${product.category_id == category.id}">
+                                                                                                                        <li><a href="/homePage?action=detailProduct&id=${product.id}" >${product.name}</a></li>
+                                                                                                                    </c:if>
+                                                                                                                </c:if>
+                                                                                                            </c:forEach>
+                                                                                                        </ul>
                                                                                                     </li>
                                                                                                 </ul>
-                                                                                            </li>
-                                                                                            <li>
-                                                                                                <a href="#"  class="main-menu">HP</a>
-                                                                                                <ul>
-                                                                                                    <li>
-                                                                                                        <a href="#" >HP Envy 13</a>
-                                                                                                    </li>
-                                                                                                    <li>
-                                                                                                        <a href="#" >HP 340s G7</a>
-                                                                                                    </li>
-                                                                                                    <li>
-                                                                                                        <a href="#" >HP Omen 15</a>
-                                                                                                    </li>
-                                                                                                    <li>
-                                                                                                        <a href="#" >HP EliteBook</a>
-                                                                                                    </li>
-                                                                                                </ul>
-                                                                                            </li>
-                                                                                        </ul>
-                                                                                    </div>
-                                                                                </div>
-
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="item-vertical css-menu with-sub-menu hover">
-                                                            <p class="close-menu"></p>
-                                                            <a href="#" class="clearfix">
-
-                                                                <img src="theme/image/theme/icons/2.png" alt="icon">
-                                                                <span>Phụ Kiện</span>
-                                                                <b class="caret"></b>
-                                                            </a>
-                                                            <div class="sub-menu" data-subwidth="30" style="width: 270px; display: none; right: 0px;">
-                                                                <div class="content" style="display: none;">
-                                                                    <div class="row">
-                                                                        <div class="col-sm-12">
-                                                                            <div class="row">
-                                                                                <div class="col-sm-12 hover-menu">
-                                                                                    <div class="menu">
-                                                                                        <ul>
-                                                                                            <li>
-                                                                                                <a href="#" class="main-menu">Ốp Lưng điện thoại</a>
-                                                                                            </li>
-                                                                                            <li>
-                                                                                                <a href="#" class="main-menu">Sạc dự phòng</a>
-                                                                                            </li>
-                                                                                            <li>
-                                                                                                <a href="#" class="main-menu">Thẻ nhớ</a>
-                                                                                            </li>
-                                                                                            <li>
-                                                                                                <a href="#" class="main-menu">Dán màn hình</a>
-                                                                                            </li>
-                                                                                            <li>
-                                                                                                <a href="#" class="main-menu">Phụ kiện Table, Laptop</a>
-                                                                                            </li>
-                                                                                        </ul>
-                                                                                    </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </c:forEach>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                        </li>
+                                                            </li>
+                                                        </c:forEach>
+
                                                     </ul>
                                                 </div>
                                             </div>
@@ -728,15 +520,9 @@
                     <div class="modcontent">
                         <div class="box-category">
                             <ul id="cat_accordion" class="list-group">
-                                <li class="hadchild"><a href="category.html" class="cutom-parent">Smartphone & Tablets</a>   <span class="button-view  fa fa-plus-square-o"></span>
-                                    <ul style="display: block;">
-                                        <li><a href="category.html">Men's Watches</a></li>
-                                        <li><a href="category.html">Women's Watches</a></li>
-                                        <li><a href="category.html">Kids' Watches</a></li>
-                                        <li><a href="category.html">Accessories</a></li>
-                                    </ul>
-                                </li>
-                                <li class=""><a href="category.html" class="cutom-parent">Health &amp; Beauty</a>  <span class="dcjq-icon"></span></li>
+                                <c:forEach items="${categories}" var="category">
+                                    <li class=""><a href="/homePage?action=viewByCategory&id=${category.id}" class="cutom-parent">${category.name}</a></li>
+                                </c:forEach>
 
                             </ul>
                         </div>
@@ -744,50 +530,50 @@
 
                     </div>
                 </div>
-                <div class="module latest-product titleLine">
-                    <h3 class="modtitle">Latest Product</h3>
-                    <div class="modcontent ">
-                        <div class="product-latest-item">
-                            <div class="media">
-                                <div class="media-left">
-                                    <a href="#"><img src="image/demo/shop/product/m1.jpg" alt="Cisi Chicken" title="Cisi Chicken" class="img-responsive" style="width: 100px; height: 82px;"></a>
-                                </div>
-                                <div class="media-body">
-                                    <div class="caption">
-                                        <h4><a href="#">Sunt Molup</a></h4>
+<%--                <div class="module latest-product titleLine">--%>
+<%--                    <h3 class="modtitle">Latest Product</h3>--%>
+<%--                    <div class="modcontent ">--%>
+<%--                        <div class="product-latest-item">--%>
+<%--                            <div class="media">--%>
+<%--                                <div class="media-left">--%>
+<%--                                    <a href="#"><img src="image/demo/shop/product/m1.jpg" alt="Cisi Chicken" title="Cisi Chicken" class="img-responsive" style="width: 100px; height: 82px;"></a>--%>
+<%--                                </div>--%>
+<%--                                <div class="media-body">--%>
+<%--                                    <div class="caption">--%>
+<%--                                        <h4><a href="#">Sunt Molup</a></h4>--%>
 
-                                        <div class="price">
-                                            <span class="price-new">$100.00</span>
-                                        </div>
-                                        <div class="ratings">
-                                            <div class="rating-box">
-                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                            </div>
-                                        </div>
-                                    </div>
+<%--                                        <div class="price">--%>
+<%--                                            <span class="price-new">$100.00</span>--%>
+<%--                                        </div>--%>
+<%--                                        <div class="ratings">--%>
+<%--                                            <div class="rating-box">--%>
+<%--                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>--%>
+<%--                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>--%>
+<%--                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>--%>
+<%--                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>--%>
+<%--                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>--%>
+<%--                                            </div>--%>
+<%--                                        </div>--%>
+<%--                                    </div>--%>
 
-                                </div>
-                            </div>
-                        </div>
+<%--                                </div>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
 
 
-                    </div>
+<%--                    </div>--%>
 
-                </div>
-                <div class="module">
-                    <div class="modcontent clearfix">
-                        <div class="banners">
-                            <div>
-                                <a href="#"><img src="image/demo/cms/left-image-static.png" alt="left-image"></a>
-                            </div>
-                        </div>
+<%--                </div>--%>
+<%--                <div class="module">--%>
+<%--                    <div class="modcontent clearfix">--%>
+<%--                        <div class="banners">--%>
+<%--                            <div>--%>
+<%--                                <a href="#"><img src="image/demo/cms/left-image-static.png" alt="left-image"></a>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
 
-                    </div>
-                </div>
+<%--                    </div>--%>
+<%--                </div>--%>
             </aside>
             <!--Left Part End -->
 
@@ -799,7 +585,7 @@
                             <div class="col-sm-12">
                                 <div class="banners">
                                     <div>
-                                        <a  href="#"><img src="image/demo/shop/category/electronic-cat.png" alt="Apple Cinema 30&quot;"><br></a>
+                                        <a  href="#"><img src="viewCusomer/theme/image/demo/shop/category/electronic-cat.png" alt="Apple Cinema 30&quot;"><br></a>
                                     </div>
                                 </div>
 
@@ -817,102 +603,64 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="short-by-show form-inline text-right col-md-7 col-sm-8 col-xs-12">
-                                <div class="form-group short-by">
-                                    <label class="control-label" for="input-sort">Sort By:</label>
-                                    <select id="input-sort" class="form-control"
-                                            onchange="location = this.value;">
-                                        <option value="" selected="selected">Default</option>
-                                        <option value="">Name (A - Z)</option>
-                                        <option value="">Name (Z - A)</option>
-                                        <option value="">Price (Low &gt; High)</option>
-                                        <option value="">Price (High &gt; Low)</option>
-                                        <option value="">Rating (Highest)</option>
-                                        <option value="">Rating (Lowest)</option>
-                                        <option value="">Model (A - Z)</option>
-                                        <option value="">Model (Z - A)</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label class="control-label" for="input-limit">Show:</label>
-                                    <select id="input-limit" class="form-control" onchange="location = this.value;">
-                                        <option value="" selected="selected">9</option>
-                                        <option value="">25</option>
-                                        <option value="">50</option>
-                                        <option value="">75</option>
-                                        <option value="">100</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="box-pagination col-md-3 col-sm-4 col-xs-12 text-right">
-                                <ul class="pagination">
-                                    <li class="active"><span>1</span></li>
-                                    <li><a href="">2</a></li><li><a href="">&gt;</a></li>
-                                    <li><a href="">&gt;|</a></li>
-                                </ul>
-                            </div>
                         </div>
                     </div>
                     <!-- //end Filters -->
                     <!--changed listings-->
                     <div class="products-list row grid">
-                        <div class="product-layout col-md-4 col-sm-6 col-xs-12 ">
-                            <div class="product-item-container">
-                                <div class="left-block">
-                                    <div class="product-image-container lazy second_img ">
-                                        <img data-src="image/demo/shop/product/e11.jpg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"  alt="Apple Cinema 30&quot;" class="img-responsive" />
-                                        <img data-src="image/demo/shop/product/e12.jpg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"  alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
-                                    </div>
-                                    <!--Sale Label-->
-                                    <span class="label label-sale">Sale</span>
-                                    <!--countdown box-->
-                                    <div class="countdown_box">
-                                        <div class="countdown_inner">
-                                            <div class="title">This limited offer ends</div>
-
-                                            <div class="defaultCountdown-30"></div>
+                        <c:forEach items="${productList}" var="product">
+                            <div class="product-layout col-md-4 col-sm-6 col-xs-12 ">
+                                <div class="product-item-container">
+                                    <div class="left-block">
+                                        <div class="product-image-container lazy second_img ">
+                                            <a href="/homePage?action=detailProduct&id=${product.id}">
+                                                <img src="${product.image}"  style="width: 250px;height: 230px" class="img-responsive" />
+                                                <img src="${product.image}"  alt="${product.name}" style="width: 250px;height: 230px" class="img_0 img-responsive" />
+                                            </a>
                                         </div>
+                                        <!--Sale Label-->
+                                        <c:if test="${product.discount_pct > 0}">
+                                            <span class="label label-sale">Sale ${product.discount_pct}</span>
+                                        </c:if>
+
                                     </div>
-                                    <!--end countdown box-->
-
-                                    <!--full quick view block-->
-                                    <a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  href="quickview.html">  Quickview</a>
-                                    <!--end full quick view block-->
-                                </div>
 
 
-                                <div class="right-block">
-                                    <div class="caption">
-                                        <h4><a href="product.html">Apple Cinema 30&quot;</a></h4>
-                                        <div class="ratings">
-                                            <div class="rating-box">
-                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
+                                    <div class="right-block">
+                                        <div class="caption">
+                                            <h4><a href="/homePage?action=detailProduct&id=${product.id}">${product.name}</a></h4>
+                                            <div class="ratings">
+                                                <div class="rating-box">
+                                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+                                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+                                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+                                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+                                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+                                                </div>
+                                            </div>
+
+                                            <div class="price">
+                                                <span class="price-new"><ftm:formatNumber value="${product.price - (product.price*product.discount_pct/100)}"></ftm:formatNumber>VND</span>
+                                                <c:if test="${product.discount_pct > 0}">
+                                                    <span class="price-old"><ftm:formatNumber value="${product.price}"></ftm:formatNumber>VND</span>
+                                                    <span class="label label-percent">-${product.discount_pct}%</span>
+                                                </c:if>
+                                            </div>
+                                            <div class="description item-desc hidden">
+                                                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est . </p>
                                             </div>
                                         </div>
 
-                                        <div class="price">
-                                            <span class="price-new">$74.00</span>
-                                            <span class="price-old">$122.00</span>
-                                            <span class="label label-percent">-40%</span>
+                                        <div class="button-group">
+                                            <button class="addToCart" type="button" data-toggle="tooltip" title="Add to Cart" onclick="cart.add('42', '1');"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs">Add to Cart</span></button>
+                                            <button class="wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('42');"><i class="fa fa-heart"></i></button>
+                                            <button class="compare" type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('42');"><i class="fa fa-exchange"></i></button>
                                         </div>
-                                        <div class="description item-desc hidden">
-                                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est . </p>
-                                        </div>
-                                    </div>
+                                    </div><!-- right block -->
 
-                                    <div class="button-group">
-                                        <button class="addToCart" type="button" data-toggle="tooltip" title="Add to Cart" onclick="cart.add('42', '1');"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs">Add to Cart</span></button>
-                                        <button class="wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('42');"><i class="fa fa-heart"></i></button>
-                                        <button class="compare" type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('42');"><i class="fa fa-exchange"></i></button>
-                                    </div>
-                                </div><!-- right block -->
-
+                                </div>
                             </div>
-                        </div>
+                        </c:forEach>
                         <div class="clearfix visible-xs-block"></div>
 
 
@@ -920,17 +668,6 @@
 
                     </div>					<!--// End Changed listings-->
                     <!-- Filters -->
-                    <div class="product-filter product-filter-bottom filters-panel" >
-                        <div class="row">
-                            <div class="col-md-2 hidden-sm hidden-xs">
-                            </div>
-                            <div class="short-by-show text-center col-md-7 col-sm-8 col-xs-12">
-                                <div class="form-group" style="margin: 7px 10px">Showing 1 to 9 of 10 (2 Pages)</div>
-                            </div>
-                            <div class="box-pagination col-md-3 col-sm-4 text-right"><ul class="pagination"><li class="active"><span>1</span></li><li><a href="#">2</a></li><li><a href="#">&gt;</a></li><li><a href="#">&gt;|</a></li></ul></div>
-
-                        </div>
-                    </div>
                     <!-- //end Filters -->
 
                 </div>
@@ -1018,7 +755,7 @@
                 <div class="row">
                     <div class="col-sm-5 copyright-text"> © 2016 Market. All Rights Reserved. </div>
                     <div class="col-sm-7">
-                        <div class="block-payment text-right"><img src="image/demo/content/payment.png" alt="payment" title="payment" ></div>
+                        <div class="block-payment text-right"><img src="viewCusomer/image/demo/content/payment.png" alt="payment" title="payment" ></div>
                     </div>
                     <!--Back To Top-->
                     <div class="back-to-top"><i class="fa fa-angle-up"></i><span> Top </span></div>
@@ -1043,25 +780,25 @@
 <!-- Include Libs & Plugins
 	============================================ -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script type="text/javascript" src="theme/js/jquery-2.2.4.min.js"></script>
-<script type="text/javascript" src="theme/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="theme/js/owl-carousel/owl.carousel.js"></script>
-<script type="text/javascript" src="theme/js/themejs/libs.js"></script>
-<script type="text/javascript" src="theme/js/unveil/jquery.unveil.js"></script>
-<script type="text/javascript" src="theme/js/countdown/jquery.countdown.min.js"></script>
-<script type="text/javascript" src="theme/js/dcjqaccordion/jquery.dcjqaccordion.2.8.min.js"></script>
-<script type="text/javascript" src="theme/js/datetimepicker/moment.js"></script>
-<script type="text/javascript" src="theme/js/datetimepicker/bootstrap-datetimepicker.min.js"></script>
-<script type="text/javascript" src="theme/js/jquery-ui/jquery-ui.min.js"></script>
+<script type="text/javascript" src="viewCusomer/theme/js/jquery-2.2.4.min.js"></script>
+<script type="text/javascript" src="viewCusomer/theme/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="viewCusomer/theme/js/owl-carousel/owl.carousel.js"></script>
+<script type="text/javascript" src="viewCusomer/theme/js/themejs/libs.js"></script>
+<script type="text/javascript" src="viewCusomer/theme/js/unveil/jquery.unveil.js"></script>
+<script type="text/javascript" src="viewCusomer/theme/js/countdown/jquery.countdown.min.js"></script>
+<script type="text/javascript" src="viewCusomer/theme/js/dcjqaccordion/jquery.dcjqaccordion.2.8.min.js"></script>
+<script type="text/javascript" src="viewCusomer/theme/js/datetimepicker/moment.js"></script>
+<script type="text/javascript" src="viewCusomer/theme/js/datetimepicker/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="viewCusomer/theme/js/jquery-ui/jquery-ui.min.js"></script>
 
 
 <!-- Theme files
 ============================================ -->
 
 
-<script type="text/javascript" src="theme/js/themejs/so_megamenu.js"></script>
-<script type="text/javascript" src="theme/js/themejs/addtocart.js"></script>
-<script type="text/javascript" src="theme/js/themejs/application.js"></script>
+<script type="text/javascript" src="viewCusomer/theme/js/themejs/so_megamenu.js"></script>
+<script type="text/javascript" src="viewCusomer/theme/js/themejs/addtocart.js"></script>
+<script type="text/javascript" src="viewCusomer/theme/js/themejs/application.js"></script>
 <script type="text/javascript">
 // Check if Cookie exists
 if($.cookie('display')){

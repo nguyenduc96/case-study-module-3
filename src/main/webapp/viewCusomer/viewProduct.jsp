@@ -70,20 +70,20 @@
                 <div class="row">
                     <div class="header-top-left form-inline col-sm-6 col-xs-12 compact-hidden">
                         <div class="form-group languages-block ">
-                            <form action="index.html" method="post" enctype="multipart/form-data" id="bt-language">
+                            <form action="#" method="post" enctype="multipart/form-data" id="bt-language">
                                 <a class="btn btn-xs dropdown-toggle" data-toggle="dropdown">
                                     <img src="viewCusomer/theme/image/demo/flags/gb.png" alt="English" title="English">
                                     <span class="">English</span>
                                     <span class="fa fa-angle-down"></span>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="index.html"><img class="image_flag" src="viewCusomer/theme/image/demo/flags/gb.png" alt="English" title="English" /> English </a></li>
+                                    <li><a href="#"><img class="image_flag" src="viewCusomer/theme/image/demo/flags/gb.png" alt="English" title="English" /> English </a></li>
                                 </ul>
                             </form>
                         </div>
 
                         <div class="form-group currencies-block">
-                            <form action="index.html" method="post" enctype="multipart/form-data" id="currency">
+                            <form action="#" method="post" enctype="multipart/form-data" id="currency">
                                 <a class="btn btn-xs dropdown-toggle" data-toggle="dropdown">
                                     <span class="icon icon-credit "></span> US Dollar <span class="fa fa-angle-down"></span>
                                 </a>
@@ -98,11 +98,10 @@
                         <h5 class="tabBlockTitle visible-xs">More<a class="expander " href="#TabBlock-1"><i class="fa fa-angle-down"></i></a></h5>
                         <div class="tabBlock" id="TabBlock-1">
                             <ul class="top-link list-inline">
-                                <li class="account" id="my_account">
-                                    <a href="#" title="My Account" class="btn btn-xs dropdown-toggle" data-toggle="dropdown"> <span >My Account</span> <span class="fa fa-angle-down"></span></a>
+                                <li class="account btn-group" id="my_account">
+                                    <a href="#" title="My Account" class="btn btn-xs dropdown-toggle" data-toggle="dropdown"> <span class="hidden-xs">My Account</span> <span class="fa fa-angle-down "></span></a>
                                     <ul class="dropdown-menu ">
-                                        <li><a href="register.html"><i class="fa fa-user"></i> Register</a></li>
-                                        <li><a href="login.html"><i class="fa fa-pencil-square-o"></i> Login</a></li>
+                                        <li><a href="#"><i class="fa fa-pencil-square-o"></i> Log Out</a></li>
                                     </ul>
                                 </li>
                                 <li class="wishlist"><a href="wishlist.html" id="wishlist-total" class="top-link-wishlist" title="Wish List (2)"><span>Wish List (2)</span></a></li>
@@ -122,7 +121,7 @@
                 <div class="row">
                     <!-- Logo -->
                     <div class="navbar-logo col-md-3 col-sm-12 col-xs-12">
-                        <a href="index.html"><img src="viewCusomer/theme/image/demo/logos/theme_logo.png" title="Your Store" alt="Your Store" /></a>
+                        <a href="#"><img src="viewCusomer/theme/image/demo/logos/theme_logo.png" title="Your Store" alt="Your Store" /></a>
                     </div>
                     <!-- //end Logo -->
 
@@ -271,257 +270,47 @@
                                             <div class="megamenu-pattern">
                                                 <div class="container">
                                                     <ul class="megamenu">
-                                                        <li class="item-vertical style1 with-sub-menu hover">
-                                                            <p class="close-menu"></p>
-                                                            <a href="#" class="clearfix">
-                                                                <img src="viewCusomer/theme/image/viewCusomer/theme/icons/2.png" alt="icon">
-                                                                <span>Mobile Phone</span>
-                                                                <b class="caret"></b>
-                                                            </a>
-                                                            <div class="sub-menu" data-subwidth="100" >
-                                                                <div class="content" >
-                                                                    <div class="row">
-                                                                        <div class="col-sm-12">
-                                                                            <div class="row">
-                                                                                <div class="col-md-4 static-menu">
-                                                                                    <div class="menu">
-                                                                                        <ul>
-                                                                                            <li>
-                                                                                                <a href="#"  class="main-menu">Apple</a>
-                                                                                                <ul>
-                                                                                                    <li><a href="#" >iPhone 13 ProMax</a></li>
-                                                                                                    <li><a href="#" >iPhone 13</a></li>
-                                                                                                    <li><a  href="#" >iPhone 12 ProMax</a></li>
-                                                                                                    <li><a href="#" >iPhone 12</a></li>
-                                                                                                    <li><a href="#" >iPhone 13 Mini</a></li>
-                                                                                                    <li><a href="#" >iPhone 13</a></li>
-                                                                                                </ul>
-                                                                                            </li>
-                                                                                            <li>
-                                                                                                <a href="#"  class="main-menu">Samsung</a>
-                                                                                                <ul>
-                                                                                                    <li><a href="#" >Samsung Galaxy Flip Z</a></li>
-                                                                                                    <li><a href="#" >Samsung Galaxy S21</a></li>
-                                                                                                    <li><a href="#" >Samsung Galaxy Tab S</a></li>
-                                                                                                </ul>
-                                                                                            </li>
-                                                                                        </ul>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="col-md-4 static-menu">
-                                                                                    <div class="menu">
-                                                                                        <ul>
-                                                                                            <li>
-                                                                                                <a href="#"  class="main-menu">OPPO</a>
-                                                                                                <ul>
-                                                                                                    <li><a href="#" >OPPO Reno 6</a></li>
-                                                                                                    <li><a href="#" >OPPO A74</a></li>
-                                                                                                </ul>
-                                                                                            </li>
-
-                                                                                        </ul>
-                                                                                    </div>
-                                                                                </div>
-
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="item-vertical with-sub-menu hover">
-                                                            <p class="close-menu"></p>
-                                                            <a href="#" class="clearfix">
-                                                                <span class="label"></span>
-                                                                <img src="viewCusomer/theme/image/viewCusomer/theme/icons/2.png" alt="icon">
-                                                                <span>Tablet</span>
-                                                                <b class="caret"></b>
-                                                            </a>
-                                                            <div class="sub-menu" data-subwidth="60" >
-                                                                <div class="content">
-                                                                    <div class="row">
-                                                                        <div class="col-md-6">
-                                                                            <div class="row">
-                                                                                <div class="col-md-12 static-menu">
-                                                                                    <div class="menu">
-                                                                                        <ul>
-                                                                                            <li>
-                                                                                                <a href="#" onclick="window.location = '81';" class="main-menu">Apple</a>
-                                                                                                <ul>
-                                                                                                    <li><a href="#" onclick="window.location = '33_63';">iPad Pro M1 12.9 inch</a></li>
-                                                                                                    <li><a href="#" onclick="window.location = '24_64';">iPad Pro M1 11 inch</a></li>
-                                                                                                    <li><a href="#" onclick="window.location = '17';">iPad Pro 12.9 inch 2020</a></li>
-                                                                                                    <li><a href="#" onclick="window.location = '17';">iPad Pro 11 inch 2020</a></li>
-                                                                                                    <li><a href="#" onclick="window.location = '17';">iPad Pro 10.9 inch 2019</a></li>
-                                                                                                </ul>
-                                                                                            </li>
-                                                                                            <li>
-                                                                                                <a href="#" onclick="window.location = '18_46';" class="main-menu">SAMSUNG</a>
-                                                                                                <ul>
-                                                                                                    <li><a href="#" onclick="window.location = '25_28';">SAMSUNG GALAXY TAB S7 FE</a></li>
-                                                                                                    <li><a href="#" onclick="window.location = '80';">SAMSUNG GALAXY TAB S7</a></li>
-                                                                                                    <li><a href="#" onclick="window.location = '24_66';">SAMSUNG GALAXY TAB S6</a></li>
-                                                                                                </ul>
-                                                                                            </li>
-                                                                                            <li>
-                                                                                                <a href="#" onclick="window.location = '25_31';" class="main-menu">Xiaomi</a>
-                                                                                                <ul>
-                                                                                                    <li><a href="#" onclick="window.location = '57_73';">Xiaomi Pad 5</a></li>
-                                                                                                </ul>
-                                                                                            </li>
-                                                                                        </ul>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-md-6">
-                                                                            <div class="row banner">
-                                                                                <a href="#">
-                                                                                    <img src="viewCusomer/theme/image/demo/cms/menu_bg2.jpg" alt="banner1">
-                                                                                </a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="item-vertical with-sub-menu hover">
-                                                            <p class="close-menu"></p>
-                                                            <a href="#" class="clearfix">
-                                                                <img src="viewCusomer/theme/image/viewCusomer/theme/icons/2.png" alt="icon">
-                                                                <span>Laptop</span>
-                                                                <b class="caret"></b>
-                                                            </a>
-                                                            <div class="sub-menu" data-subwidth="100" >
-                                                                <div class="content" >
-                                                                    <div class="row">
-                                                                        <div class="col-md-12">
-                                                                            <div class="row">
-                                                                                <div class="col-md-4 static-menu">
-                                                                                    <div class="menu">
-                                                                                        <ul>
-                                                                                            <li>
-                                                                                                <a href="#" class="main-menu">Apple</a>
-                                                                                                <ul>
-                                                                                                    <li><a href="#" >Macbook Pro M1</a></li>
-                                                                                                    <li><a href="#" >Macbook Air M1</a></li>
-                                                                                                    <li><a href="#" >Macbook Pro 16 inch 2019</a></li>
-                                                                                                    <li><a href="#" >Macbook Pro 15 inch 2019</a></li>
-                                                                                                    <li><a href="#" >Macbook Pro 13 inch 2020</a></li>
-                                                                                                    <li><a href="#" >Macbook Air 13 inch 2020</a></li>
-                                                                                                </ul>
-                                                                                            </li>
-                                                                                            <li>
-                                                                                                <a href="24" onclick="window.location = '24';" class="main-menu">Dell</a>
+                                                        <c:forEach items="${categories}" var="category">
+                                                            <li class="item-vertical style1 with-sub-menu hover">
+                                                                <p class="close-menu"></p>
+                                                                <a href="/homePage?action=viewByCategory&id=${category.id}" class="clearfix">
+                                                                    <img src="viewCusomer/theme/image/theme/icons/2.png" alt="icon">
+                                                                    <span>${category.name}</span>
+                                                                    <b class="caret"></b>
+                                                                </a>
+                                                                <div class="sub-menu" data-subwidth="100" >
+                                                                    <div class="content" >
+                                                                        <div class="row">
+                                                                            <div class="col-sm-12">
+                                                                                <div class="row">
+                                                                                    <c:forEach items="${brands}" var="brand">
+                                                                                        <div class="col-md-4 static-menu">
+                                                                                            <div class="menu">
                                                                                                 <ul>
                                                                                                     <li>
-                                                                                                        <a href="#" >Dell Gaming G3</a>
-                                                                                                    </li>
-                                                                                                    <li>
-                                                                                                        <a href="#" >Dell Inspiron</a>
-                                                                                                    </li>
-                                                                                                    <li>
-                                                                                                        <a href="#" >Dell XPS i7</a>
-                                                                                                    </li>
-                                                                                                    <li>
-                                                                                                        <a href="#">Dell XPS i5</a>
-                                                                                                    </li>
-                                                                                                    <li>
-                                                                                                        <a href="#">Dell Gaming G15</a>
-                                                                                                    </li>
-
-                                                                                                </ul>
-                                                                                            </li>
-                                                                                        </ul>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="col-md-4 static-menu">
-                                                                                    <div class="menu">
-                                                                                        <ul>
-                                                                                            <li>
-                                                                                                <a href="#"  class="main-menu">Asus</a>
-                                                                                                <ul>
-                                                                                                    <li>
-                                                                                                        <a href="#">Asus TUF Gaming FX7</a>
-                                                                                                    </li>
-                                                                                                    <li>
-                                                                                                        <a href="#" >Asus TUF Gaming FX5</a>
-                                                                                                    </li>
-                                                                                                    <li>
-                                                                                                        <a href="#" >Asus ROG G14</a>
-                                                                                                    </li>
-                                                                                                    <li>
-                                                                                                        <a href="#">Asus Zenbook</a>
+                                                                                                        <a href="/homePage?action=viewByBrand&id=${brand.id}"  class="main-menu">${brand.name}</a>
+                                                                                                        <ul>
+                                                                                                            <c:forEach items="${products}" var="product">
+                                                                                                                <c:if test="${product.brand_id == brand.id}">
+                                                                                                                    <c:if test="${product.category_id == category.id}">
+                                                                                                                        <li><a href="/homePage?action=detailProduct&id=${product.id}" >${product.name}</a></li>
+                                                                                                                    </c:if>
+                                                                                                                </c:if>
+                                                                                                            </c:forEach>
+                                                                                                        </ul>
                                                                                                     </li>
                                                                                                 </ul>
-                                                                                            </li>
-                                                                                            <li>
-                                                                                                <a href="#"  class="main-menu">HP</a>
-                                                                                                <ul>
-                                                                                                    <li>
-                                                                                                        <a href="#" >HP Envy 13</a>
-                                                                                                    </li>
-                                                                                                    <li>
-                                                                                                        <a href="#" >HP 340s G7</a>
-                                                                                                    </li>
-                                                                                                    <li>
-                                                                                                        <a href="#" >HP Omen 15</a>
-                                                                                                    </li>
-                                                                                                    <li>
-                                                                                                        <a href="#" >HP EliteBook</a>
-                                                                                                    </li>
-                                                                                                </ul>
-                                                                                            </li>
-                                                                                        </ul>
-                                                                                    </div>
-                                                                                </div>
-
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="item-vertical css-menu with-sub-menu hover">
-                                                            <p class="close-menu"></p>
-                                                            <a href="#" class="clearfix">
-
-                                                                <img src="viewCusomer/theme/image/viewCusomer/theme/icons/2.png" alt="icon">
-                                                                <span>Phụ Kiện</span>
-                                                                <b class="caret"></b>
-                                                            </a>
-                                                            <div class="sub-menu" data-subwidth="30" style="width: 270px; display: none; right: 0px;">
-                                                                <div class="content" style="display: none;">
-                                                                    <div class="row">
-                                                                        <div class="col-sm-12">
-                                                                            <div class="row">
-                                                                                <div class="col-sm-12 hover-menu">
-                                                                                    <div class="menu">
-                                                                                        <ul>
-                                                                                            <li>
-                                                                                                <a href="#" class="main-menu">Ốp Lưng điện thoại</a>
-                                                                                            </li>
-                                                                                            <li>
-                                                                                                <a href="#" class="main-menu">Sạc dự phòng</a>
-                                                                                            </li>
-                                                                                            <li>
-                                                                                                <a href="#" class="main-menu">Thẻ nhớ</a>
-                                                                                            </li>
-                                                                                            <li>
-                                                                                                <a href="#" class="main-menu">Dán màn hình</a>
-                                                                                            </li>
-                                                                                            <li>
-                                                                                                <a href="#" class="main-menu">Phụ kiện Table, Laptop</a>
-                                                                                            </li>
-                                                                                        </ul>
-                                                                                    </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </c:forEach>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                        </li>
+                                                            </li>
+                                                        </c:forEach>
+
                                                     </ul>
                                                 </div>
                                             </div>

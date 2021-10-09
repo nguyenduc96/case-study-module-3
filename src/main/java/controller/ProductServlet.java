@@ -216,6 +216,10 @@ public class ProductServlet extends HttpServlet {
     }
 
     private void showCreateForm(HttpServletRequest request, HttpServletResponse response) {
+        List<Category> categories = categoryService.getAll();
+        request.setAttribute("categories", categories);
+        List<Brand> brands = brandService.getAll();
+        request.setAttribute("brands", brands);
         RequestDispatcher dispatcher = request.getRequestDispatcher("product/createForm.jsp");
         try {
             dispatcher.forward(request, response);

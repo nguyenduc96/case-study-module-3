@@ -85,4 +85,8 @@ public class ProductService implements IProductService {
     public List<Product> selectByCategory(int category_id,int limit) {
         return productDao.selectByCategory(category_id,limit);
     }
+
+    public List<Product> selectByBrandId(int brand_id,int limit) {
+        return productDao.selectByBrandId(brand_id,limit);
+    }
 }
