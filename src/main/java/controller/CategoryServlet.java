@@ -1,6 +1,7 @@
 package controller;
 
 import model.Category;
+import model.User;
 import service.category.CategoryService;
 
 import javax.servlet.*;
@@ -18,37 +19,48 @@ public class CategoryServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String action = request.getParameter(ACTION);
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("user");
+        if (user != null) {
+            if (user.getRole_id() == 1) {
+                response.sendRedirect("homePage");
+            } else {
+                String action = request.getParameter(ACTION);
 
-        if (action == null) {
-            action = EMPTY;
+                if (action == null) {
+                    action = EMPTY;
+                }
+                switch (action) {
+                    case CREATE: {
+                        showCreateForm(request, response);
+                        break;
+                    }
+                    case EDIT: {
+                        showEditForm(request, response);
+                        break;
+                    }
+                    case DELETE: {
+                        deleteCategoryInfo(request, response);
+                        break;
+                    }
+                    case LIST_DEL: {
+                        showListDelete(request, response);
+                        break;
+                    }
+                    case ACTIVE: {
+                        activeCategoryInfo(request, response);
+                        break;
+                    }
+                    default: {
+                        showAll(request, response);
+                        break;
+                    }
+                }
+            }
+        } else {
+            response.sendRedirect("/login?action=login");
         }
-        switch (action) {
-            case CREATE: {
-                showCreateForm(request, response);
-                break;
-            }
-            case EDIT: {
-                showEditForm(request, response);
-                break;
-            }
-            case DELETE: {
-                deleteCategoryInfo(request, response);
-                break;
-            }
-            case LIST_DEL: {
-                showListDelete(request, response);
-                break;
-            }
-            case ACTIVE: {
-                activeCategoryInfo(request, response);
-                break;
-            }
-            default: {
-                showAll(request, response);
-                break;
-            }
-        }
+
     }
 
     private void showAll(HttpServletRequest request, HttpServletResponse response) {
@@ -85,7 +97,7 @@ public class CategoryServlet extends HttpServlet {
 
     private void divisionPage(HttpServletRequest request, int numberActive) {
         int sizeOfList = categoryService.sizeOfList(numberActive);
-        final int LIMIT = 6;
+        final int LIMIT = 5;
         int totalPage;
         if (sizeOfList % LIMIT == 0) {
             totalPage = sizeOfList / LIMIT;

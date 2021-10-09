@@ -1,6 +1,7 @@
 package controller;
 
 import model.ProductDetail;
+import model.User;
 import service.productdetail.ProductDetailService;
 
 import javax.servlet.*;
@@ -25,19 +26,31 @@ public class ProductDetailServlet extends HttpServlet {
     public static final String CONNECT = "connect";
     public static final String PIN = "pin";
     public static final String CHARGE = "charge";
-    private ProductDetailService productDetailService =  new ProductDetailService();
+    private ProductDetailService productDetailService = new ProductDetailService();
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String action = request.getParameter(ACTION);
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("user");
+        if (user != null) {
+            if (user.getRole_id() == 1) {
+                response.sendRedirect("homePage");
+            } else {
 
-        if(action == null) {
-            action = EMPTY;
-        }
-        switch(action) {
-            case DELETE: {
-                deleteProductDetail(request,response);
-                break;
+                String action = request.getParameter(ACTION);
+
+                if (action == null) {
+                    action = EMPTY;
+                }
+                switch (action) {
+                    case DELETE: {
+                        deleteProductDetail(request, response);
+                        break;
+                    }
+                }
             }
+        } else {
+            response.sendRedirect("/login?action=login");
         }
     }
 
@@ -49,7 +62,7 @@ public class ProductDetailServlet extends HttpServlet {
         productDetail.setProduct_id(id);
         productDetailService.edit(productDetail);
         try {
-            response.sendRedirect("product?action=detail&id="+product_id);
+            response.sendRedirect("product?action=detail&id=" + product_id);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -59,12 +72,12 @@ public class ProductDetailServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter(ACTION);
 
-        if(action == null) {
+        if (action == null) {
             action = EMPTY;
         }
-        switch(action) {
-            case EDIT : {
-                editProductDetail(request,response);
+        switch (action) {
+            case EDIT: {
+                editProductDetail(request, response);
                 break;
             }
         }
@@ -84,28 +97,27 @@ public class ProductDetailServlet extends HttpServlet {
         String connect = request.getParameter(CONNECT);
         String pin = request.getParameter(PIN);
         String charge = request.getParameter(CHARGE);
-        productDetail = new ProductDetail(id, product_id,true,image,screen_tech,screen_resolution,front_camera_tech,rear_camera_teach,operator_system,cpu,ram,memory,connect,pin,charge);
+        productDetail = new ProductDetail(id, product_id, true, image, screen_tech, screen_resolution, front_camera_tech, rear_camera_teach, operator_system, cpu, ram, memory, connect, pin, charge);
         return productDetail;
     }
 
     private void editProductDetail(HttpServletRequest request, HttpServletResponse response) {
         int product_id = Integer.parseInt(request.getParameter(PRODUCT_ID));
         ProductDetail productDetail = productDetailService.select(product_id);
-        if(productDetail==null) {
-            productDetail = getProductDetail(request,product_id,product_id);
+        if (productDetail == null) {
+            productDetail = getProductDetail(request, product_id, product_id);
             try {
                 productDetailService.add(productDetail);
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-        }
-        else {
-            int  id = productDetail.getId();
+        } else {
+            int id = productDetail.getId();
             productDetail = getProductDetail(request, product_id, id);
             productDetailService.edit(productDetail);
         }
         try {
-            response.sendRedirect("product?action=detail&id="+product_id);
+            response.sendRedirect("product?action=detail&id=" + product_id);
         } catch (IOException e) {
             e.printStackTrace();
         }

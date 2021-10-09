@@ -32,10 +32,44 @@ public class HomePageServlet extends HttpServlet {
                 showDetailProduct(request,response);
                 break;
             }
+            case "viewByCategory": {
+                showProductByCategory(request,response);
+                break;
+            }
+            case "viewByBrand": {
+                showProductByBrand(request,response);
+                break;
+            }
             default: {
                 showHomePage(request,response);
                 break;
             }
+        }
+    }
+
+    private void showProductByBrand(HttpServletRequest request, HttpServletResponse response) {
+        int id = Integer.parseInt(request.getParameter("id"));
+        List<Product> productList = productService.selectByBrandId(id,1000);
+        request.setAttribute("productList",productList);
+
+        RequestDispatcher dispatcher = request.getRequestDispatcher("viewCusomer/viewcategory.jsp");
+        try {
+            dispatcher.forward(request,response);
+        } catch (ServletException | IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void showProductByCategory(HttpServletRequest request, HttpServletResponse response) {
+        int id = Integer.parseInt(request.getParameter("id"));
+        List<Product> productList = productService.selectByCategory(id,1000);
+        request.setAttribute("productList",productList);
+
+        RequestDispatcher dispatcher = request.getRequestDispatcher("viewCusomer/viewcategory.jsp");
+        try {
+            dispatcher.forward(request,response);
+        } catch (ServletException | IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -65,10 +99,13 @@ public class HomePageServlet extends HttpServlet {
         request.setAttribute("newProduct",newProduct);
 
         List<Category> categories = categoryService.getAll();
+//        request.setAttribute("categories",categories);
 
         List<Brand> brands = brandService.getAll();
+//        request.setAttribute("brands",brands);
 
         List<Product> products = productService.getAll();
+//        request.setAttribute("brands",brands);
 
         HttpSession session = request.getSession();
         session.setAttribute("categories",categories);

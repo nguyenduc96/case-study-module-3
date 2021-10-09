@@ -72,14 +72,14 @@
                                 <li class="account btn-group" id="my_account">
                                     <a href="#" title="My Account" class="btn btn-xs dropdown-toggle" data-toggle="dropdown"> <span class="hidden-xs">My Account</span> <span class="fa fa-angle-down "></span></a>
                                     <ul class="dropdown-menu ">
-                                        <li><a href="login.html"><i class="fa fa-pencil-square-o"></i> Log Out</a></li>
+                                        <li><a href="#"><i class="fa fa-pencil-square-o"></i> Log Out</a></li>
                                     </ul>
                                 </li>
 
 
                             </ul>
                             <div class="form-group languages-block ">
-                                <form action="index.html" method="post" enctype="multipart/form-data" id="bt-language">
+                                <form action="#" method="post" enctype="multipart/form-data" id="bt-language">
                                     <a class="btn btn-xs dropdown-toggle" data-toggle="dropdown">
                                         <img src="viewCusomer/theme/image/demo/flags/gb.png" alt="English" title="English">
                                         <span class="hidden-xs">English</span>
@@ -639,14 +639,14 @@
                 <div class="row">
 
                     <div class="sidebar-menu col-md-3 col-sm-6 col-xs-8 ">
-                        <div class="responsive so-megamenu ">
+                        <div class="responsive so-megamenu " >
                             <div class="so-vertical-menu no-gutter compact-hidden">
                                 <nav class="navbar-default">
                                     <div class="container-megamenu vertical open">
                                         <div id="menuHeading">
                                             <div class="megamenuToogle-wrapper">
                                                 <div class="megamenuToogle-pattern">
-                                                    <div class="container">
+                                                    <div class="container " style="height:62px">
                                                         <div>
                                                             <span></span>
                                                             <span></span>
@@ -687,7 +687,7 @@
                                                                                             <div class="menu">
                                                                                                 <ul>
                                                                                                     <li>
-                                                                                                        <a href="#"  class="main-menu">${brand.name}</a>
+                                                                                                        <a href="/homePage?action=viewByBrand&id=${brand.id}"  class="main-menu">${brand.name}</a>
                                                                                                         <ul>
                                                                                                             <c:forEach items="${products}" var="product">
                                                                                                                 <c:if test="${product.brand_id == brand.id}">
@@ -723,7 +723,7 @@
 
                     <!-- Search -->
                     <div class="header-bottom-right  col-md-9 col-sm-6 col-xs-4 ">
-                        <div id="sosearchpro" class="col-sm-7 search-pro">
+                        <div id="sosearchpro" class="col-sm-7 search-pro" style="padding-bottom: 0px;">
                             <form method="GET" action="index.html">
                                 <div id="search0" class="search input-group">
                                     <div class="select_category filter_type icon-select">

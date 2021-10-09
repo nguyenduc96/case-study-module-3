@@ -1,6 +1,7 @@
 package controller;
 
 import model.Brand;
+import model.User;
 import service.brand.BrandService;
 
 import javax.servlet.*;
@@ -33,36 +34,46 @@ public class BrandServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String action = request.getParameter(ACTION);
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("user");
+        if (user != null) {
+            if (user.getRole_id() == 1) {
+                response.sendRedirect("homePage");
+            } else {
+                String action = request.getParameter(ACTION);
 
-        if (action == null) {
-            action = EMPTY;
-        }
-        switch (action) {
-            case CREATE: {
-                showCreateForm(request, response);
-                break;
+                if (action == null) {
+                    action = EMPTY;
+                }
+                switch (action) {
+                    case CREATE: {
+                        showCreateForm(request, response);
+                        break;
+                    }
+                    case EDIT: {
+                        showEditForm(request, response);
+                        break;
+                    }
+                    case DELETE: {
+                        deleteBrandInfo(request, response);
+                        break;
+                    }
+                    case LIST_DEL: {
+                        showListDelete(request, response);
+                        break;
+                    }
+                    case ACTIVE: {
+                        activeBrandInfo(request, response);
+                        break;
+                    }
+                    default: {
+                        showAll(request, response);
+                        break;
+                    }
+                }
             }
-            case EDIT: {
-                showEditForm(request, response);
-                break;
-            }
-            case DELETE: {
-                deleteBrandInfo(request, response);
-                break;
-            }
-            case LIST_DEL: {
-                showListDelete(request, response);
-                break;
-            }
-            case ACTIVE: {
-                activeBrandInfo(request, response);
-                break;
-            }
-            default: {
-                showAll(request, response);
-                break;
-            }
+        } else {
+            response.sendRedirect("login?action=login");
         }
     }
 
@@ -89,7 +100,7 @@ public class BrandServlet extends HttpServlet {
 
     private void divisionPage(HttpServletRequest request, int numberActive) {
         int sizeOfList = brandService.sizeOfList(numberActive);
-        final int LIMIT = 6;
+        final int LIMIT = 5;
         int totalPage;
         if (sizeOfList % LIMIT == 0) {
             totalPage = sizeOfList / LIMIT;

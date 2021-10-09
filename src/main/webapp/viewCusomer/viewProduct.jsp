@@ -98,11 +98,10 @@
                         <h5 class="tabBlockTitle visible-xs">More<a class="expander " href="#TabBlock-1"><i class="fa fa-angle-down"></i></a></h5>
                         <div class="tabBlock" id="TabBlock-1">
                             <ul class="top-link list-inline">
-                                <li class="account" id="my_account">
-                                    <a href="#" title="My Account" class="btn btn-xs dropdown-toggle" data-toggle="dropdown"> <span >My Account</span> <span class="fa fa-angle-down"></span></a>
+                                <li class="account btn-group" id="my_account">
+                                    <a href="#" title="My Account" class="btn btn-xs dropdown-toggle" data-toggle="dropdown"> <span class="hidden-xs">My Account</span> <span class="fa fa-angle-down "></span></a>
                                     <ul class="dropdown-menu ">
-                                        <li><a href="register.html"><i class="fa fa-user"></i> Register</a></li>
-                                        <li><a href="login.html"><i class="fa fa-pencil-square-o"></i> Login</a></li>
+                                        <li><a href="#"><i class="fa fa-pencil-square-o"></i> Log Out</a></li>
                                     </ul>
                                 </li>
                                 <li class="wishlist"><a href="wishlist.html" id="wishlist-total" class="top-link-wishlist" title="Wish List (2)"><span>Wish List (2)</span></a></li>
@@ -289,7 +288,7 @@
                                                                                             <div class="menu">
                                                                                                 <ul>
                                                                                                     <li>
-                                                                                                        <a href="#"  class="main-menu">${brand.name}</a>
+                                                                                                        <a href="/homePage?action=viewByBrand&id=${brand.id}"  class="main-menu">${brand.name}</a>
                                                                                                         <ul>
                                                                                                             <c:forEach items="${products}" var="product">
                                                                                                                 <c:if test="${product.brand_id == brand.id}">

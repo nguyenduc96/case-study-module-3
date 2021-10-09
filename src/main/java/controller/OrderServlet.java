@@ -2,6 +2,7 @@ package controller;
 
 import model.Order;
 import model.OrderDetail;
+import model.User;
 import service.order.OrderService;
 import service.orderdetail.OrderDetailService;
 
@@ -20,40 +21,70 @@ import static controller.BrandServlet.*;
 
 @WebServlet(name = "OrderServlet", value = "/order")
 public class OrderServlet extends HttpServlet {
+    public static final String SEARCH = "search";
     private OrderService orderService = new OrderService();
     private OrderDetailService orderDetailService = new OrderDetailService();
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String action = request.getParameter("action");
-        if(action == null) {
-            action = "";
-        }
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("user");
+        if (user != null) {
+            String action = request.getParameter("action");
+            if (action == null) {
+                action = "";
+            }
 
-        switch(action) {
-            case "detail": {
-                showDetail(request,response);
-                break;
+            switch (action) {
+                case "detail": {
+                    showDetail(request, response);
+                    break;
+                }
+                case "edit": {
+                    showEditForm(request, response);
+                    break;
+                }
+                case "delete": {
+                    deleteOrder(request, response);
+                    break;
+                }
+                case "showDeleteOrder": {
+                    showDeleteOrder(request, response);
+                    break;
+                }
+                case "active": {
+                    activeOrder(request, response);
+                    break;
+                }
+                default: {
+                    showOrder(request, response);
+                    break;
+                }
             }
-            case "edit" : {
-                showEditForm(request,response);
-                break;
+        } else {
+            response.sendRedirect("login?action=login");
+        }
+    }
+
+    private void addToCart(HttpServletRequest request, HttpServletResponse response) {
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("user");
+        Order order = orderService.findCart(user.getId());
+        if (order == null) {
+            order = new Order(user.getId(), "In cart", true, new java.sql.Date(new java.util.Date().getTime()));
+            try {
+                orderService.add(order);
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
-            case "delete": {
-                deleteOrder(request,response);
-                break;
-            }
-            case "showDeleteOrder": {
-                showDeleteOrder(request,response);
-                break;
-            }
-            case "active": {
-                activeOrder(request,response);
-                break;
-            }
-            default: {
-                showOrder(request,response);
-                break;
-            }
+        }
+        order = orderService.findCart(user.getId());
+        int id = Integer.parseInt(request.getParameter("id"));
+        OrderDetail orderDetail = new OrderDetail(id, order.getId(), 1, true);
+        try {
+            orderDetailService.add(orderDetail);
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 
@@ -72,7 +103,7 @@ public class OrderServlet extends HttpServlet {
     }
 
     private void deleteOrder(HttpServletRequest request, HttpServletResponse response) {
-        int id = Integer.parseInt(request.getParameter("id"));
+        int id = Integer.parseInt(request.getParameter(ID));
         try {
             orderService.delete(id);
         } catch (SQLException e) {
@@ -86,14 +117,14 @@ public class OrderServlet extends HttpServlet {
     }
 
     private void showEditForm(HttpServletRequest request, HttpServletResponse response) {
-        int id = Integer.parseInt(request.getParameter("id"));
+        int id = Integer.parseInt(request.getParameter(ID));
         Order order = orderService.select(id);
-        request.setAttribute("order",order);
+        request.setAttribute("order", order);
         List<OrderDetail> orderDetails = orderDetailService.selectByOrderId(id);
-        request.setAttribute("orderDetails",orderDetails);
+        request.setAttribute("orderDetails", orderDetails);
         RequestDispatcher dispatcher = request.getRequestDispatcher("order/editOrder.jsp");
         try {
-            dispatcher.forward(request,response);
+            dispatcher.forward(request, response);
         } catch (ServletException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -102,14 +133,14 @@ public class OrderServlet extends HttpServlet {
     }
 
     private void showDetail(HttpServletRequest request, HttpServletResponse response) {
-        int id = Integer.parseInt(request.getParameter("id"));
+        int id = Integer.parseInt(request.getParameter(ID));
         List<OrderDetail> orderDetails = orderDetailService.selectByOrderId(id);
         Order order = orderService.select(id);
-        request.setAttribute("order",order);
-        request.setAttribute("orderDetails",orderDetails);
+        request.setAttribute("order", order);
+        request.setAttribute("orderDetails", orderDetails);
         RequestDispatcher dispatcher = request.getRequestDispatcher("order/showOrderDetail.jsp");
         try {
-            dispatcher.forward(request,response);
+            dispatcher.forward(request, response);
         } catch (ServletException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -119,10 +150,10 @@ public class OrderServlet extends HttpServlet {
 
     private void showOrder(HttpServletRequest request, HttpServletResponse response) {
         int numberActive = 1;
-        divisionPage(request,numberActive);
+        divisionPage(request, numberActive);
         RequestDispatcher dispatcher = request.getRequestDispatcher("order/showOrder.jsp");
         try {
-            dispatcher.forward(request,response);
+            dispatcher.forward(request, response);
         } catch (ServletException | IOException e) {
             e.printStackTrace();
         }
@@ -130,10 +161,10 @@ public class OrderServlet extends HttpServlet {
 
     private void showDeleteOrder(HttpServletRequest request, HttpServletResponse response) {
         int numberActive = 0;
-        divisionPage(request,numberActive);
+        divisionPage(request, numberActive);
         RequestDispatcher dispatcher = request.getRequestDispatcher("order/showDeleteOrder.jsp");
         try {
-            dispatcher.forward(request,response);
+            dispatcher.forward(request, response);
         } catch (ServletException | IOException e) {
             e.printStackTrace();
         }
@@ -185,23 +216,27 @@ public class OrderServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String action = request.getParameter("action");
-        if(action == null) {
-            action = "";
+        String action = request.getParameter(ACTION);
+        if (action == null) {
+            action = EMPTY;
         }
 
-        switch(action) {
+        switch (action) {
 
-            case "edit" : {
-                editOrder(request,response);
+            case EDIT: {
+                editOrder(request, response);
                 break;
             }
-            case "search": {
-                showSearchOrder(request,response);
+            case SEARCH: {
+                showSearchOrder(request, response);
+                break;
+            }
+            case "addToCart": {
+                addToCart(request, response);
                 break;
             }
             default: {
-                showOrder(request,response);
+                showOrder(request, response);
                 break;
             }
         }
@@ -214,7 +249,7 @@ public class OrderServlet extends HttpServlet {
             orders = orderService.getAll();
         } else {
             int id = Integer.parseInt(search);
-            orders.add(orderService.select(id)) ;
+            orders.add(orderService.select(id));
         }
         request.setAttribute("orders", orders);
         RequestDispatcher dispatcher = request.getRequestDispatcher("order/showOrder.jsp");
@@ -237,10 +272,10 @@ public class OrderServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-        Order order = new Order(id,user_id,status,true,created_at);
+        Order order = new Order(id, user_id, status, true, created_at);
         orderService.edit(order);
         try {
-            response.sendRedirect("order?action=edit&id="+id);
+            response.sendRedirect("order?action=edit&id=" + id);
         } catch (IOException e) {
             e.printStackTrace();
         }

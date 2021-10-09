@@ -13,6 +13,13 @@ public class OrderDetail {
     public OrderDetail() {
     }
 
+    public OrderDetail(int product_id, int order_id, int quantity, boolean isActive) {
+        this.product_id = product_id;
+        this.order_id = order_id;
+        this.quantity = quantity;
+        this.isActive = isActive;
+    }
+
     public OrderDetail(int id, int product_id, int order_id, int quantity, boolean isActive) {
         this.id = id;
         this.product_id = product_id;
